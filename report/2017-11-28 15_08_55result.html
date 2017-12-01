@@ -1,0 +1,5839 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>泛家居供应链管理系统接口测试报告</title>
+    <meta name="generator" content="HTMLTestRunner 0.9.1"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    
+<style type="text/css" media="screen">
+    body        { font-family: verdana, arial, helvetica, sans-serif; font-size: 80%; }
+    table       { font-size: 100%; }
+    pre         { white-space: pre-wrap;word-wrap: break-word; }
+
+    /* -- heading ---------------------------------------------------------------------- */
+    h1 {
+        font-size: 16pt;
+        color: gray;
+    }
+    .heading {
+        margin-top: 0ex;
+        margin-bottom: 1ex;
+    }
+
+    .heading .attribute {
+        margin-top: 1ex;
+        margin-bottom: 0;
+    }
+
+    .heading .description {
+        margin-top: 2ex;
+        margin-bottom: 3ex;
+    }
+
+    /* -- css div popup ------------------------------------------------------------------------ */
+    a.popup_link {
+    }
+
+    a.popup_link:hover {
+        color: red;
+    }
+
+    .popup_window {
+        display: none;
+        position: relative;
+        left: 0px;
+        top: 0px;
+        /*border: solid #627173 1px; */
+        padding: 10px;
+        /*background-color: #E6E6D6; */
+        font-family: "Lucida Console", "Courier New", Courier, monospace;
+        text-align: left;
+        font-size: 8pt;
+        /* width: 500px;*/
+    }
+
+    }
+    /* -- report ------------------------------------------------------------------------ */
+    #show_detail_line {
+        margin-top: 3ex;
+        margin-bottom: 1ex;
+    }
+    #result_table {
+        width: 99%;
+    }
+    #header_row {
+        font-weight: bold;
+        color: #303641;
+        background-color: #ebebeb;
+    }
+    #total_row  { font-weight: bold; }
+    .passClass  { background-color: #bdedbc; }
+    .failClass  { background-color: #ffefa4; }
+    .errorClass { background-color: #ffc9c9; }
+    .passCase   { color: #6c6; }
+    .failCase   { color: #FF6600; font-weight: bold; }
+    .errorCase  { color: #c00; font-weight: bold; }
+    .hiddenRow  { display: none; }
+    .testcase   { margin-left: 2em; }
+
+
+    /* -- ending ---------------------------------------------------------------------- */
+    #ending {
+    }
+
+    #div_base {
+                position:absolute;
+                top:0%;
+                left:5%;
+                right:5%;
+                width: auto;
+                height: auto;
+                margin: -15px 0 0 0;
+    }
+</style>
+
+    <link href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <script type="text/javascript" src="js/echarts.common.min.js"></script>
+</head>
+<body>
+    <script language="javascript" type="text/javascript"><!--
+    output_list = Array();
+
+    /* level - 0:Summary; 1:Failed; 2:All */
+    function showCase(level) {
+        trs = document.getElementsByTagName("tr");
+        for (var i = 0; i < trs.length; i++) {
+            tr = trs[i];
+            id = tr.id;
+            if (id.substr(0,2) == 'ft') {
+                if (level < 1) {
+                    tr.className = 'hiddenRow';
+                }
+                else {
+                    tr.className = '';
+                }
+            }
+            if (id.substr(0,2) == 'pt') {
+                if (level > 1) {
+                    tr.className = '';
+                }
+                else {
+                    tr.className = 'hiddenRow';
+                }
+            }
+        }
+    }
+
+
+    function showClassDetail(cid, count) {
+        var id_list = Array(count);
+        var toHide = 1;
+        for (var i = 0; i < count; i++) {
+            tid0 = 't' + cid.substr(1) + '.' + (i+1);
+            tid = 'f' + tid0;
+            tr = document.getElementById(tid);
+            if (!tr) {
+                tid = 'p' + tid0;
+                tr = document.getElementById(tid);
+            }
+            id_list[i] = tid;
+            if (tr.className) {
+                toHide = 0;
+            }
+        }
+        for (var i = 0; i < count; i++) {
+            tid = id_list[i];
+            if (toHide) {
+                document.getElementById('div_'+tid).style.display = 'none'
+                document.getElementById(tid).className = 'hiddenRow';
+            }
+            else {
+                document.getElementById(tid).className = '';
+            }
+        }
+    }
+
+
+    function showTestDetail(div_id){
+        var details_div = document.getElementById(div_id)
+        var displayState = details_div.style.display
+        // alert(displayState)
+        if (displayState != 'block' ) {
+            displayState = 'block'
+            details_div.style.display = 'block'
+        }
+        else {
+            details_div.style.display = 'none'
+        }
+    }
+
+
+    function html_escape(s) {
+        s = s.replace(/&/g,'&amp;');
+        s = s.replace(/</g,'&lt;');
+        s = s.replace(/>/g,'&gt;');
+        return s;
+    }
+
+    /* obsoleted by detail in <div>
+    function showOutput(id, name) {
+        var w = window.open("", //url
+                        name,
+                        "resizable,scrollbars,status,width=800,height=450");
+        d = w.document;
+        d.write("<pre>");
+        d.write(html_escape(output_list[id]));
+        d.write("\n");
+        d.write("<a href='javascript:window.close()'>close</a>\n");
+        d.write("</pre>\n");
+        d.close();
+    }
+    */
+    --></script>
+
+    <div id="div_base">
+        
+    <div class='page-header'>
+        <h1>泛家居供应链管理系统接口测试报告</h1>
+    <p class='attribute'><strong>开始时间:</strong> 2017-11-28 15:08:55</p>
+<p class='attribute'><strong>运行时长:</strong> 0:04:02.449389</p>
+<p class='attribute'><strong>状态:</strong> 通过 151 失败 2 错误 1</p>
+
+    </div>
+    <div style="float: left;width:50%;"><p class='description'></p></div>
+    <div id="chart" style="width:50%;height:400px;float:left;"></div>
+
+        
+    <div class="btn-group btn-group-sm">
+        <button class="btn btn-default" onclick='javascript:showCase(0)'>总结</button>
+        <button class="btn btn-default" onclick='javascript:showCase(1)'>失败</button>
+        <button class="btn btn-default" onclick='javascript:showCase(2)'>全部</button>
+    </div>
+    <p></p>
+    <table id='result_table' class="table table-bordered">
+        <colgroup>
+            <col align='left' />
+            <col align='right' />
+            <col align='right' />
+            <col align='right' />
+            <col align='right' />
+            <col align='right' />
+        </colgroup>
+        <tr id='header_row'>
+            <td>测试套件/测试用例</td>
+            <td>总数</td>
+            <td>通过</td>
+            <td>失败</td>
+            <td>错误</td>
+            <td>查看</td>
+        </tr>
+        
+    <tr class='passClass'>
+        <td>testAppAppointDistributionSearch.TestAppAppointDistributionSearch</td>
+        <td>4</td>
+        <td>4</td>
+        <td>0</td>
+        <td>0</td>
+        <td><a href="javascript:showClassDetail('c1',4)">详情</a></td>
+    </tr>
+
+<tr id='pt1.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_alreadyAppointSearch: 已预约</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.1')" >
+        通过</a>
+
+    <div id='div_pt1.1' class="popup_window">
+        <pre>
+        pt1.1: 
+1 已预约
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_alreadyAppointSearch (testAppAppointDistributionSearch.TestAppAppointDistributionSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_alreadyArriveSearch: 已到件</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.2')" >
+        通过</a>
+
+    <div id='div_pt1.2' class="popup_window">
+        <pre>
+        pt1.2: 
+1 已到件
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_alreadyArriveSearch (testAppAppointDistributionSearch.TestAppAppointDistributionSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_orderNotArriveSearch: 未到件</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.3')" >
+        通过</a>
+
+    <div id='div_pt1.3' class="popup_window">
+        <pre>
+        pt1.3: 
+1 未到件
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_orderNotArriveSearch (testAppAppointDistributionSearch.TestAppAppointDistributionSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.4' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_serviceOrderSearch: 服务中</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.4')" >
+        通过</a>
+
+    <div id='div_pt1.4' class="popup_window">
+        <pre>
+        pt1.4: 
+1 服务中
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_serviceOrderSearch (testAppAppointDistributionSearch.TestAppAppointDistributionSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+    <tr class='passClass'>
+        <td>testAppExceptionHandSearch.TestAppExceptionHandSearch</td>
+        <td>3</td>
+        <td>3</td>
+        <td>0</td>
+        <td>0</td>
+        <td><a href="javascript:showClassDetail('c2',3)">详情</a></td>
+    </tr>
+
+<tr id='pt2.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_abnormalEndSearch: 异常待办：已完结列表</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt2.1')" >
+        通过</a>
+
+    <div id='div_pt2.1' class="popup_window">
+        <pre>
+        pt2.1: 
+1 异常待办：已完结列表
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_abnormalEndSearch (testAppExceptionHandSearch.TestAppExceptionHandSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt2.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_abnormalTodoSearch: 异常待办：待处理列表</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt2.2')" >
+        通过</a>
+
+    <div id='div_pt2.2' class="popup_window">
+        <pre>
+        pt2.2: 
+1 异常待办：待处理列表
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_abnormalTodoSearch (testAppExceptionHandSearch.TestAppExceptionHandSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt2.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_abnormalTrackSearch: 异常待办：异常追踪列表</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt2.3')" >
+        通过</a>
+
+    <div id='div_pt2.3' class="popup_window">
+        <pre>
+        pt2.3: 
+1 异常待办：异常追踪列表
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_abnormalTrackSearch (testAppExceptionHandSearch.TestAppExceptionHandSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+    <tr class='passClass'>
+        <td>testAppHomeSearch.TestAppHomeSearch</td>
+        <td>1</td>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+        <td><a href="javascript:showClassDetail('c3',1)">详情</a></td>
+    </tr>
+
+<tr id='pt3.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_homeViewSearch: 宜家app:app首页</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt3.1')" >
+        通过</a>
+
+    <div id='div_pt3.1' class="popup_window">
+        <pre>
+        pt3.1: 
+1 宜家app:app首页
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_homeViewSearch (testAppHomeSearch.TestAppHomeSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+    <tr class='passClass'>
+        <td>testAppIkeaSamsReturnSearch.TestAppIkeaSamsReturnSearch</td>
+        <td>3</td>
+        <td>3</td>
+        <td>0</td>
+        <td>0</td>
+        <td><a href="javascript:showClassDetail('c4',3)">详情</a></td>
+    </tr>
+
+<tr id='pt4.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_ikeaAbnormalSamsSearch: 宜家SMAS返货：异常订单列表</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt4.1')" >
+        通过</a>
+
+    <div id='div_pt4.1' class="popup_window">
+        <pre>
+        pt4.1: 
+1 宜家SMAS返货：异常订单列表
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_ikeaAbnormalSamsSearch (testAppIkeaSamsReturnSearch.TestAppIkeaSamsReturnSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt4.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_waitArriveSearch: 宜家SMAS返货：待送达列表</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt4.2')" >
+        通过</a>
+
+    <div id='div_pt4.2' class="popup_window">
+        <pre>
+        pt4.2: 
+1 宜家SMAS返货：待送达列表
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_waitArriveSearch (testAppIkeaSamsReturnSearch.TestAppIkeaSamsReturnSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt4.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_waitPickUpGoodsSearch: 宜家SMAS返货：待提货列表</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt4.3')" >
+        通过</a>
+
+    <div id='div_pt4.3' class="popup_window">
+        <pre>
+        pt4.3: 
+1 宜家SMAS返货：待提货列表
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_waitPickUpGoodsSearch (testAppIkeaSamsReturnSearch.TestAppIkeaSamsReturnSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+    <tr class='passClass'>
+        <td>testAppIkeaServiceSearch.TestAppIkeaServiceSearch</td>
+        <td>4</td>
+        <td>4</td>
+        <td>0</td>
+        <td>0</td>
+        <td><a href="javascript:showClassDetail('c5',4)">详情</a></td>
+    </tr>
+
+<tr id='pt5.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_ikeaAbnormalServiceSearch: 宜家安装订单：异常订单列表</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt5.1')" >
+        通过</a>
+
+    <div id='div_pt5.1' class="popup_window">
+        <pre>
+        pt5.1: 
+1 宜家安装订单：异常订单列表
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_ikeaAbnormalServiceSearch (testAppIkeaServiceSearch.TestAppIkeaServiceSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt5.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_waitSetOutOrderSearch: 宜家安装订单：待出发列表</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt5.2')" >
+        通过</a>
+
+    <div id='div_pt5.2' class="popup_window">
+        <pre>
+        pt5.2: 
+1 宜家安装订单：待出发列表
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_waitSetOutOrderSearch (testAppIkeaServiceSearch.TestAppIkeaServiceSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt5.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_waitSignServiceSearch: 宜家安装订单：待签收列表</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt5.3')" >
+        通过</a>
+
+    <div id='div_pt5.3' class="popup_window">
+        <pre>
+        pt5.3: 
+1 宜家安装订单：待签收列表
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_waitSignServiceSearch (testAppIkeaServiceSearch.TestAppIkeaServiceSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt5.4' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_waitStartOrderSearch: 宜家安装订单：待开始列表</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt5.4')" >
+        通过</a>
+
+    <div id='div_pt5.4' class="popup_window">
+        <pre>
+        pt5.4: 
+1 宜家安装订单：待开始列表
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_waitStartOrderSearch (testAppIkeaServiceSearch.TestAppIkeaServiceSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+    <tr class='passClass'>
+        <td>testAppIkeaShipmentSearch.TestAppIkeaShipmentSearch</td>
+        <td>3</td>
+        <td>3</td>
+        <td>0</td>
+        <td>0</td>
+        <td><a href="javascript:showClassDetail('c6',3)">详情</a></td>
+    </tr>
+
+<tr id='pt6.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_ikeaAbnormalShipmentSearch: 宜家配送订单：异常订单列表</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt6.1')" >
+        通过</a>
+
+    <div id='div_pt6.1' class="popup_window">
+        <pre>
+        pt6.1: 
+1 宜家配送订单：异常订单列表
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_ikeaAbnormalShipmentSearch (testAppIkeaShipmentSearch.TestAppIkeaShipmentSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt6.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_waitLoadOrderSearch: 宜家配送订单：待装车列表</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt6.2')" >
+        通过</a>
+
+    <div id='div_pt6.2' class="popup_window">
+        <pre>
+        pt6.2: 
+1 宜家配送订单：待装车列表
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_waitLoadOrderSearch (testAppIkeaShipmentSearch.TestAppIkeaShipmentSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt6.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_waitSignShipmentSearch: 宜家配送订单：待签收列表</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt6.3')" >
+        通过</a>
+
+    <div id='div_pt6.3' class="popup_window">
+        <pre>
+        pt6.3: 
+1 宜家配送订单：待签收列表
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_waitSignShipmentSearch (testAppIkeaShipmentSearch.TestAppIkeaShipmentSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+    <tr class='passClass'>
+        <td>testAppMyexceptionHandSearch.TestAppMyexceptionHandSearch</td>
+        <td>3</td>
+        <td>3</td>
+        <td>0</td>
+        <td>0</td>
+        <td><a href="javascript:showClassDetail('c7',3)">详情</a></td>
+    </tr>
+
+<tr id='pt7.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_myAbnormalEndSearch: 我的异常：已完结列表</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt7.1')" >
+        通过</a>
+
+    <div id='div_pt7.1' class="popup_window">
+        <pre>
+        pt7.1: 
+1 我的异常：已完结列表
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_myAbnormalEndSearch (testAppMyexceptionHandSearch.TestAppMyexceptionHandSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt7.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_myAbnormalTodoSearch: 我的异常：我的待办列表</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt7.2')" >
+        通过</a>
+
+    <div id='div_pt7.2' class="popup_window">
+        <pre>
+        pt7.2: 
+1 我的异常：我的待办列表
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_myAbnormalTodoSearch (testAppMyexceptionHandSearch.TestAppMyexceptionHandSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt7.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_mySponsorAbnormalSearch: 我的异常：我的发起列表</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt7.3')" >
+        通过</a>
+
+    <div id='div_pt7.3' class="popup_window">
+        <pre>
+        pt7.3: 
+1 我的异常：我的发起列表
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_mySponsorAbnormalSearch (testAppMyexceptionHandSearch.TestAppMyexceptionHandSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+    <tr class='passClass'>
+        <td>testAppOrderFlowSearch.TestAppOrderFlowSearch</td>
+        <td>1</td>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+        <td><a href="javascript:showClassDetail('c8',1)">详情</a></td>
+    </tr>
+
+<tr id='pt8.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_clearingFlowSearch: 订单流水：结算流水列表</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt8.1')" >
+        通过</a>
+
+    <div id='div_pt8.1' class="popup_window">
+        <pre>
+        pt8.1: 
+1 订单流水：结算流水列表
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_clearingFlowSearch (testAppOrderFlowSearch.TestAppOrderFlowSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+    <tr class='errorClass'>
+        <td>testAppOrderSearch.TestAppOrderSearch</td>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+        <td>1</td>
+        <td><a href="javascript:showClassDetail('c9',1)">详情</a></td>
+    </tr>
+
+<tr id='ft9.1' class='none'>
+    <td class='errorCase'><div class='testcase'>test_orderSearch: app订单搜索</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft9.1')" >
+        错误</a>
+
+    <div id='div_ft9.1' class="popup_window">
+        <pre>
+        ft9.1: Traceback (most recent call last):
+  File "/Users/snolia/PycharmProjects/SCM3.0/AthenaTest/testcase/search_testcase/testAppOrderSearch.py", line 17, in test_orderSearch
+    loadDatas(self, datafile, u'orderSearch')
+  File "/Users/snolia/PycharmProjects/SCM3.0/AthenaTest/common/loadDatas.py", line 14, in loadDatas
+    testCase = xlrd.open_workbook(testCaseFile)    #打开excel
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/xlrd/__init__.py", line 116, in open_workbook
+    with open(filename, "rb") as f:
+FileNotFoundError: [Errno 2] No such file or directory: '/Users/snolia/PycharmProjects/SCM3.0/AthenaTest/datacase/search_datacase/search_datacase/app_order_search.xls'
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+    <tr class='passClass'>
+        <td>testAppOrderTurnSearch.TestAppOrderTurnSearch</td>
+        <td>2</td>
+        <td>2</td>
+        <td>0</td>
+        <td>0</td>
+        <td><a href="javascript:showClassDetail('c10',2)">详情</a></td>
+    </tr>
+
+<tr id='pt10.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_auditRecordSearch: 审核记录</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt10.1')" >
+        通过</a>
+
+    <div id='div_pt10.1' class="popup_window">
+        <pre>
+        pt10.1: 
+1 审核记录
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_auditRecordSearch (testAppOrderTurnSearch.TestAppOrderTurnSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt10.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_orderTurnAuditSearch: 转单审核</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt10.2')" >
+        通过</a>
+
+    <div id='div_pt10.2' class="popup_window">
+        <pre>
+        pt10.2: 
+1 转单审核
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_orderTurnAuditSearch (testAppOrderTurnSearch.TestAppOrderTurnSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+    <tr class='passClass'>
+        <td>testAppPendingOrderSearch.TestAppPendingOrderSearch</td>
+        <td>5</td>
+        <td>5</td>
+        <td>0</td>
+        <td>0</td>
+        <td><a href="javascript:showClassDetail('c11',5)">详情</a></td>
+    </tr>
+
+<tr id='pt11.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_abnormalSearch: 异常</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt11.1')" >
+        通过</a>
+
+    <div id='div_pt11.1' class="popup_window">
+        <pre>
+        pt11.1: 
+1 异常
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_abnormalSearch (testAppPendingOrderSearch.TestAppPendingOrderSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt11.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_allOrderSearch: 全部订单</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt11.2')" >
+        通过</a>
+
+    <div id='div_pt11.2' class="popup_window">
+        <pre>
+        pt11.2: 
+1 全部订单
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_allOrderSearch (testAppPendingOrderSearch.TestAppPendingOrderSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt11.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_houseCallSearch: 待上门</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt11.3')" >
+        通过</a>
+
+    <div id='div_pt11.3' class="popup_window">
+        <pre>
+        pt11.3: 
+1 待上门
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_houseCallSearch (testAppPendingOrderSearch.TestAppPendingOrderSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt11.4' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_pickUpGoodsSearch: 待提货</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt11.4')" >
+        通过</a>
+
+    <div id='div_pt11.4' class="popup_window">
+        <pre>
+        pt11.4: 
+1 待提货
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_pickUpGoodsSearch (testAppPendingOrderSearch.TestAppPendingOrderSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt11.5' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_signSearch: 待签收</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt11.5')" >
+        通过</a>
+
+    <div id='div_pt11.5' class="popup_window">
+        <pre>
+        pt11.5: 
+1 待签收
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_signSearch (testAppPendingOrderSearch.TestAppPendingOrderSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+    <tr class='passClass'>
+        <td>testAppSignOrderSearch.TestAppSignOrderSearch</td>
+        <td>2</td>
+        <td>2</td>
+        <td>0</td>
+        <td>0</td>
+        <td><a href="javascript:showClassDetail('c12',2)">详情</a></td>
+    </tr>
+
+<tr id='pt12.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_signedOrderSearch: 已签收订单</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt12.1')" >
+        通过</a>
+
+    <div id='div_pt12.1' class="popup_window">
+        <pre>
+        pt12.1: 
+1 已签收订单
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 已签收订单
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_signedOrderSearch (testAppSignOrderSearch.TestAppSignOrderSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt12.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_signedOrderSearch: 已签收订单</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt12.2')" >
+        通过</a>
+
+    <div id='div_pt12.2' class="popup_window">
+        <pre>
+        pt12.2: 
+1 已签收订单
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 已签收订单
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_signedOrderSearch (testAppSignOrderSearch.TestAppSignOrderSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+    <tr class='failClass'>
+        <td>testAppSignOrderSearch1.TestAppSignOrderSearch1</td>
+        <td>1</td>
+        <td>0</td>
+        <td>1</td>
+        <td>0</td>
+        <td><a href="javascript:showClassDetail('c13',1)">详情</a></td>
+    </tr>
+
+<tr id='ft13.1' class='none'>
+    <td class='failCase'><div class='testcase'>test_signedOrderSearch: 已签收订单详情</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft13.1')" >
+        失败</a>
+
+    <div id='div_ft13.1' class="popup_window">
+        <pre>
+        ft13.1: 
+1 已签收订单详情
+
+返回的状态：200
+测试结果：失败！！！  200
+返回的数据：{"success":true,"data":{"printsum":2,"newNodeTime":null,"orderTime":0,"newNodeSpace":null,"orderData":{"orderData":{"id":"30cc18bc-f046-408b-93e4-3676d6c31884","orderNo":"TDS01441711044302901","pOrderId":"30cc18bc-f046-408b-93e4-3676d6c31884","province":"湖南省","provinceNo":"430000","city":"长沙市","cityNo":"430100","district":"岳麓区","districtNo":"430104","street":"观沙岭街道","streetNo":"430104005","consigneeName":"彭晓彬","consigneePhone":"17608017801","consigneeAddress":"岳华路八方小区(二期)C区东大门26栋二单元304室","floor":null,"isElevator":1,"merchant":"倾城家具馆","merchantId":"8a08da35-421b-11e7-b3cd-0050569f7b0c","clearingSubject":"佛山倾城家具有限公司","warehouse":"智慧物流园","warehouseId":"dda06256-4206-11e7-b3cd-0050569f7b0c","branchId":"2bc12dae-41e3-11e7-97d1-0242ac120021","branch":"长沙市网点DCSX","business":"住宅家具（常规）","service":"干+支+装","businessNo":"BSTE02","serviceNo":"SETE01","clearingTypeNo":"ZD","clearingType":null,"deliveryContacts":"长沙","deliveryPhone":"13348914030","deliveryAddress":"湖南省长沙市岳麓区1","deliveryMemo":"1","totalWeight":2.0,"totalVolume":0.2,"totalBalse":2,"trunkId":"b96b0f77-420c-11e7-b3cd-0050569f7b0c","trunkName":"佛山市顺德区天喜物流有限公司","trunkArrivePhone":null,"trunkOrderNo":"","orderState":"750","abnormalState":null,"state":1,"orderType":"ORTE01","arriveSign":null,"orderSign":"","isVerify":1,"orderSource":"ORSE01","sendPiecesDistance":null,"memo":null,"inputType":null,"outOrderNo":"","sendDistance":5.0,"superAreaDistance":0.0,"superAreaMemo":null,"merchantDeliveryId":null,"branchMemo":"","cargoPrice":2.0,"founder":"070ec248-45f1-11e7-9e18-0242ac120013","foundtime":1509776240000,"updater":null,"updatetime":null,"isLightHeavy":1,"supportValue":2.0,"clearingCycle":null,"payType":null,"merchantOrder":"","clearingCycleNo":null,"payTypeNo":"ZFFS03","boolTurnOrder":null,"totalFee":309.0,"lineNo":"Gx20171031012231","handleServiceId":null,"clearingModeNo":"LDF","clearingMode":"录单付","buttJointSource":null,"abnormalType":null,"abnormalSerialNo":null,"payLogistics":"","transportType":"YSFS02"},"doorName":null,"doorPhone":null,"doorAddress":null,"deliveryTime":1510032503000,"deliveryFounder":"宋琪兰","changeList":null,"pickUpContacts":null,"orderVerifiys":null,"merchantInfo":null,"tempMerchantBean":null,"isTemp":null,"orderGoodss":null,"orderCosts":null},"pgEvalute":5.0,"costList":[{"id":"1724f0f8-de76-4cdf-bc4a-db98c1592e92","orderId":"30cc18bc-f046-408b-93e4-3676d6c31884","costName":null,"money":70.0,"voucherNo":null,"memo":"","costNo":"FLTE01","clearingState":"1","state":null,"recountMoney":70.0,"founder":null,"foundtime":1509776240000,"updater":null,"updatetime":null},{"id":"543b7725-a6cd-4e8e-9c07-fc6af0b82e83","orderId":"30cc18bc-f046-408b-93e4-3676d6c31884","costName":null,"money":50.0,"voucherNo":null,"memo":"","costNo":"FLTE03","clearingState":"1","state":null,"recountMoney":48.0,"founder":null,"foundtime":1509776240000,"updater":null,"updatetime":null},{"id":"76f9a270-caa1-490b-93e5-3701b29dae8a","orderId":"30cc18bc-f046-408b-93e4-3676d6c31884","costName":null,"money":50.0,"voucherNo":null,"memo":"","costNo":"FLTE02","clearingState":"1","state":null,"recountMoney":181.0,"founder":null,"foundtime":1509776240000,"updater":null,"updatetime":null},{"id":"86a8dc5e-fe0c-440b-84b6-42b687c8ebc3","orderId":"30cc18bc-f046-408b-93e4-3676d6c31884","costName":null,"money":10.0,"voucherNo":null,"memo":"","costNo":"FLTE05","clearingState":"2","state":null,"recountMoney":10.0,"founder":null,"foundtime":1509776240000,"updater":null,"updatetime":null}],"goodsList":[{"id":"9feda153-d3b9-433e-9a04-e13b2cd810b1","orderId":"30cc18bc-f046-408b-93e4-3676d6c31884","bigClassNo":"J01","middleClassNo":"J0105","smallClassNo":"J010501","goodsNo":"J010501","bigClass":"柜类","middleClass":"斗柜","smallClass":"(整装)","name":"斗柜(整装)","num":1,"balse":2,"volume":null,"memo":"","state":1,"founder":null,"foundtime":1509776240000,"updater":null,"updatetime":null,"installFee":50.0,"picture":null}],"nodeList":[{"id":"358b6b3b-fab9-4196-94f3-a6cf505e1896","orderId":"30cc18bc-f046-408b-93e4-3676d6c31884","status":"750","opTime":1510033603000,"forecastTime":null,"memo":"货物已完成服务并签收，签收人：彭晓彬，感谢您对居家通专业家居服务的信任，如对订单有任何疑问欢迎致电4000285980，居家通将竭诚为您服务","position":"师傅","department":"末端服务商","founder":"064e7775-451c-11e7-b3cd-0050569f7b0c","foundtime":1510033603000,"opType":"一体签收","clientType":"app","founderName":"陈双喜","opTimeInt":null},{"id":"f85060e6-3428-4026-a98b-6212eb585c86","orderId":"30cc18bc-f046-408b-93e4-3676d6c31884","status":"800","opTime":1510033603000,"forecastTime":null,"memo":"评价","position":"师傅","department":"末端服务商","founder":"064e7775-451c-11e7-b3cd-0050569f7b0c","foundtime":1510033603000,"opType":"评价","clientType":"app","founderName":"陈双喜","opTimeInt":null},{"id":"0faa37e0-a24f-4123-b779-a6dc73f71203","orderId":"30cc18bc-f046-408b-93e4-3676d6c31884","status":"570","opTime":1510033577000,"forecastTime":null,"memo":"长沙市网点DCSX:陈双喜15388024003/0731-84463199已出发，即将上门服务","position":"师傅","department":"末端服务商","founder":"064e7775-451c-11e7-b3cd-0050569f7b0c","foundtime":1510033587000,"opType":"配装出发","clientType":"app","founderName":"陈双喜","opTimeInt":null},{"id":"a1e3242f-6b66-4b6c-9964-04400f5932f6","orderId":"30cc18bc-f046-408b-93e4-3676d6c31884","status":"700","opTime":1510033587000,"forecastTime":null,"memo":"长沙市网点DCSX:陈双喜15388024003/0731-84463199已到达用户处，正在服务","position":"师傅","department":"末端服务商","founder":"064e7775-451c-11e7-b3cd-0050569f7b0c","foundtime":1510033587000,"opType":"一体上门","clientType":"app","founderName":"陈双喜","opTimeInt":null},{"id":"495905c5-a4d7-4df4-8df4-7cda0375391e","orderId":"30cc18bc-f046-408b-93e4-3676d6c31884","status":"600","opTime":1510033584000,"forecastTime":null,"memo":"货物已到达长沙市网点DCSX","position":"师傅","department":"末端服务商","founder":"064e7775-451c-11e7-b3cd-0050569f7b0c","foundtime":1510033584000,"opType":"提货","clientType":"app","founderName":"陈双喜","opTimeInt":null},{"id":"92eab414-fd5c-4a0d-af98-59ac786ddb9d","orderId":"30cc18bc-f046-408b-93e4-3676d6c31884","status":"04","opTime":1510033576000,"forecastTime":null,"memo":"长沙市网点DCSX已派单，陈双喜15388024003/0731-84463199即将上门服务","position":"师傅","department":"末端服务商","founder":"064e7775-451c-11e7-b3cd-0050569f7b0c","foundtime":1510033581000,"opType":"派单一体","clientType":"app","founderName":"陈双喜","opTimeInt":null},{"id":"cce9a63e-eca3-45f1-a4e0-e2c8357978e0","orderId":"30cc18bc-f046-408b-93e4-3676d6c31884","status":"01","opTime":1510033571000,"forecastTime":null,"memo":"长沙市网点DCSX已联系用户预约，上门服务时间：2017-11-07下午13:00-17:00，咨询电话：15388024003/0731-84463199","position":"师傅","department":"末端服务商","founder":"064e7775-451c-11e7-b3cd-0050569f7b0c","foundtime":1510033571000,"opType":"预约","clientType":"app","founderName":"陈双喜","opTimeInt":null},{"id":"345ef5c3-85fe-4cd6-8c32-4d8d3daa5f09","orderId":"30cc18bc-f046-408b-93e4-3676d6c31884","status":"550","opTime":1510032503000,"forecastTime":null,"memo":"货物已到达长沙市岳麓区，正在发往长沙市网点DCSX","position":null,"department":null,"founder":"35b8f8f8-ba1c-11e7-9728-0242ac130002","foundtime":1510032503000,"opType":"到件","clientType":"pc","founderName":"宋琪兰","opTimeInt":null},{"id":"8f2f4857-c925-4dd3-b75a-828fc3295935","orderId":"30cc18bc-f046-408b-93e4-3676d6c31884","status":"200","opTime":1509871335000,"forecastTime":null,"memo":"居家通智慧物流园已出库，正在发往湖南省长沙市岳麓区","position":null,"department":null,"founder":"073267e5-45f1-11e7-9e18-0242ac120013","foundtime":1509871335000,"opType":"出库","clientType":"pc","founderName":"向文平","opTimeInt":null},{"id":"f5e70477-ba41-4b4e-b589-3b11e78bbc78","orderId":"30cc18bc-f046-408b-93e4-3676d6c31884","status":"150","opTime":1509796686000,"forecastTime":null,"memo":"居家通智慧物流园已入库","position":null,"department":null,"founder":"073267e5-45f1-11e7-9e18-0242ac120013","foundtime":1509796686000,"opType":"入库","clientType":"pc","founderName":"向文平","opTimeInt":null},{"id":"5b6f3275-d459-4141-8146-f51faeb53ad1","orderId":"30cc18bc-f046-408b-93e4-3676d6c31884","status":"100","opTime":1509776240000,"forecastTime":null,"memo":"居家通专业家居服务已揽收，等待验货入库","position":null,"department":null,"founder":"070ec248-45f1-11e7-9e18-0242ac120013","foundtime":1509776240000,"opType":"录单","clientType":"pc","founderName":"李媛媛","opTimeInt":null}],"followUpList":[],"propertyList":[],"verifiyList":[],"appointmentList":[{"id":"e2657000-77e0-4813-9021-10fded90dd91","orderId":"30cc18bc-f046-408b-93e4-3676d6c31884","serviceMode":"CZSETE01","arrangedStartTime":1510030800000,"arrangedEndTime":1510045200000,"cause":null,"memo":null,"remind":null,"founder":"064e7775-451c-11e7-b3cd-0050569f7b0c","foundtime":1510033571000,"state":1,"ifPieOrder":1}],"sign":[{"id":"314a28f8-08ed-4a5f-8dc8-f0f274bbf884","orderId":"30cc18bc-f046-408b-93e4-3676d6c31884","imgFinished":"5a0148c16d46b20007329f40,","imgSign":"5a0148c26d46b20007329f44,","founder":"064e7775-451c-11e7-b3cd-0050569f7b0c","foundtime":1510033603000,"serviceTypeCode":"CZSETE01","memo":""}],"evaluates":[{"id":"0b3aadac-8bdb-451a-9d98-6ebd1c7e95c2","orderId":"30cc18bc-f046-408b-93e4-3676d6c31884","infoAccuracy":5.0,"quality":5.0,"packingSolid":5.0,"founder":"064e7775-451c-11e7-b3cd-0050569f7b0c","foundtime":1510033603000,"updater":null,"updatetime":null,"comment":"","serviceTypeCode":"CZSETE01"}],"timeBeanList":null,"assignWorker":null,"orderTurnInfoIng":null,"orderFreezes":null,"prepaidAmount":[{"id":null,"orderId":null,"instId":null,"costName":"配送费","inOut":null,"money":130.0,"costNo":"FLTE02","objectId":null,"orderType":null,"clearingSubject":null,"clearingSubjectId":null,"founder":null,"foundtime":null,"updater":null,"updatetime":null,"feeMark":null,"objectType":null,"state":null,"ifChange":null,"ncBack":null,"originalId":null},{"id":null,"orderId":null,"instId":null,"costName":"安装","inOut":null,"money":30.0,"costNo":"FLTE03","objectId":null,"orderType":null,"clearingSubject":null,"clearingSubjectId":null,"founder":null,"foundtime":null,"updater":null,"updatetime":null,"feeMark":null,"objectType":null,"state":null,"ifChange":null,"ncBack":null,"originalId":null}],"clearingDataFeeBeanList":null},"time":1511852952752}
+
+SubTestCase Failed:
+test_signedOrderSearch (testAppSignOrderSearch1.TestAppSignOrderSearch1) (data='fail')Traceback (most recent call last):
+  File "/Users/snolia/PycharmProjects/SCM3.0/AthenaTest/common/loadDatas.py", line 52, in loadDatas
+    self.assertEqual(result, "pass")
+AssertionError: 'fail' != 'pass'
+- fail
++ pass
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+    <tr class='passClass'>
+        <td>testWebBackendSearch.TestWebBackendSearch</td>
+        <td>17</td>
+        <td>17</td>
+        <td>0</td>
+        <td>0</td>
+        <td><a href="javascript:showClassDetail('c14',17)">详情</a></td>
+    </tr>
+
+<tr id='pt14.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_addFeeAuditSearch: 增值审核</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt14.1')" >
+        通过</a>
+
+    <div id='div_pt14.1' class="popup_window">
+        <pre>
+        pt14.1: 
+1 增值审核-待审核列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 增值审核-已审核列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+3 增值审核-网点类型查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_addFeeAuditSearch (testWebBackendSearch.TestWebBackendSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt14.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_addFeeAuditSearch: 增值审核</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt14.2')" >
+        通过</a>
+
+    <div id='div_pt14.2' class="popup_window">
+        <pre>
+        pt14.2: 
+1 增值审核-待审核列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 增值审核-已审核列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+3 增值审核-网点类型查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_addFeeAuditSearch (testWebBackendSearch.TestWebBackendSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt14.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_addFeeAuditSearch: 增值审核</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt14.3')" >
+        通过</a>
+
+    <div id='div_pt14.3' class="popup_window">
+        <pre>
+        pt14.3: 
+1 增值审核-待审核列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 增值审核-已审核列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+3 增值审核-网点类型查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_addFeeAuditSearch (testWebBackendSearch.TestWebBackendSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt14.4' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_clearingCostSearch: 大区结算查询</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt14.4')" >
+        通过</a>
+
+    <div id='div_pt14.4' class="popup_window">
+        <pre>
+        pt14.4: 
+1 大区结算列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 大区结算-获取师傅信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_clearingCostSearch (testWebBackendSearch.TestWebBackendSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt14.5' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_clearingCostSearch: 大区结算查询</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt14.5')" >
+        通过</a>
+
+    <div id='div_pt14.5' class="popup_window">
+        <pre>
+        pt14.5: 
+1 大区结算列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 大区结算-获取师傅信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_clearingCostSearch (testWebBackendSearch.TestWebBackendSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt14.6' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_confirmCostSearch: 大区成本查询</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt14.6')" >
+        通过</a>
+
+    <div id='div_pt14.6' class="popup_window">
+        <pre>
+        pt14.6: 
+1 大区成本列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 大区成本-服务类型查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+3 大区成本-业务类型查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_confirmCostSearch (testWebBackendSearch.TestWebBackendSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt14.7' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_confirmCostSearch: 大区成本查询</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt14.7')" >
+        通过</a>
+
+    <div id='div_pt14.7' class="popup_window">
+        <pre>
+        pt14.7: 
+1 大区成本列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 大区成本-服务类型查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+3 大区成本-业务类型查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_confirmCostSearch (testWebBackendSearch.TestWebBackendSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt14.8' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_confirmCostSearch: 大区成本查询</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt14.8')" >
+        通过</a>
+
+    <div id='div_pt14.8' class="popup_window">
+        <pre>
+        pt14.8: 
+1 大区成本列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 大区成本-服务类型查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+3 大区成本-业务类型查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_confirmCostSearch (testWebBackendSearch.TestWebBackendSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt14.9' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_orderTurnSearch: 末端转单查询</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt14.9')" >
+        通过</a>
+
+    <div id='div_pt14.9' class="popup_window">
+        <pre>
+        pt14.9: 
+1 末端转单列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_orderTurnSearch (testWebBackendSearch.TestWebBackendSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt14.10' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_payCostSearch: 大区支付查询</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt14.10')" >
+        通过</a>
+
+    <div id='div_pt14.10' class="popup_window">
+        <pre>
+        pt14.10: 
+1 大区支付-未支付列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 大区支付-已支付列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_payCostSearch (testWebBackendSearch.TestWebBackendSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt14.11' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_payCostSearch: 大区支付查询</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt14.11')" >
+        通过</a>
+
+    <div id='div_pt14.11' class="popup_window">
+        <pre>
+        pt14.11: 
+1 大区支付-未支付列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 大区支付-已支付列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_payCostSearch (testWebBackendSearch.TestWebBackendSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt14.12' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_takeOperationSearch: 代操作查询</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt14.12')" >
+        通过</a>
+
+    <div id='div_pt14.12' class="popup_window">
+        <pre>
+        pt14.12: 
+1 代操作-代办列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 代操作-完结列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+3 代操作-订单状态查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+4 代操作-订单标识查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_takeOperationSearch (testWebBackendSearch.TestWebBackendSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt14.13' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_takeOperationSearch: 代操作查询</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt14.13')" >
+        通过</a>
+
+    <div id='div_pt14.13' class="popup_window">
+        <pre>
+        pt14.13: 
+1 代操作-代办列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 代操作-完结列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+3 代操作-订单状态查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+4 代操作-订单标识查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_takeOperationSearch (testWebBackendSearch.TestWebBackendSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt14.14' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_takeOperationSearch: 代操作查询</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt14.14')" >
+        通过</a>
+
+    <div id='div_pt14.14' class="popup_window">
+        <pre>
+        pt14.14: 
+1 代操作-代办列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 代操作-完结列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+3 代操作-订单状态查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+4 代操作-订单标识查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_takeOperationSearch (testWebBackendSearch.TestWebBackendSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt14.15' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_takeOperationSearch: 代操作查询</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt14.15')" >
+        通过</a>
+
+    <div id='div_pt14.15' class="popup_window">
+        <pre>
+        pt14.15: 
+1 代操作-代办列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 代操作-完结列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+3 代操作-订单状态查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+4 代操作-订单标识查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_takeOperationSearch (testWebBackendSearch.TestWebBackendSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt14.16' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_verifiyChangeSearch: 核销变更</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt14.16')" >
+        通过</a>
+
+    <div id='div_pt14.16' class="popup_window">
+        <pre>
+        pt14.16: 
+1 核销变更列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 核销变更-订单来源查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_verifiyChangeSearch (testWebBackendSearch.TestWebBackendSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt14.17' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_verifiyChangeSearch: 核销变更</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt14.17')" >
+        通过</a>
+
+    <div id='div_pt14.17' class="popup_window">
+        <pre>
+        pt14.17: 
+1 核销变更列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 核销变更-订单来源查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_verifiyChangeSearch (testWebBackendSearch.TestWebBackendSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+    <tr class='failClass'>
+        <td>testWebBranchOrderSearch.TestWebBranchOrderSearch</td>
+        <td>22</td>
+        <td>21</td>
+        <td>1</td>
+        <td>0</td>
+        <td><a href="javascript:showClassDetail('c15',22)">详情</a></td>
+    </tr>
+
+<tr id='pt15.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_orderAppointSearch: 预约列表查询</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt15.1')" >
+        通过</a>
+
+    <div id='div_pt15.1' class="popup_window">
+        <pre>
+        pt15.1: 
+1 预约列表
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 订单详情-基础信息
+
+返回的状态：200
+测试结果：失败！！！  200
+返回的数据：{"success":false,"error_message":"没有查询到或者查询出不止一条数据"}
+
+3 订单详情-核销信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+4 订单详情-产品信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+5 订单详情-费用信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+6 订单详情-预约信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+7 订单详情-节点信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+8 订单详情-签收信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_orderAppointSearch (testWebBranchOrderSearch.TestWebBranchOrderSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft15.2' class='none'>
+    <td class='failCase'><div class='testcase'>test_orderAppointSearch: 预约列表查询</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft15.2')" >
+        失败</a>
+
+    <div id='div_ft15.2' class="popup_window">
+        <pre>
+        ft15.2: 
+1 预约列表
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 订单详情-基础信息
+
+返回的状态：200
+测试结果：失败！！！  200
+返回的数据：{"success":false,"error_message":"没有查询到或者查询出不止一条数据"}
+
+3 订单详情-核销信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+4 订单详情-产品信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+5 订单详情-费用信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+6 订单详情-预约信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+7 订单详情-节点信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+8 订单详情-签收信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Failed:
+test_orderAppointSearch (testWebBranchOrderSearch.TestWebBranchOrderSearch) (data='fail')Traceback (most recent call last):
+  File "/Users/snolia/PycharmProjects/SCM3.0/AthenaTest/common/loadDatas.py", line 52, in loadDatas
+    self.assertEqual(result, "pass")
+AssertionError: 'fail' != 'pass'
+- fail
++ pass
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt15.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_orderAppointSearch: 预约列表查询</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt15.3')" >
+        通过</a>
+
+    <div id='div_pt15.3' class="popup_window">
+        <pre>
+        pt15.3: 
+1 预约列表
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 订单详情-基础信息
+
+返回的状态：200
+测试结果：失败！！！  200
+返回的数据：{"success":false,"error_message":"没有查询到或者查询出不止一条数据"}
+
+3 订单详情-核销信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+4 订单详情-产品信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+5 订单详情-费用信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+6 订单详情-预约信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+7 订单详情-节点信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+8 订单详情-签收信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_orderAppointSearch (testWebBranchOrderSearch.TestWebBranchOrderSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt15.4' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_orderAppointSearch: 预约列表查询</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt15.4')" >
+        通过</a>
+
+    <div id='div_pt15.4' class="popup_window">
+        <pre>
+        pt15.4: 
+1 预约列表
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 订单详情-基础信息
+
+返回的状态：200
+测试结果：失败！！！  200
+返回的数据：{"success":false,"error_message":"没有查询到或者查询出不止一条数据"}
+
+3 订单详情-核销信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+4 订单详情-产品信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+5 订单详情-费用信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+6 订单详情-预约信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+7 订单详情-节点信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+8 订单详情-签收信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_orderAppointSearch (testWebBranchOrderSearch.TestWebBranchOrderSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt15.5' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_orderAppointSearch: 预约列表查询</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt15.5')" >
+        通过</a>
+
+    <div id='div_pt15.5' class="popup_window">
+        <pre>
+        pt15.5: 
+1 预约列表
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 订单详情-基础信息
+
+返回的状态：200
+测试结果：失败！！！  200
+返回的数据：{"success":false,"error_message":"没有查询到或者查询出不止一条数据"}
+
+3 订单详情-核销信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+4 订单详情-产品信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+5 订单详情-费用信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+6 订单详情-预约信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+7 订单详情-节点信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+8 订单详情-签收信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_orderAppointSearch (testWebBranchOrderSearch.TestWebBranchOrderSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt15.6' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_orderAppointSearch: 预约列表查询</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt15.6')" >
+        通过</a>
+
+    <div id='div_pt15.6' class="popup_window">
+        <pre>
+        pt15.6: 
+1 预约列表
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 订单详情-基础信息
+
+返回的状态：200
+测试结果：失败！！！  200
+返回的数据：{"success":false,"error_message":"没有查询到或者查询出不止一条数据"}
+
+3 订单详情-核销信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+4 订单详情-产品信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+5 订单详情-费用信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+6 订单详情-预约信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+7 订单详情-节点信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+8 订单详情-签收信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_orderAppointSearch (testWebBranchOrderSearch.TestWebBranchOrderSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt15.7' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_orderAppointSearch: 预约列表查询</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt15.7')" >
+        通过</a>
+
+    <div id='div_pt15.7' class="popup_window">
+        <pre>
+        pt15.7: 
+1 预约列表
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 订单详情-基础信息
+
+返回的状态：200
+测试结果：失败！！！  200
+返回的数据：{"success":false,"error_message":"没有查询到或者查询出不止一条数据"}
+
+3 订单详情-核销信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+4 订单详情-产品信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+5 订单详情-费用信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+6 订单详情-预约信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+7 订单详情-节点信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+8 订单详情-签收信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_orderAppointSearch (testWebBranchOrderSearch.TestWebBranchOrderSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt15.8' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_orderAppointSearch: 预约列表查询</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt15.8')" >
+        通过</a>
+
+    <div id='div_pt15.8' class="popup_window">
+        <pre>
+        pt15.8: 
+1 预约列表
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 订单详情-基础信息
+
+返回的状态：200
+测试结果：失败！！！  200
+返回的数据：{"success":false,"error_message":"没有查询到或者查询出不止一条数据"}
+
+3 订单详情-核销信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+4 订单详情-产品信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+5 订单详情-费用信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+6 订单详情-预约信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+7 订单详情-节点信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+8 订单详情-签收信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_orderAppointSearch (testWebBranchOrderSearch.TestWebBranchOrderSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt15.9' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_orderDistributionSearch: 派单列表查询</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt15.9')" >
+        通过</a>
+
+    <div id='div_pt15.9' class="popup_window">
+        <pre>
+        pt15.9: 
+1 派单-今日预约订单查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 派单-明日预约订单查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+3 派单-后天预约订单查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+4 派单-更晚预约订单查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+5 派单-已超时预约订单查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_orderDistributionSearch (testWebBranchOrderSearch.TestWebBranchOrderSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt15.10' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_orderDistributionSearch: 派单列表查询</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt15.10')" >
+        通过</a>
+
+    <div id='div_pt15.10' class="popup_window">
+        <pre>
+        pt15.10: 
+1 派单-今日预约订单查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 派单-明日预约订单查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+3 派单-后天预约订单查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+4 派单-更晚预约订单查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+5 派单-已超时预约订单查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_orderDistributionSearch (testWebBranchOrderSearch.TestWebBranchOrderSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt15.11' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_orderDistributionSearch: 派单列表查询</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt15.11')" >
+        通过</a>
+
+    <div id='div_pt15.11' class="popup_window">
+        <pre>
+        pt15.11: 
+1 派单-今日预约订单查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 派单-明日预约订单查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+3 派单-后天预约订单查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+4 派单-更晚预约订单查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+5 派单-已超时预约订单查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_orderDistributionSearch (testWebBranchOrderSearch.TestWebBranchOrderSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt15.12' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_orderDistributionSearch: 派单列表查询</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt15.12')" >
+        通过</a>
+
+    <div id='div_pt15.12' class="popup_window">
+        <pre>
+        pt15.12: 
+1 派单-今日预约订单查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 派单-明日预约订单查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+3 派单-后天预约订单查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+4 派单-更晚预约订单查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+5 派单-已超时预约订单查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_orderDistributionSearch (testWebBranchOrderSearch.TestWebBranchOrderSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt15.13' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_orderDistributionSearch: 派单列表查询</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt15.13')" >
+        通过</a>
+
+    <div id='div_pt15.13' class="popup_window">
+        <pre>
+        pt15.13: 
+1 派单-今日预约订单查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 派单-明日预约订单查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+3 派单-后天预约订单查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+4 派单-更晚预约订单查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+5 派单-已超时预约订单查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_orderDistributionSearch (testWebBranchOrderSearch.TestWebBranchOrderSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt15.14' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_orderMonitorinSearch: 服务监控列表查询</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt15.14')" >
+        通过</a>
+
+    <div id='div_pt15.14' class="popup_window">
+        <pre>
+        pt15.14: 
+1 服务监控-服务中列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 服务监控-完结列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_orderMonitorinSearch (testWebBranchOrderSearch.TestWebBranchOrderSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt15.15' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_orderMonitorinSearch: 服务监控列表查询</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt15.15')" >
+        通过</a>
+
+    <div id='div_pt15.15' class="popup_window">
+        <pre>
+        pt15.15: 
+1 服务监控-服务中列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 服务监控-完结列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_orderMonitorinSearch (testWebBranchOrderSearch.TestWebBranchOrderSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt15.16' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_orderNotArriveSearch: 未到件列表查询</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt15.16')" >
+        通过</a>
+
+    <div id='div_pt15.16' class="popup_window">
+        <pre>
+        pt15.16: 
+1 未到件列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_orderNotArriveSearch (testWebBranchOrderSearch.TestWebBranchOrderSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt15.17' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_orderTurnAuditSearch: 转单审核列表查询</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt15.17')" >
+        通过</a>
+
+    <div id='div_pt15.17' class="popup_window">
+        <pre>
+        pt15.17: 
+1 转单审核-待审列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 转单审核-已驳回列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+3 转单审核-已通过列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_orderTurnAuditSearch (testWebBranchOrderSearch.TestWebBranchOrderSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt15.18' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_orderTurnAuditSearch: 转单审核列表查询</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt15.18')" >
+        通过</a>
+
+    <div id='div_pt15.18' class="popup_window">
+        <pre>
+        pt15.18: 
+1 转单审核-待审列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 转单审核-已驳回列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+3 转单审核-已通过列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_orderTurnAuditSearch (testWebBranchOrderSearch.TestWebBranchOrderSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt15.19' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_orderTurnAuditSearch: 转单审核列表查询</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt15.19')" >
+        通过</a>
+
+    <div id='div_pt15.19' class="popup_window">
+        <pre>
+        pt15.19: 
+1 转单审核-待审列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 转单审核-已驳回列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+3 转单审核-已通过列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_orderTurnAuditSearch (testWebBranchOrderSearch.TestWebBranchOrderSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt15.20' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_printListSearch: 打印面单列表查询</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt15.20')" >
+        通过</a>
+
+    <div id='div_pt15.20' class="popup_window">
+        <pre>
+        pt15.20: 
+1 打印面单-全部列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 打印面单-未打印订单查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+3 打印面单-已打印订单查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_printListSearch (testWebBranchOrderSearch.TestWebBranchOrderSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt15.21' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_printListSearch: 打印面单列表查询</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt15.21')" >
+        通过</a>
+
+    <div id='div_pt15.21' class="popup_window">
+        <pre>
+        pt15.21: 
+1 打印面单-全部列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 打印面单-未打印订单查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+3 打印面单-已打印订单查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_printListSearch (testWebBranchOrderSearch.TestWebBranchOrderSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt15.22' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_printListSearch: 打印面单列表查询</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt15.22')" >
+        通过</a>
+
+    <div id='div_pt15.22' class="popup_window">
+        <pre>
+        pt15.22: 
+1 打印面单-全部列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 打印面单-未打印订单查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+3 打印面单-已打印订单查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_printListSearch (testWebBranchOrderSearch.TestWebBranchOrderSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+    <tr class='passClass'>
+        <td>testWebExceptionHandSearch.TestWebExceptionHandSearch</td>
+        <td>11</td>
+        <td>11</td>
+        <td>0</td>
+        <td>0</td>
+        <td><a href="javascript:showClassDetail('c16',11)">详情</a></td>
+    </tr>
+
+<tr id='pt16.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_abnormalTodoSearch: 异常待办列表查询</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt16.1')" >
+        通过</a>
+
+    <div id='div_pt16.1' class="popup_window">
+        <pre>
+        pt16.1: 
+1 异常待办-待办列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 打印面单-已转交列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+3 打印面单-已完结列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_abnormalTodoSearch (testWebExceptionHandSearch.TestWebExceptionHandSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt16.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_abnormalTodoSearch: 异常待办列表查询</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt16.2')" >
+        通过</a>
+
+    <div id='div_pt16.2' class="popup_window">
+        <pre>
+        pt16.2: 
+1 异常待办-待办列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 打印面单-已转交列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+3 打印面单-已完结列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_abnormalTodoSearch (testWebExceptionHandSearch.TestWebExceptionHandSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt16.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_abnormalTodoSearch: 异常待办列表查询</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt16.3')" >
+        通过</a>
+
+    <div id='div_pt16.3' class="popup_window">
+        <pre>
+        pt16.3: 
+1 异常待办-待办列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 打印面单-已转交列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+3 打印面单-已完结列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_abnormalTodoSearch (testWebExceptionHandSearch.TestWebExceptionHandSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt16.4' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_abnormalTrackSearch: 异常追踪列表查询</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt16.4')" >
+        通过</a>
+
+    <div id='div_pt16.4' class="popup_window">
+        <pre>
+        pt16.4: 
+1 异常追踪-处理中列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 异常追踪-完结列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_abnormalTrackSearch (testWebExceptionHandSearch.TestWebExceptionHandSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt16.5' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_abnormalTrackSearch: 异常追踪列表查询</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt16.5')" >
+        通过</a>
+
+    <div id='div_pt16.5' class="popup_window">
+        <pre>
+        pt16.5: 
+1 异常追踪-处理中列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 异常追踪-完结列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_abnormalTrackSearch (testWebExceptionHandSearch.TestWebExceptionHandSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt16.6' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_abnormalTurnSearch: 异常转派列表查询</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt16.6')" >
+        通过</a>
+
+    <div id='div_pt16.6' class="popup_window">
+        <pre>
+        pt16.6: 
+1 异常转派列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_abnormalTurnSearch (testWebExceptionHandSearch.TestWebExceptionHandSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt16.7' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_orderVIPAbnormalSearch: VIP发起列表查询</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt16.7')" >
+        通过</a>
+
+    <div id='div_pt16.7' class="popup_window">
+        <pre>
+        pt16.7: 
+1 VIP发起-待发起列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 VIP发起-处理中列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_orderVIPAbnormalSearch (testWebExceptionHandSearch.TestWebExceptionHandSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt16.8' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_orderVIPAbnormalSearch: VIP发起列表查询</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt16.8')" >
+        通过</a>
+
+    <div id='div_pt16.8' class="popup_window">
+        <pre>
+        pt16.8: 
+1 VIP发起-待发起列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 VIP发起-处理中列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_orderVIPAbnormalSearch (testWebExceptionHandSearch.TestWebExceptionHandSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt16.9' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_trunkAbnormalSearch: 干线自提异常列表查询</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt16.9')" >
+        通过</a>
+
+    <div id='div_pt16.9' class="popup_window">
+        <pre>
+        pt16.9: 
+1 干线自提异常-未发起列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 干线自提异常-处理中列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+3 干线自提异常-已处理列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_trunkAbnormalSearch (testWebExceptionHandSearch.TestWebExceptionHandSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt16.10' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_trunkAbnormalSearch: 干线自提异常列表查询</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt16.10')" >
+        通过</a>
+
+    <div id='div_pt16.10' class="popup_window">
+        <pre>
+        pt16.10: 
+1 干线自提异常-未发起列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 干线自提异常-处理中列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+3 干线自提异常-已处理列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_trunkAbnormalSearch (testWebExceptionHandSearch.TestWebExceptionHandSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt16.11' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_trunkAbnormalSearch: 干线自提异常列表查询</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt16.11')" >
+        通过</a>
+
+    <div id='div_pt16.11' class="popup_window">
+        <pre>
+        pt16.11: 
+1 干线自提异常-未发起列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 干线自提异常-处理中列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+3 干线自提异常-已处理列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_trunkAbnormalSearch (testWebExceptionHandSearch.TestWebExceptionHandSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+    <tr class='passClass'>
+        <td>testWebFrontendSearch.TestWebFrontendSearch</td>
+        <td>3</td>
+        <td>3</td>
+        <td>0</td>
+        <td>0</td>
+        <td><a href="javascript:showClassDetail('c17',3)">详情</a></td>
+    </tr>
+
+<tr id='pt17.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_orderArriveSearch: 到件列表查询</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt17.1')" >
+        通过</a>
+
+    <div id='div_pt17.1' class="popup_window">
+        <pre>
+        pt17.1: 
+1 到件列表
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_orderArriveSearch (testWebFrontendSearch.TestWebFrontendSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt17.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_outBoundSearch: 出库列表查询</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt17.2')" >
+        通过</a>
+
+    <div id='div_pt17.2' class="popup_window">
+        <pre>
+        pt17.2: 
+1 出库列表
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_outBoundSearch (testWebFrontendSearch.TestWebFrontendSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt17.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_putInStorageSearch: 入库列表查询</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt17.3')" >
+        通过</a>
+
+    <div id='div_pt17.3' class="popup_window">
+        <pre>
+        pt17.3: 
+1 入库列表
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_putInStorageSearch (testWebFrontendSearch.TestWebFrontendSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+    <tr class='passClass'>
+        <td>testWebIkeaAbnormalHandSearch.TestWebIkeaAbnormalHandSearch</td>
+        <td>9</td>
+        <td>9</td>
+        <td>0</td>
+        <td>0</td>
+        <td><a href="javascript:showClassDetail('c18',9)">详情</a></td>
+    </tr>
+
+<tr id='pt18.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_changeMessageSearch: 宜家异常处理：变更通知</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt18.1')" >
+        通过</a>
+
+    <div id='div_pt18.1' class="popup_window">
+        <pre>
+        pt18.1: 
+1 宜家异常处理：变更通知配送列表
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 宜家异常处理：变更通知安装列表
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_changeMessageSearch (testWebIkeaAbnormalHandSearch.TestWebIkeaAbnormalHandSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt18.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_changeMessageSearch: 宜家异常处理：变更通知</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt18.2')" >
+        通过</a>
+
+    <div id='div_pt18.2' class="popup_window">
+        <pre>
+        pt18.2: 
+1 宜家异常处理：变更通知配送列表
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 宜家异常处理：变更通知安装列表
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_changeMessageSearch (testWebIkeaAbnormalHandSearch.TestWebIkeaAbnormalHandSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt18.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_initiatedAbnormalSearch: 宜家异常处理：已发起异常</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt18.3')" >
+        通过</a>
+
+    <div id='div_pt18.3' class="popup_window">
+        <pre>
+        pt18.3: 
+1 宜家异常处理：已发起异常等待方案列表
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 宜家异常处理：已发起异常方案已出列表
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_initiatedAbnormalSearch (testWebIkeaAbnormalHandSearch.TestWebIkeaAbnormalHandSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt18.4' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_initiatedAbnormalSearch: 宜家异常处理：已发起异常</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt18.4')" >
+        通过</a>
+
+    <div id='div_pt18.4' class="popup_window">
+        <pre>
+        pt18.4: 
+1 宜家异常处理：已发起异常等待方案列表
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 宜家异常处理：已发起异常方案已出列表
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_initiatedAbnormalSearch (testWebIkeaAbnormalHandSearch.TestWebIkeaAbnormalHandSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt18.5' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_outReturnSearch: 宜家异常处理：内部退货</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt18.5')" >
+        通过</a>
+
+    <div id='div_pt18.5' class="popup_window">
+        <pre>
+        pt18.5: 
+1 宜家异常处理：内部退货未退货列表
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 宜家异常处理：内部退货已退货列表
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_outReturnSearch (testWebIkeaAbnormalHandSearch.TestWebIkeaAbnormalHandSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt18.6' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_outReturnSearch: 宜家异常处理：内部退货</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt18.6')" >
+        通过</a>
+
+    <div id='div_pt18.6' class="popup_window">
+        <pre>
+        pt18.6: 
+1 宜家异常处理：内部退货未退货列表
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 宜家异常处理：内部退货已退货列表
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_outReturnSearch (testWebIkeaAbnormalHandSearch.TestWebIkeaAbnormalHandSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt18.7' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_samsReturnSearch: 宜家异常处理：SAMS退货</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt18.7')" >
+        通过</a>
+
+    <div id='div_pt18.7' class="popup_window">
+        <pre>
+        pt18.7: 
+1 宜家异常处理：SAMS退货未接单列表
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 宜家异常处理：SAMS退货处理中列表
+
+返回的状态：200
+测试结果：成功！！！  200
+
+3 宜家异常处理：SAMS退货已退货列表
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_samsReturnSearch (testWebIkeaAbnormalHandSearch.TestWebIkeaAbnormalHandSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt18.8' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_samsReturnSearch: 宜家异常处理：SAMS退货</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt18.8')" >
+        通过</a>
+
+    <div id='div_pt18.8' class="popup_window">
+        <pre>
+        pt18.8: 
+1 宜家异常处理：SAMS退货未接单列表
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 宜家异常处理：SAMS退货处理中列表
+
+返回的状态：200
+测试结果：成功！！！  200
+
+3 宜家异常处理：SAMS退货已退货列表
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_samsReturnSearch (testWebIkeaAbnormalHandSearch.TestWebIkeaAbnormalHandSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt18.9' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_samsReturnSearch: 宜家异常处理：SAMS退货</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt18.9')" >
+        通过</a>
+
+    <div id='div_pt18.9' class="popup_window">
+        <pre>
+        pt18.9: 
+1 宜家异常处理：SAMS退货未接单列表
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 宜家异常处理：SAMS退货处理中列表
+
+返回的状态：200
+测试结果：成功！！！  200
+
+3 宜家异常处理：SAMS退货已退货列表
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_samsReturnSearch (testWebIkeaAbnormalHandSearch.TestWebIkeaAbnormalHandSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+    <tr class='passClass'>
+        <td>testWebIkeaBasicDataSearch.TestWebIkeaBasicDataSearch</td>
+        <td>2</td>
+        <td>2</td>
+        <td>0</td>
+        <td>0</td>
+        <td><a href="javascript:showClassDetail('c19',2)">详情</a></td>
+    </tr>
+
+<tr id='pt19.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_ikeaCarInfoSearch: 宜家基础资料：车辆与司机列表</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt19.1')" >
+        通过</a>
+
+    <div id='div_pt19.1' class="popup_window">
+        <pre>
+        pt19.1: 
+1 宜家基础资料：车辆与司机列表
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_ikeaCarInfoSearch (testWebIkeaBasicDataSearch.TestWebIkeaBasicDataSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt19.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_ikeaWorkerSearch: 宜家基础资料：安装工人列表</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt19.2')" >
+        通过</a>
+
+    <div id='div_pt19.2' class="popup_window">
+        <pre>
+        pt19.2: 
+1 宜家基础资料：安装工人列表
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_ikeaWorkerSearch (testWebIkeaBasicDataSearch.TestWebIkeaBasicDataSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+    <tr class='passClass'>
+        <td>testWebIkeaDispatchManageSearch.TestWebIkeaDispatchManageSearch</td>
+        <td>3</td>
+        <td>3</td>
+        <td>0</td>
+        <td>0</td>
+        <td><a href="javascript:showClassDetail('c20',3)">详情</a></td>
+    </tr>
+
+<tr id='pt20.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_deliveryOrderDispatchSearch: 宜家调度：配送调度列表</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt20.1')" >
+        通过</a>
+
+    <div id='div_pt20.1' class="popup_window">
+        <pre>
+        pt20.1: 
+1 宜家调度：配送调度列表
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_deliveryOrderDispatchSearch (testWebIkeaDispatchManageSearch.TestWebIkeaDispatchManageSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt20.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_installOrderDispatchSearch: 宜家调度：安装调度列表</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt20.2')" >
+        通过</a>
+
+    <div id='div_pt20.2' class="popup_window">
+        <pre>
+        pt20.2: 
+1 宜家调度：安装调度列表
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_installOrderDispatchSearch (testWebIkeaDispatchManageSearch.TestWebIkeaDispatchManageSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt20.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_samsOrderDispatchSearch: 宜家调度：SMAS调度列表</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt20.3')" >
+        通过</a>
+
+    <div id='div_pt20.3' class="popup_window">
+        <pre>
+        pt20.3: 
+1 宜家调度：SMAS调度列表
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_samsOrderDispatchSearch (testWebIkeaDispatchManageSearch.TestWebIkeaDispatchManageSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+    <tr class='passClass'>
+        <td>testWebIkeaServiceManageSearch.TestWebIkeaServiceManageSearch</td>
+        <td>7</td>
+        <td>7</td>
+        <td>0</td>
+        <td>0</td>
+        <td><a href="javascript:showClassDetail('c21',7)">详情</a></td>
+    </tr>
+
+<tr id='pt21.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_installMeltOrderSearch: 宜家安装管理：安装销单列表</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt21.1')" >
+        通过</a>
+
+    <div id='div_pt21.1' class="popup_window">
+        <pre>
+        pt21.1: 
+1 宜家安装管理：安装销单列表
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_installMeltOrderSearch (testWebIkeaServiceManageSearch.TestWebIkeaServiceManageSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt21.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_installOrderSearch: 宜家安装管理：安装订单列表</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt21.2')" >
+        通过</a>
+
+    <div id='div_pt21.2' class="popup_window">
+        <pre>
+        pt21.2: 
+1 宜家安装管理：安装订单列表
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_installOrderSearch (testWebIkeaServiceManageSearch.TestWebIkeaServiceManageSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt21.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_lockOrderSearch: 宜家安装管理：安装锁定</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt21.3')" >
+        通过</a>
+
+    <div id='div_pt21.3' class="popup_window">
+        <pre>
+        pt21.3: 
+1 宜家安装管理：安装锁定未锁列表
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 宜家安装管理：安装锁定已锁列表
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_lockOrderSearch (testWebIkeaServiceManageSearch.TestWebIkeaServiceManageSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt21.4' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_lockOrderSearch: 宜家安装管理：安装锁定</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt21.4')" >
+        通过</a>
+
+    <div id='div_pt21.4' class="popup_window">
+        <pre>
+        pt21.4: 
+1 宜家安装管理：安装锁定未锁列表
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 宜家安装管理：安装锁定已锁列表
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_lockOrderSearch (testWebIkeaServiceManageSearch.TestWebIkeaServiceManageSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt21.5' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_waitCheckOrderSearch: 宜家安装管理：安装审单</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt21.5')" >
+        通过</a>
+
+    <div id='div_pt21.5' class="popup_window">
+        <pre>
+        pt21.5: 
+1 宜家安装管理：安装审单待审列表
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 宜家安装管理：安装审单信息错误列表
+
+返回的状态：200
+测试结果：成功！！！  200
+
+3 宜家安装管理：安装审单已计划列表
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_waitCheckOrderSearch (testWebIkeaServiceManageSearch.TestWebIkeaServiceManageSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt21.6' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_waitCheckOrderSearch: 宜家安装管理：安装审单</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt21.6')" >
+        通过</a>
+
+    <div id='div_pt21.6' class="popup_window">
+        <pre>
+        pt21.6: 
+1 宜家安装管理：安装审单待审列表
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 宜家安装管理：安装审单信息错误列表
+
+返回的状态：200
+测试结果：成功！！！  200
+
+3 宜家安装管理：安装审单已计划列表
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_waitCheckOrderSearch (testWebIkeaServiceManageSearch.TestWebIkeaServiceManageSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt21.7' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_waitCheckOrderSearch: 宜家安装管理：安装审单</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt21.7')" >
+        通过</a>
+
+    <div id='div_pt21.7' class="popup_window">
+        <pre>
+        pt21.7: 
+1 宜家安装管理：安装审单待审列表
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 宜家安装管理：安装审单信息错误列表
+
+返回的状态：200
+测试结果：成功！！！  200
+
+3 宜家安装管理：安装审单已计划列表
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_waitCheckOrderSearch (testWebIkeaServiceManageSearch.TestWebIkeaServiceManageSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+    <tr class='passClass'>
+        <td>testWebIkeaShipmentManageSearch.TestWebIkeaShipmentManageSearch</td>
+        <td>4</td>
+        <td>4</td>
+        <td>0</td>
+        <td>0</td>
+        <td><a href="javascript:showClassDetail('c22',4)">详情</a></td>
+    </tr>
+
+<tr id='pt22.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_deliveryMeltOrderSearch: 宜家配送管理：配送销单列表</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt22.1')" >
+        通过</a>
+
+    <div id='div_pt22.1' class="popup_window">
+        <pre>
+        pt22.1: 
+1 宜家配送管理：配送销单列表
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_deliveryMeltOrderSearch (testWebIkeaShipmentManageSearch.TestWebIkeaShipmentManageSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt22.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_deliveryOrderSearch: 宜家配送管理：配送订单列表</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt22.2')" >
+        通过</a>
+
+    <div id='div_pt22.2' class="popup_window">
+        <pre>
+        pt22.2: 
+1 宜家配送管理：配送订单列表
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_deliveryOrderSearch (testWebIkeaShipmentManageSearch.TestWebIkeaShipmentManageSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt22.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_outAssignOrderSearch: 宜家配送管理：外埠指派</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt22.3')" >
+        通过</a>
+
+    <div id='div_pt22.3' class="popup_window">
+        <pre>
+        pt22.3: 
+1 宜家配送管理：外埠指派待指派列表
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 宜家配送管理：外埠指派已指派列表
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_outAssignOrderSearch (testWebIkeaShipmentManageSearch.TestWebIkeaShipmentManageSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt22.4' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_outAssignOrderSearch: 宜家配送管理：外埠指派</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt22.4')" >
+        通过</a>
+
+    <div id='div_pt22.4' class="popup_window">
+        <pre>
+        pt22.4: 
+1 宜家配送管理：外埠指派待指派列表
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 宜家配送管理：外埠指派已指派列表
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_outAssignOrderSearch (testWebIkeaShipmentManageSearch.TestWebIkeaShipmentManageSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+    <tr class='passClass'>
+        <td>testWebMerchantSearch.TestWebMerchantSearch</td>
+        <td>1</td>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+        <td><a href="javascript:showClassDetail('c23',1)">详情</a></td>
+    </tr>
+
+<tr id='pt23.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_merchantSearch: 商家列表查询</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt23.1')" >
+        通过</a>
+
+    <div id='div_pt23.1' class="popup_window">
+        <pre>
+        pt23.1: 
+1 商家订单列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_merchantSearch (testWebMerchantSearch.TestWebMerchantSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+    <tr class='passClass'>
+        <td>testWebOrderChangeSearch.TestWebOrderChangeSearch</td>
+        <td>18</td>
+        <td>18</td>
+        <td>0</td>
+        <td>0</td>
+        <td><a href="javascript:showClassDetail('c24',18)">详情</a></td>
+    </tr>
+
+<tr id='pt24.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_orderCancelSearch: 订单取消查询</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt24.1')" >
+        通过</a>
+
+    <div id='div_pt24.1' class="popup_window">
+        <pre>
+        pt24.1: 
+1 订单取消-可发起列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 订单取消-已取消列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+3 变更原因查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_orderCancelSearch (testWebOrderChangeSearch.TestWebOrderChangeSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt24.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_orderCancelSearch: 订单取消查询</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt24.2')" >
+        通过</a>
+
+    <div id='div_pt24.2' class="popup_window">
+        <pre>
+        pt24.2: 
+1 订单取消-可发起列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 订单取消-已取消列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+3 变更原因查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_orderCancelSearch (testWebOrderChangeSearch.TestWebOrderChangeSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt24.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_orderCancelSearch: 订单取消查询</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt24.3')" >
+        通过</a>
+
+    <div id='div_pt24.3' class="popup_window">
+        <pre>
+        pt24.3: 
+1 订单取消-可发起列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 订单取消-已取消列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+3 变更原因查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_orderCancelSearch (testWebOrderChangeSearch.TestWebOrderChangeSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt24.4' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_orderChangeAuditSearch: 变更审核查询</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt24.4')" >
+        通过</a>
+
+    <div id='div_pt24.4' class="popup_window">
+        <pre>
+        pt24.4: 
+1 变更审核-待审核列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 订单变更-已驳回列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+3 订单变更-已通过列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_orderChangeAuditSearch (testWebOrderChangeSearch.TestWebOrderChangeSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt24.5' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_orderChangeAuditSearch: 变更审核查询</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt24.5')" >
+        通过</a>
+
+    <div id='div_pt24.5' class="popup_window">
+        <pre>
+        pt24.5: 
+1 变更审核-待审核列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 订单变更-已驳回列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+3 订单变更-已通过列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_orderChangeAuditSearch (testWebOrderChangeSearch.TestWebOrderChangeSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt24.6' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_orderChangeAuditSearch: 变更审核查询</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt24.6')" >
+        通过</a>
+
+    <div id='div_pt24.6' class="popup_window">
+        <pre>
+        pt24.6: 
+1 变更审核-待审核列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 订单变更-已驳回列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+3 订单变更-已通过列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_orderChangeAuditSearch (testWebOrderChangeSearch.TestWebOrderChangeSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt24.7' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_orderChangeSearch: 订单变更查询</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt24.7')" >
+        通过</a>
+
+    <div id='div_pt24.7' class="popup_window">
+        <pre>
+        pt24.7: 
+1 订单变更-可发起列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 订单变更-审核中列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+3 订单变更-驳回列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+4 订单变更-审核通过列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_orderChangeSearch (testWebOrderChangeSearch.TestWebOrderChangeSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt24.8' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_orderChangeSearch: 订单变更查询</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt24.8')" >
+        通过</a>
+
+    <div id='div_pt24.8' class="popup_window">
+        <pre>
+        pt24.8: 
+1 订单变更-可发起列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 订单变更-审核中列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+3 订单变更-驳回列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+4 订单变更-审核通过列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_orderChangeSearch (testWebOrderChangeSearch.TestWebOrderChangeSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt24.9' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_orderChangeSearch: 订单变更查询</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt24.9')" >
+        通过</a>
+
+    <div id='div_pt24.9' class="popup_window">
+        <pre>
+        pt24.9: 
+1 订单变更-可发起列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 订单变更-审核中列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+3 订单变更-驳回列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+4 订单变更-审核通过列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_orderChangeSearch (testWebOrderChangeSearch.TestWebOrderChangeSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt24.10' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_orderChangeSearch: 订单变更查询</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt24.10')" >
+        通过</a>
+
+    <div id='div_pt24.10' class="popup_window">
+        <pre>
+        pt24.10: 
+1 订单变更-可发起列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 订单变更-审核中列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+3 订单变更-驳回列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+4 订单变更-审核通过列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_orderChangeSearch (testWebOrderChangeSearch.TestWebOrderChangeSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt24.11' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_orderTerminationAuditSearch: 服务终止审核查询</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt24.11')" >
+        通过</a>
+
+    <div id='div_pt24.11' class="popup_window">
+        <pre>
+        pt24.11: 
+1 服务终止审核-审核中列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 服务终止审核-被驳回列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+3 服务终止审核-已通过列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_orderTerminationAuditSearch (testWebOrderChangeSearch.TestWebOrderChangeSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt24.12' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_orderTerminationAuditSearch: 服务终止审核查询</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt24.12')" >
+        通过</a>
+
+    <div id='div_pt24.12' class="popup_window">
+        <pre>
+        pt24.12: 
+1 服务终止审核-审核中列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 服务终止审核-被驳回列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+3 服务终止审核-已通过列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_orderTerminationAuditSearch (testWebOrderChangeSearch.TestWebOrderChangeSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt24.13' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_orderTerminationAuditSearch: 服务终止审核查询</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt24.13')" >
+        通过</a>
+
+    <div id='div_pt24.13' class="popup_window">
+        <pre>
+        pt24.13: 
+1 服务终止审核-审核中列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 服务终止审核-被驳回列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+3 服务终止审核-已通过列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_orderTerminationAuditSearch (testWebOrderChangeSearch.TestWebOrderChangeSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt24.14' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_orderTerminationSearch: 服务终止查询</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt24.14')" >
+        通过</a>
+
+    <div id='div_pt24.14' class="popup_window">
+        <pre>
+        pt24.14: 
+1 服务终止-可发起列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 服务终止-审核中列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+3 服务终止-被驳回列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+4 服务终止-已通过列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+5 服务终止-终止原因查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_orderTerminationSearch (testWebOrderChangeSearch.TestWebOrderChangeSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt24.15' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_orderTerminationSearch: 服务终止查询</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt24.15')" >
+        通过</a>
+
+    <div id='div_pt24.15' class="popup_window">
+        <pre>
+        pt24.15: 
+1 服务终止-可发起列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 服务终止-审核中列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+3 服务终止-被驳回列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+4 服务终止-已通过列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+5 服务终止-终止原因查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_orderTerminationSearch (testWebOrderChangeSearch.TestWebOrderChangeSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt24.16' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_orderTerminationSearch: 服务终止查询</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt24.16')" >
+        通过</a>
+
+    <div id='div_pt24.16' class="popup_window">
+        <pre>
+        pt24.16: 
+1 服务终止-可发起列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 服务终止-审核中列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+3 服务终止-被驳回列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+4 服务终止-已通过列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+5 服务终止-终止原因查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_orderTerminationSearch (testWebOrderChangeSearch.TestWebOrderChangeSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt24.17' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_orderTerminationSearch: 服务终止查询</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt24.17')" >
+        通过</a>
+
+    <div id='div_pt24.17' class="popup_window">
+        <pre>
+        pt24.17: 
+1 服务终止-可发起列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 服务终止-审核中列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+3 服务终止-被驳回列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+4 服务终止-已通过列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+5 服务终止-终止原因查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_orderTerminationSearch (testWebOrderChangeSearch.TestWebOrderChangeSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt24.18' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_orderTerminationSearch: 服务终止查询</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt24.18')" >
+        通过</a>
+
+    <div id='div_pt24.18' class="popup_window">
+        <pre>
+        pt24.18: 
+1 服务终止-可发起列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 服务终止-审核中列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+3 服务终止-被驳回列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+4 服务终止-已通过列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+5 服务终止-终止原因查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_orderTerminationSearch (testWebOrderChangeSearch.TestWebOrderChangeSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+    <tr class='passClass'>
+        <td>testWebOrderManageSearch.TestWebOrderManageSearch</td>
+        <td>19</td>
+        <td>19</td>
+        <td>0</td>
+        <td>0</td>
+        <td><a href="javascript:showClassDetail('c25',19)">详情</a></td>
+    </tr>
+
+<tr id='pt25.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_TMSOrderSearch: TMS绑单</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt25.1')" >
+        通过</a>
+
+    <div id='div_pt25.1' class="popup_window">
+        <pre>
+        pt25.1: 
+1 TMS绑单列表
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 TMS订单列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_TMSOrderSearch (testWebOrderManageSearch.TestWebOrderManageSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt25.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_TMSOrderSearch: TMS绑单</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt25.2')" >
+        通过</a>
+
+    <div id='div_pt25.2' class="popup_window">
+        <pre>
+        pt25.2: 
+1 TMS绑单列表
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 TMS订单列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_TMSOrderSearch (testWebOrderManageSearch.TestWebOrderManageSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt25.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_addOrderSearch: 录单</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt25.3')" >
+        通过</a>
+
+    <div id='div_pt25.3' class="popup_window">
+        <pre>
+        pt25.3: 
+1 录单-结算主体查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 录单字典-业务类型查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+3 录单-固定费用项查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+4 录单-非固定费用项查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_addOrderSearch (testWebOrderManageSearch.TestWebOrderManageSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt25.4' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_addOrderSearch: 录单</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt25.4')" >
+        通过</a>
+
+    <div id='div_pt25.4' class="popup_window">
+        <pre>
+        pt25.4: 
+1 录单-结算主体查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 录单字典-业务类型查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+3 录单-固定费用项查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+4 录单-非固定费用项查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_addOrderSearch (testWebOrderManageSearch.TestWebOrderManageSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt25.5' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_addOrderSearch: 录单</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt25.5')" >
+        通过</a>
+
+    <div id='div_pt25.5' class="popup_window">
+        <pre>
+        pt25.5: 
+1 录单-结算主体查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 录单字典-业务类型查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+3 录单-固定费用项查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+4 录单-非固定费用项查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_addOrderSearch (testWebOrderManageSearch.TestWebOrderManageSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt25.6' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_addOrderSearch: 录单</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt25.6')" >
+        通过</a>
+
+    <div id='div_pt25.6' class="popup_window">
+        <pre>
+        pt25.6: 
+1 录单-结算主体查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 录单字典-业务类型查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+3 录单-固定费用项查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+4 录单-非固定费用项查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_addOrderSearch (testWebOrderManageSearch.TestWebOrderManageSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt25.7' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_allOrderSearch: 订单查询</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt25.7')" >
+        通过</a>
+
+    <div id='div_pt25.7' class="popup_window">
+        <pre>
+        pt25.7: 
+1 订单查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 订单详情-基础信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+3 订单详情-核销信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+4 订单详情-产品信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+5 订单详情-费用信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+6 订单详情-预约信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+7 订单详情-节点信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+8 订单详情-签收信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_allOrderSearch (testWebOrderManageSearch.TestWebOrderManageSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt25.8' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_allOrderSearch: 订单查询</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt25.8')" >
+        通过</a>
+
+    <div id='div_pt25.8' class="popup_window">
+        <pre>
+        pt25.8: 
+1 订单查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 订单详情-基础信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+3 订单详情-核销信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+4 订单详情-产品信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+5 订单详情-费用信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+6 订单详情-预约信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+7 订单详情-节点信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+8 订单详情-签收信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_allOrderSearch (testWebOrderManageSearch.TestWebOrderManageSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt25.9' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_allOrderSearch: 订单查询</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt25.9')" >
+        通过</a>
+
+    <div id='div_pt25.9' class="popup_window">
+        <pre>
+        pt25.9: 
+1 订单查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 订单详情-基础信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+3 订单详情-核销信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+4 订单详情-产品信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+5 订单详情-费用信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+6 订单详情-预约信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+7 订单详情-节点信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+8 订单详情-签收信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_allOrderSearch (testWebOrderManageSearch.TestWebOrderManageSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt25.10' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_allOrderSearch: 订单查询</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt25.10')" >
+        通过</a>
+
+    <div id='div_pt25.10' class="popup_window">
+        <pre>
+        pt25.10: 
+1 订单查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 订单详情-基础信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+3 订单详情-核销信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+4 订单详情-产品信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+5 订单详情-费用信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+6 订单详情-预约信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+7 订单详情-节点信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+8 订单详情-签收信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_allOrderSearch (testWebOrderManageSearch.TestWebOrderManageSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt25.11' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_allOrderSearch: 订单查询</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt25.11')" >
+        通过</a>
+
+    <div id='div_pt25.11' class="popup_window">
+        <pre>
+        pt25.11: 
+1 订单查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 订单详情-基础信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+3 订单详情-核销信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+4 订单详情-产品信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+5 订单详情-费用信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+6 订单详情-预约信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+7 订单详情-节点信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+8 订单详情-签收信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_allOrderSearch (testWebOrderManageSearch.TestWebOrderManageSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt25.12' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_allOrderSearch: 订单查询</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt25.12')" >
+        通过</a>
+
+    <div id='div_pt25.12' class="popup_window">
+        <pre>
+        pt25.12: 
+1 订单查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 订单详情-基础信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+3 订单详情-核销信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+4 订单详情-产品信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+5 订单详情-费用信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+6 订单详情-预约信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+7 订单详情-节点信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+8 订单详情-签收信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_allOrderSearch (testWebOrderManageSearch.TestWebOrderManageSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt25.13' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_allOrderSearch: 订单查询</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt25.13')" >
+        通过</a>
+
+    <div id='div_pt25.13' class="popup_window">
+        <pre>
+        pt25.13: 
+1 订单查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 订单详情-基础信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+3 订单详情-核销信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+4 订单详情-产品信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+5 订单详情-费用信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+6 订单详情-预约信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+7 订单详情-节点信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+8 订单详情-签收信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_allOrderSearch (testWebOrderManageSearch.TestWebOrderManageSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt25.14' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_allOrderSearch: 订单查询</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt25.14')" >
+        通过</a>
+
+    <div id='div_pt25.14' class="popup_window">
+        <pre>
+        pt25.14: 
+1 订单查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 订单详情-基础信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+3 订单详情-核销信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+4 订单详情-产品信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+5 订单详情-费用信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+6 订单详情-预约信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+7 订单详情-节点信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+8 订单详情-签收信息
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_allOrderSearch (testWebOrderManageSearch.TestWebOrderManageSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt25.15' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_importDirectSearch: 直营导单</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt25.15')" >
+        通过</a>
+
+    <div id='div_pt25.15' class="popup_window">
+        <pre>
+        pt25.15: 
+1 直营导单列表
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_importDirectSearch (testWebOrderManageSearch.TestWebOrderManageSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt25.16' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_importOrderSearch: 暂存单</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt25.16')" >
+        通过</a>
+
+    <div id='div_pt25.16' class="popup_window">
+        <pre>
+        pt25.16: 
+1 暂存单列表
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_importOrderSearch (testWebOrderManageSearch.TestWebOrderManageSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt25.17' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_printOrderSearch: 打印订单</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt25.17')" >
+        通过</a>
+
+    <div id='div_pt25.17' class="popup_window">
+        <pre>
+        pt25.17: 
+1 打印字典-服务类型查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 打印字典-订单状态查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+3 打印列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_printOrderSearch (testWebOrderManageSearch.TestWebOrderManageSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt25.18' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_printOrderSearch: 打印订单</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt25.18')" >
+        通过</a>
+
+    <div id='div_pt25.18' class="popup_window">
+        <pre>
+        pt25.18: 
+1 打印字典-服务类型查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 打印字典-订单状态查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+3 打印列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_printOrderSearch (testWebOrderManageSearch.TestWebOrderManageSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt25.19' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_printOrderSearch: 打印订单</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt25.19')" >
+        通过</a>
+
+    <div id='div_pt25.19' class="popup_window">
+        <pre>
+        pt25.19: 
+1 打印字典-服务类型查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 打印字典-订单状态查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+3 打印列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_printOrderSearch (testWebOrderManageSearch.TestWebOrderManageSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+    <tr class='passClass'>
+        <td>testWebQualityAssuranceSearch.TestWebQualityAssuranceSearch</td>
+        <td>5</td>
+        <td>5</td>
+        <td>0</td>
+        <td>0</td>
+        <td><a href="javascript:showClassDetail('c26',5)">详情</a></td>
+    </tr>
+
+<tr id='pt26.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_qualityHandSearch: 质保处理列表查询</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt26.1')" >
+        通过</a>
+
+    <div id='div_pt26.1' class="popup_window">
+        <pre>
+        pt26.1: 
+1 质保处理-处理中列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 质保处理-完结列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_qualityHandSearch (testWebQualityAssuranceSearch.TestWebQualityAssuranceSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt26.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_qualityHandSearch: 质保处理列表查询</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt26.2')" >
+        通过</a>
+
+    <div id='div_pt26.2' class="popup_window">
+        <pre>
+        pt26.2: 
+1 质保处理-处理中列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+2 质保处理-完结列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_qualityHandSearch (testWebQualityAssuranceSearch.TestWebQualityAssuranceSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt26.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_qualityStartSearch: 质保发起列表查询</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt26.3')" >
+        通过</a>
+
+    <div id='div_pt26.3' class="popup_window">
+        <pre>
+        pt26.3: 
+1 质保发起列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_qualityStartSearch (testWebQualityAssuranceSearch.TestWebQualityAssuranceSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt26.4' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_qualitySubOrderSearch: 质保衍生单列表查询</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt26.4')" >
+        通过</a>
+
+    <div id='div_pt26.4' class="popup_window">
+        <pre>
+        pt26.4: 
+1 质保衍生单列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_qualitySubOrderSearch (testWebQualityAssuranceSearch.TestWebQualityAssuranceSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt26.5' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_qualityTurnSearch: 质保转派列表查询</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt26.5')" >
+        通过</a>
+
+    <div id='div_pt26.5' class="popup_window">
+        <pre>
+        pt26.5: 
+1 质保转派列表查询
+
+返回的状态：200
+测试结果：成功！！！  200
+
+SubTestCase Pass:
+test_qualityTurnSearch (testWebQualityAssuranceSearch.TestWebQualityAssuranceSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+        <tr id='total_row'>
+            <td>总计</td>
+            <td>154</td>
+            <td>151</td>
+            <td>2</td>
+            <td>1</td>
+            <td>&nbsp;</td>
+        </tr>
+    </table>
+
+        <div id='ending'>&nbsp;</div>
+        
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('chart'));
+
+        // 指定图表的配置项和数据
+        var option = {
+            title : {
+                text: '测试执行情况',
+                x:'center'
+            },
+            tooltip : {
+                trigger: 'item',
+                formatter: "{a} <br/>{b} : {c} ({d}%)"
+            },
+            legend: {
+                orient: 'vertical',
+                left: 'left',
+                data: ['通过','失败','错误']
+            },
+            series : [
+                {
+                    name: '测试执行情况',
+                    type: 'pie',
+                    radius : '60%',
+                    center: ['50%', '60%'],
+                    data:[
+                        {value:151, name:'通过'},
+                        {value:2, name:'失败'},
+                        {value:1, name:'错误'}
+                    ],
+                    itemStyle: {
+                        emphasis: {
+                            shadowBlur: 10,
+                            shadowOffsetX: 0,
+                            shadowColor: 'rgba(0, 0, 0, 0.5)'
+                        }
+                    }
+                }
+            ]
+        };
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+    </script>
+    
+    </div>
+</body>
+</html>

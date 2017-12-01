@@ -1,0 +1,1456 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>泛家居供应链管理系统接口测试报告</title>
+    <meta name="generator" content="HTMLTestRunner 0.9.1"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    
+<style type="text/css" media="screen">
+    body        { font-family: verdana, arial, helvetica, sans-serif; font-size: 80%; }
+    table       { font-size: 100%; }
+    pre         { white-space: pre-wrap;word-wrap: break-word; }
+
+    /* -- heading ---------------------------------------------------------------------- */
+    h1 {
+        font-size: 16pt;
+        color: gray;
+    }
+    .heading {
+        margin-top: 0ex;
+        margin-bottom: 1ex;
+    }
+
+    .heading .attribute {
+        margin-top: 1ex;
+        margin-bottom: 0;
+    }
+
+    .heading .description {
+        margin-top: 2ex;
+        margin-bottom: 3ex;
+    }
+
+    /* -- css div popup ------------------------------------------------------------------------ */
+    a.popup_link {
+    }
+
+    a.popup_link:hover {
+        color: red;
+    }
+
+    .popup_window {
+        display: none;
+        position: relative;
+        left: 0px;
+        top: 0px;
+        /*border: solid #627173 1px; */
+        padding: 10px;
+        /*background-color: #E6E6D6; */
+        font-family: "Lucida Console", "Courier New", Courier, monospace;
+        text-align: left;
+        font-size: 8pt;
+        /* width: 500px;*/
+    }
+
+    }
+    /* -- report ------------------------------------------------------------------------ */
+    #show_detail_line {
+        margin-top: 3ex;
+        margin-bottom: 1ex;
+    }
+    #result_table {
+        width: 99%;
+    }
+    #header_row {
+        font-weight: bold;
+        color: #303641;
+        background-color: #ebebeb;
+    }
+    #total_row  { font-weight: bold; }
+    .passClass  { background-color: #bdedbc; }
+    .failClass  { background-color: #ffefa4; }
+    .errorClass { background-color: #ffc9c9; }
+    .passCase   { color: #6c6; }
+    .failCase   { color: #FF6600; font-weight: bold; }
+    .errorCase  { color: #c00; font-weight: bold; }
+    .hiddenRow  { display: none; }
+    .testcase   { margin-left: 2em; }
+
+
+    /* -- ending ---------------------------------------------------------------------- */
+    #ending {
+    }
+
+    #div_base {
+                position:absolute;
+                top:0%;
+                left:5%;
+                right:5%;
+                width: auto;
+                height: auto;
+                margin: -15px 0 0 0;
+    }
+</style>
+
+    <link href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <script type="text/javascript" src="js/echarts.common.min.js"></script>
+</head>
+<body>
+    <script language="javascript" type="text/javascript"><!--
+    output_list = Array();
+
+    /* level - 0:Summary; 1:Failed; 2:All */
+    function showCase(level) {
+        trs = document.getElementsByTagName("tr");
+        for (var i = 0; i < trs.length; i++) {
+            tr = trs[i];
+            id = tr.id;
+            if (id.substr(0,2) == 'ft') {
+                if (level < 1) {
+                    tr.className = 'hiddenRow';
+                }
+                else {
+                    tr.className = '';
+                }
+            }
+            if (id.substr(0,2) == 'pt') {
+                if (level > 1) {
+                    tr.className = '';
+                }
+                else {
+                    tr.className = 'hiddenRow';
+                }
+            }
+        }
+    }
+
+
+    function showClassDetail(cid, count) {
+        var id_list = Array(count);
+        var toHide = 1;
+        for (var i = 0; i < count; i++) {
+            tid0 = 't' + cid.substr(1) + '.' + (i+1);
+            tid = 'f' + tid0;
+            tr = document.getElementById(tid);
+            if (!tr) {
+                tid = 'p' + tid0;
+                tr = document.getElementById(tid);
+            }
+            id_list[i] = tid;
+            if (tr.className) {
+                toHide = 0;
+            }
+        }
+        for (var i = 0; i < count; i++) {
+            tid = id_list[i];
+            if (toHide) {
+                document.getElementById('div_'+tid).style.display = 'none'
+                document.getElementById(tid).className = 'hiddenRow';
+            }
+            else {
+                document.getElementById(tid).className = '';
+            }
+        }
+    }
+
+
+    function showTestDetail(div_id){
+        var details_div = document.getElementById(div_id)
+        var displayState = details_div.style.display
+        // alert(displayState)
+        if (displayState != 'block' ) {
+            displayState = 'block'
+            details_div.style.display = 'block'
+        }
+        else {
+            details_div.style.display = 'none'
+        }
+    }
+
+
+    function html_escape(s) {
+        s = s.replace(/&/g,'&amp;');
+        s = s.replace(/</g,'&lt;');
+        s = s.replace(/>/g,'&gt;');
+        return s;
+    }
+
+    /* obsoleted by detail in <div>
+    function showOutput(id, name) {
+        var w = window.open("", //url
+                        name,
+                        "resizable,scrollbars,status,width=800,height=450");
+        d = w.document;
+        d.write("<pre>");
+        d.write(html_escape(output_list[id]));
+        d.write("\n");
+        d.write("<a href='javascript:window.close()'>close</a>\n");
+        d.write("</pre>\n");
+        d.close();
+    }
+    */
+    --></script>
+
+    <div id="div_base">
+        
+    <div class='page-header'>
+        <h1>泛家居供应链管理系统接口测试报告</h1>
+    <p class='attribute'><strong>开始时间:</strong> 2017-11-08 16:31:07</p>
+<p class='attribute'><strong>运行时长:</strong> 0:00:00.912792</p>
+<p class='attribute'><strong>状态:</strong> 通过 14 失败 6</p>
+
+    </div>
+    <div style="float: left;width:50%;"><p class='description'></p></div>
+    <div id="chart" style="width:50%;height:400px;float:left;"></div>
+
+        
+    <div class="btn-group btn-group-sm">
+        <button class="btn btn-default" onclick='javascript:showCase(0)'>总结</button>
+        <button class="btn btn-default" onclick='javascript:showCase(1)'>失败</button>
+        <button class="btn btn-default" onclick='javascript:showCase(2)'>全部</button>
+    </div>
+    <p></p>
+    <table id='result_table' class="table table-bordered">
+        <colgroup>
+            <col align='left' />
+            <col align='right' />
+            <col align='right' />
+            <col align='right' />
+            <col align='right' />
+            <col align='right' />
+        </colgroup>
+        <tr id='header_row'>
+            <td>测试套件/测试用例</td>
+            <td>总数</td>
+            <td>通过</td>
+            <td>失败</td>
+            <td>错误</td>
+            <td>查看</td>
+        </tr>
+        
+    <tr class='failClass'>
+        <td>testOrderManageSearch.TestOrderManageSearch</td>
+        <td>20</td>
+        <td>14</td>
+        <td>6</td>
+        <td>0</td>
+        <td><a href="javascript:showClassDetail('c1',20)">详情</a></td>
+    </tr>
+
+<tr id='ft1.1' class='none'>
+    <td class='failCase'><div class='testcase'>test_TMSOrderSearch: TMS绑单</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.1')" >
+        失败</a>
+
+    <div id='div_ft1.1' class="popup_window">
+        <pre>
+        ft1.1: 
+1 TMS绑单列表
+
+A11
+返回的状态：200
+测试结果：失败！！！  200
+返回的数据：{"success":false,"error_message":"系统错误"}
+
+2 TMS订单列表查询
+
+A11
+返回的状态：200
+测试结果：失败！！！  200
+返回的数据：{"success":false,"error_message":"系统错误"}
+
+SubTestCase Failed:
+test_TMSOrderSearch (testOrderManageSearch.TestOrderManageSearch) (data='fail')Traceback (most recent call last):
+  File "/Users/snolia/PycharmProjects/SCM3.0/AthenaTest/common/loadDatas.py", line 52, in loadDatas
+    self.assertEqual(result, "pass")
+AssertionError: 'fail' != 'pass'
+- fail
++ pass
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft1.2' class='none'>
+    <td class='failCase'><div class='testcase'>test_TMSOrderSearch: TMS绑单</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.2')" >
+        失败</a>
+
+    <div id='div_ft1.2' class="popup_window">
+        <pre>
+        ft1.2: 
+1 TMS绑单列表
+
+A11
+返回的状态：200
+测试结果：失败！！！  200
+返回的数据：{"success":false,"error_message":"系统错误"}
+
+2 TMS订单列表查询
+
+A11
+返回的状态：200
+测试结果：失败！！！  200
+返回的数据：{"success":false,"error_message":"系统错误"}
+
+SubTestCase Failed:
+test_TMSOrderSearch (testOrderManageSearch.TestOrderManageSearch) (data='fail')Traceback (most recent call last):
+  File "/Users/snolia/PycharmProjects/SCM3.0/AthenaTest/common/loadDatas.py", line 52, in loadDatas
+    self.assertEqual(result, "pass")
+AssertionError: 'fail' != 'pass'
+- fail
++ pass
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_addOrderSearch: 录单</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.3')" >
+        通过</a>
+
+    <div id='div_pt1.3' class="popup_window">
+        <pre>
+        pt1.3: 
+1 录单-结算主体查询
+
+A10
+返回的状态：200
+测试结果：成功！！！  200
+返回的数据：{"success":true,"data":{"id":"f59afde8-3e56-4607-8b4f-8fcbf04d1da1","code":"ZT80000000010","name":"临时商家","state":null,"updatetime":null,"updater":null,"founder":null,"foundtime":null},"time":1510129867924}
+
+2 录单字典-业务类型查询
+
+A10
+返回的状态：200
+测试结果：成功！！！  200
+返回的数据：{"success":true,"data":[{"code":"BSTE01","name":"灯具","serviceTypes":[{"code":"SETE02","name":"干+支"},{"code":"SETE01","name":"干+支+装"},{"code":"SETE04","name":"支+装"},{"code":"SETE03","name":"干"},{"code":"SETE10","name":"维修"},{"code":"SETE06","name":"装"},{"code":"SETE05","name":"支"}]},{"code":"BSTE02","name":"住宅家具（常规）","serviceTypes":[{"code":"SETE02","name":"干+支"},{"code":"SETE01","name":"干+支+装"},{"code":"SETE04","name":"支+装"},{"code":"SETE03","name":"干"},{"code":"SETE09","name":"支+搬楼"},{"code":"SETE06","name":"装"},{"code":"SETE05","name":"支"},{"code":"SETE08","name":"测量"},{"code":"SETE07","name":"干+支+装+搬楼"}]},{"code":"BSTE03","name":"地板","serviceTypes":[{"code":"SETE02","name":"干+支"},{"code":"SETE01","name":"干+支+装"},{"code":"SETE04","name":"支+装"},{"code":"SETE03","name":"干"},{"code":"SETE06","name":"装"},{"code":"SETE05","name":"支"}]}],"time":1510129867960}
+
+3 录单-固定费用项查询
+
+A10
+返回的状态：200
+测试结果：成功！！！  200
+返回的数据：{"success":true,"data":[{"servieTypeNo":"SETE01","costMap":[{"costName":"干线费","costNo":"FLTE01"},{"costName":"配送费","costNo":"FLTE02"},{"costName":"安装费","costNo":"FLTE03"},{"costName":"超区费","costNo":"FLTE04"},{"costName":"保价费","costNo":"FLTE05"}]},{"servieTypeNo":"SETE02","costMap":[{"costName":"配送费","costNo":"FLTE02"},{"costName":"干线费","costNo":"FLTE01"},{"costName":"超区费","costNo":"FLTE04"},{"costName":"保价费","costNo":"FLTE05"}]},{"servieTypeNo":"SETE03","costMap":[{"costName":"干线费","costNo":"FLTE01"},{"costName":"保价费","costNo":"FLTE05"}]},{"servieTypeNo":"SETE04","costMap":[{"costName":"配送费","costNo":"FLTE02"},{"costName":"安装费","costNo":"FLTE03"},{"costName":"超区费","costNo":"FLTE04"}]},{"servieTypeNo":"SETE05","costMap":[{"costName":"配送费","costNo":"FLTE02"},{"costName":"超区费","costNo":"FLTE04"}]},{"servieTypeNo":"SETE06","costMap":[{"costName":"安装费","costNo":"FLTE03"}]},{"servieTypeNo":"SETE07","costMap":[{"costName":"搬楼费","costNo":"FMFL03"},{"costName":"超区费","costNo":"FLTE04"},{"costName":"干线费","costNo":"FLTE01"},{"costName":"配送费","costNo":"FLTE02"},{"costName":"保价费","costNo":"FLTE05"},{"costName":"安装费","costNo":"FLTE03"}]},{"servieTypeNo":"SETE08","costMap":[{"costName":"测量费","costNo":"FMFL08"}]},{"servieTypeNo":"SETE09","costMap":[{"costName":"搬楼费","costNo":"FMFL03"},{"costName":"超区费","costNo":"FLTE04"},{"costName":"配送费","costNo":"FLTE02"}]},{"servieTypeNo":"SETE11","costMap":[{"costName":"搬楼费","costNo":"FMFL03"},{"costName":"超区费","costNo":"FLTE04"},{"costName":"干线费","costNo":"FLTE01"},{"costName":"配送费","costNo":"FLTE02"},{"costName":"保价费","costNo":"FLTE05"}]}],"time":1510129867998}
+
+4 录单-非固定费用项查询
+
+A10
+返回的状态：200
+测试结果：成功！！！  200
+返回的数据：{"success":true,"data":[{"servieTypeNo":"SETE01","costMap":[{"costName":"网点提货费","costNo":"FMFL01"},{"costName":"收货仓提货费","costNo":"FMFL07"},{"costName":"包装费","costNo":"FMFL11"},{"costName":"木架费","costNo":"FMFL04"},{"costName":"易碎品费","costNo":"FMFL15"},{"costName":"质保费","costNo":"FMFL06"}]},{"servieTypeNo":"SETE02","costMap":[{"costName":"网点提货费","costNo":"FMFL01"},{"costName":"质保费","costNo":"FMFL06"},{"costName":"收货仓提货费","costNo":"FMFL07"},{"costName":"包装费","costNo":"FMFL11"},{"costName":"木架费","costNo":"FMFL04"},{"costName":"易碎品费","costNo":"FMFL15"}]},{"servieTypeNo":"SETE03","costMap":[{"costName":"收货仓提货费","costNo":"FMFL07"},{"costName":"包装费","costNo":"FMFL11"},{"costName":"木架费","costNo":"FMFL04"},{"costName":"物流配送费","costNo":"FMFL24"},{"costName":"易碎品费","costNo":"FMFL15"},{"costName":"质保费","costNo":"FMFL06"}]},{"servieTypeNo":"SETE04","costMap":[{"costName":"网点提货费","costNo":"FMFL01"},{"costName":"质保费","costNo":"FMFL06"}]},{"servieTypeNo":"SETE05","costMap":[{"costName":"网点提货费","costNo":"FMFL01"},{"costName":"质保费","costNo":"FMFL06"}]},{"servieTypeNo":"SETE06","costMap":[{"costName":"上门服务费","costNo":"FMFL02"},{"costName":"质保费","costNo":"FMFL06"}]},{"servieTypeNo":"SETE07","costMap":[{"costName":"网点提货费","costNo":"FMFL01"},{"costName":"收货仓提货费","costNo":"FMFL07"},{"costName":"包装费","costNo":"FMFL11"},{"costName":"木架费","costNo":"FMFL04"},{"costName":"易碎品费","costNo":"FMFL15"}]},{"servieTypeNo":"SETE08","costMap":[{"costName":"上门服务费","costNo":"FMFL02"}]},{"servieTypeNo":"SETE09","costMap":[{"costName":"网点提货费","costNo":"FMFL01"}]},{"servieTypeNo":"SETE10","costMap":[{"costName":"上门服务费","costNo":"FMFL02"},{"costName":"维修费","costNo":"FLTE06"}]},{"servieTypeNo":"SETE11","costMap":[{"costName":"网点提货费","costNo":"FMFL01"},{"costName":"收货仓提货费","costNo":"FMFL07"},{"costName":"包装费","costNo":"FMFL11"},{"costName":"木架费","costNo":"FMFL04"},{"costName":"易碎品费","costNo":"FMFL15"}]},{"servieTypeNo":"SETE12","costMap":[{"costName":"网点提货费","costNo":"FMFL01"}]}],"time":1510129868025}
+
+SubTestCase Pass:
+test_addOrderSearch (testOrderManageSearch.TestOrderManageSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.4' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_addOrderSearch: 录单</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.4')" >
+        通过</a>
+
+    <div id='div_pt1.4' class="popup_window">
+        <pre>
+        pt1.4: 
+1 录单-结算主体查询
+
+A10
+返回的状态：200
+测试结果：成功！！！  200
+返回的数据：{"success":true,"data":{"id":"f59afde8-3e56-4607-8b4f-8fcbf04d1da1","code":"ZT80000000010","name":"临时商家","state":null,"updatetime":null,"updater":null,"founder":null,"foundtime":null},"time":1510129867924}
+
+2 录单字典-业务类型查询
+
+A10
+返回的状态：200
+测试结果：成功！！！  200
+返回的数据：{"success":true,"data":[{"code":"BSTE01","name":"灯具","serviceTypes":[{"code":"SETE02","name":"干+支"},{"code":"SETE01","name":"干+支+装"},{"code":"SETE04","name":"支+装"},{"code":"SETE03","name":"干"},{"code":"SETE10","name":"维修"},{"code":"SETE06","name":"装"},{"code":"SETE05","name":"支"}]},{"code":"BSTE02","name":"住宅家具（常规）","serviceTypes":[{"code":"SETE02","name":"干+支"},{"code":"SETE01","name":"干+支+装"},{"code":"SETE04","name":"支+装"},{"code":"SETE03","name":"干"},{"code":"SETE09","name":"支+搬楼"},{"code":"SETE06","name":"装"},{"code":"SETE05","name":"支"},{"code":"SETE08","name":"测量"},{"code":"SETE07","name":"干+支+装+搬楼"}]},{"code":"BSTE03","name":"地板","serviceTypes":[{"code":"SETE02","name":"干+支"},{"code":"SETE01","name":"干+支+装"},{"code":"SETE04","name":"支+装"},{"code":"SETE03","name":"干"},{"code":"SETE06","name":"装"},{"code":"SETE05","name":"支"}]}],"time":1510129867960}
+
+3 录单-固定费用项查询
+
+A10
+返回的状态：200
+测试结果：成功！！！  200
+返回的数据：{"success":true,"data":[{"servieTypeNo":"SETE01","costMap":[{"costName":"干线费","costNo":"FLTE01"},{"costName":"配送费","costNo":"FLTE02"},{"costName":"安装费","costNo":"FLTE03"},{"costName":"超区费","costNo":"FLTE04"},{"costName":"保价费","costNo":"FLTE05"}]},{"servieTypeNo":"SETE02","costMap":[{"costName":"配送费","costNo":"FLTE02"},{"costName":"干线费","costNo":"FLTE01"},{"costName":"超区费","costNo":"FLTE04"},{"costName":"保价费","costNo":"FLTE05"}]},{"servieTypeNo":"SETE03","costMap":[{"costName":"干线费","costNo":"FLTE01"},{"costName":"保价费","costNo":"FLTE05"}]},{"servieTypeNo":"SETE04","costMap":[{"costName":"配送费","costNo":"FLTE02"},{"costName":"安装费","costNo":"FLTE03"},{"costName":"超区费","costNo":"FLTE04"}]},{"servieTypeNo":"SETE05","costMap":[{"costName":"配送费","costNo":"FLTE02"},{"costName":"超区费","costNo":"FLTE04"}]},{"servieTypeNo":"SETE06","costMap":[{"costName":"安装费","costNo":"FLTE03"}]},{"servieTypeNo":"SETE07","costMap":[{"costName":"搬楼费","costNo":"FMFL03"},{"costName":"超区费","costNo":"FLTE04"},{"costName":"干线费","costNo":"FLTE01"},{"costName":"配送费","costNo":"FLTE02"},{"costName":"保价费","costNo":"FLTE05"},{"costName":"安装费","costNo":"FLTE03"}]},{"servieTypeNo":"SETE08","costMap":[{"costName":"测量费","costNo":"FMFL08"}]},{"servieTypeNo":"SETE09","costMap":[{"costName":"搬楼费","costNo":"FMFL03"},{"costName":"超区费","costNo":"FLTE04"},{"costName":"配送费","costNo":"FLTE02"}]},{"servieTypeNo":"SETE11","costMap":[{"costName":"搬楼费","costNo":"FMFL03"},{"costName":"超区费","costNo":"FLTE04"},{"costName":"干线费","costNo":"FLTE01"},{"costName":"配送费","costNo":"FLTE02"},{"costName":"保价费","costNo":"FLTE05"}]}],"time":1510129867998}
+
+4 录单-非固定费用项查询
+
+A10
+返回的状态：200
+测试结果：成功！！！  200
+返回的数据：{"success":true,"data":[{"servieTypeNo":"SETE01","costMap":[{"costName":"网点提货费","costNo":"FMFL01"},{"costName":"收货仓提货费","costNo":"FMFL07"},{"costName":"包装费","costNo":"FMFL11"},{"costName":"木架费","costNo":"FMFL04"},{"costName":"易碎品费","costNo":"FMFL15"},{"costName":"质保费","costNo":"FMFL06"}]},{"servieTypeNo":"SETE02","costMap":[{"costName":"网点提货费","costNo":"FMFL01"},{"costName":"质保费","costNo":"FMFL06"},{"costName":"收货仓提货费","costNo":"FMFL07"},{"costName":"包装费","costNo":"FMFL11"},{"costName":"木架费","costNo":"FMFL04"},{"costName":"易碎品费","costNo":"FMFL15"}]},{"servieTypeNo":"SETE03","costMap":[{"costName":"收货仓提货费","costNo":"FMFL07"},{"costName":"包装费","costNo":"FMFL11"},{"costName":"木架费","costNo":"FMFL04"},{"costName":"物流配送费","costNo":"FMFL24"},{"costName":"易碎品费","costNo":"FMFL15"},{"costName":"质保费","costNo":"FMFL06"}]},{"servieTypeNo":"SETE04","costMap":[{"costName":"网点提货费","costNo":"FMFL01"},{"costName":"质保费","costNo":"FMFL06"}]},{"servieTypeNo":"SETE05","costMap":[{"costName":"网点提货费","costNo":"FMFL01"},{"costName":"质保费","costNo":"FMFL06"}]},{"servieTypeNo":"SETE06","costMap":[{"costName":"上门服务费","costNo":"FMFL02"},{"costName":"质保费","costNo":"FMFL06"}]},{"servieTypeNo":"SETE07","costMap":[{"costName":"网点提货费","costNo":"FMFL01"},{"costName":"收货仓提货费","costNo":"FMFL07"},{"costName":"包装费","costNo":"FMFL11"},{"costName":"木架费","costNo":"FMFL04"},{"costName":"易碎品费","costNo":"FMFL15"}]},{"servieTypeNo":"SETE08","costMap":[{"costName":"上门服务费","costNo":"FMFL02"}]},{"servieTypeNo":"SETE09","costMap":[{"costName":"网点提货费","costNo":"FMFL01"}]},{"servieTypeNo":"SETE10","costMap":[{"costName":"上门服务费","costNo":"FMFL02"},{"costName":"维修费","costNo":"FLTE06"}]},{"servieTypeNo":"SETE11","costMap":[{"costName":"网点提货费","costNo":"FMFL01"},{"costName":"收货仓提货费","costNo":"FMFL07"},{"costName":"包装费","costNo":"FMFL11"},{"costName":"木架费","costNo":"FMFL04"},{"costName":"易碎品费","costNo":"FMFL15"}]},{"servieTypeNo":"SETE12","costMap":[{"costName":"网点提货费","costNo":"FMFL01"}]}],"time":1510129868025}
+
+SubTestCase Pass:
+test_addOrderSearch (testOrderManageSearch.TestOrderManageSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.5' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_addOrderSearch: 录单</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.5')" >
+        通过</a>
+
+    <div id='div_pt1.5' class="popup_window">
+        <pre>
+        pt1.5: 
+1 录单-结算主体查询
+
+A10
+返回的状态：200
+测试结果：成功！！！  200
+返回的数据：{"success":true,"data":{"id":"f59afde8-3e56-4607-8b4f-8fcbf04d1da1","code":"ZT80000000010","name":"临时商家","state":null,"updatetime":null,"updater":null,"founder":null,"foundtime":null},"time":1510129867924}
+
+2 录单字典-业务类型查询
+
+A10
+返回的状态：200
+测试结果：成功！！！  200
+返回的数据：{"success":true,"data":[{"code":"BSTE01","name":"灯具","serviceTypes":[{"code":"SETE02","name":"干+支"},{"code":"SETE01","name":"干+支+装"},{"code":"SETE04","name":"支+装"},{"code":"SETE03","name":"干"},{"code":"SETE10","name":"维修"},{"code":"SETE06","name":"装"},{"code":"SETE05","name":"支"}]},{"code":"BSTE02","name":"住宅家具（常规）","serviceTypes":[{"code":"SETE02","name":"干+支"},{"code":"SETE01","name":"干+支+装"},{"code":"SETE04","name":"支+装"},{"code":"SETE03","name":"干"},{"code":"SETE09","name":"支+搬楼"},{"code":"SETE06","name":"装"},{"code":"SETE05","name":"支"},{"code":"SETE08","name":"测量"},{"code":"SETE07","name":"干+支+装+搬楼"}]},{"code":"BSTE03","name":"地板","serviceTypes":[{"code":"SETE02","name":"干+支"},{"code":"SETE01","name":"干+支+装"},{"code":"SETE04","name":"支+装"},{"code":"SETE03","name":"干"},{"code":"SETE06","name":"装"},{"code":"SETE05","name":"支"}]}],"time":1510129867960}
+
+3 录单-固定费用项查询
+
+A10
+返回的状态：200
+测试结果：成功！！！  200
+返回的数据：{"success":true,"data":[{"servieTypeNo":"SETE01","costMap":[{"costName":"干线费","costNo":"FLTE01"},{"costName":"配送费","costNo":"FLTE02"},{"costName":"安装费","costNo":"FLTE03"},{"costName":"超区费","costNo":"FLTE04"},{"costName":"保价费","costNo":"FLTE05"}]},{"servieTypeNo":"SETE02","costMap":[{"costName":"配送费","costNo":"FLTE02"},{"costName":"干线费","costNo":"FLTE01"},{"costName":"超区费","costNo":"FLTE04"},{"costName":"保价费","costNo":"FLTE05"}]},{"servieTypeNo":"SETE03","costMap":[{"costName":"干线费","costNo":"FLTE01"},{"costName":"保价费","costNo":"FLTE05"}]},{"servieTypeNo":"SETE04","costMap":[{"costName":"配送费","costNo":"FLTE02"},{"costName":"安装费","costNo":"FLTE03"},{"costName":"超区费","costNo":"FLTE04"}]},{"servieTypeNo":"SETE05","costMap":[{"costName":"配送费","costNo":"FLTE02"},{"costName":"超区费","costNo":"FLTE04"}]},{"servieTypeNo":"SETE06","costMap":[{"costName":"安装费","costNo":"FLTE03"}]},{"servieTypeNo":"SETE07","costMap":[{"costName":"搬楼费","costNo":"FMFL03"},{"costName":"超区费","costNo":"FLTE04"},{"costName":"干线费","costNo":"FLTE01"},{"costName":"配送费","costNo":"FLTE02"},{"costName":"保价费","costNo":"FLTE05"},{"costName":"安装费","costNo":"FLTE03"}]},{"servieTypeNo":"SETE08","costMap":[{"costName":"测量费","costNo":"FMFL08"}]},{"servieTypeNo":"SETE09","costMap":[{"costName":"搬楼费","costNo":"FMFL03"},{"costName":"超区费","costNo":"FLTE04"},{"costName":"配送费","costNo":"FLTE02"}]},{"servieTypeNo":"SETE11","costMap":[{"costName":"搬楼费","costNo":"FMFL03"},{"costName":"超区费","costNo":"FLTE04"},{"costName":"干线费","costNo":"FLTE01"},{"costName":"配送费","costNo":"FLTE02"},{"costName":"保价费","costNo":"FLTE05"}]}],"time":1510129867998}
+
+4 录单-非固定费用项查询
+
+A10
+返回的状态：200
+测试结果：成功！！！  200
+返回的数据：{"success":true,"data":[{"servieTypeNo":"SETE01","costMap":[{"costName":"网点提货费","costNo":"FMFL01"},{"costName":"收货仓提货费","costNo":"FMFL07"},{"costName":"包装费","costNo":"FMFL11"},{"costName":"木架费","costNo":"FMFL04"},{"costName":"易碎品费","costNo":"FMFL15"},{"costName":"质保费","costNo":"FMFL06"}]},{"servieTypeNo":"SETE02","costMap":[{"costName":"网点提货费","costNo":"FMFL01"},{"costName":"质保费","costNo":"FMFL06"},{"costName":"收货仓提货费","costNo":"FMFL07"},{"costName":"包装费","costNo":"FMFL11"},{"costName":"木架费","costNo":"FMFL04"},{"costName":"易碎品费","costNo":"FMFL15"}]},{"servieTypeNo":"SETE03","costMap":[{"costName":"收货仓提货费","costNo":"FMFL07"},{"costName":"包装费","costNo":"FMFL11"},{"costName":"木架费","costNo":"FMFL04"},{"costName":"物流配送费","costNo":"FMFL24"},{"costName":"易碎品费","costNo":"FMFL15"},{"costName":"质保费","costNo":"FMFL06"}]},{"servieTypeNo":"SETE04","costMap":[{"costName":"网点提货费","costNo":"FMFL01"},{"costName":"质保费","costNo":"FMFL06"}]},{"servieTypeNo":"SETE05","costMap":[{"costName":"网点提货费","costNo":"FMFL01"},{"costName":"质保费","costNo":"FMFL06"}]},{"servieTypeNo":"SETE06","costMap":[{"costName":"上门服务费","costNo":"FMFL02"},{"costName":"质保费","costNo":"FMFL06"}]},{"servieTypeNo":"SETE07","costMap":[{"costName":"网点提货费","costNo":"FMFL01"},{"costName":"收货仓提货费","costNo":"FMFL07"},{"costName":"包装费","costNo":"FMFL11"},{"costName":"木架费","costNo":"FMFL04"},{"costName":"易碎品费","costNo":"FMFL15"}]},{"servieTypeNo":"SETE08","costMap":[{"costName":"上门服务费","costNo":"FMFL02"}]},{"servieTypeNo":"SETE09","costMap":[{"costName":"网点提货费","costNo":"FMFL01"}]},{"servieTypeNo":"SETE10","costMap":[{"costName":"上门服务费","costNo":"FMFL02"},{"costName":"维修费","costNo":"FLTE06"}]},{"servieTypeNo":"SETE11","costMap":[{"costName":"网点提货费","costNo":"FMFL01"},{"costName":"收货仓提货费","costNo":"FMFL07"},{"costName":"包装费","costNo":"FMFL11"},{"costName":"木架费","costNo":"FMFL04"},{"costName":"易碎品费","costNo":"FMFL15"}]},{"servieTypeNo":"SETE12","costMap":[{"costName":"网点提货费","costNo":"FMFL01"}]}],"time":1510129868025}
+
+SubTestCase Pass:
+test_addOrderSearch (testOrderManageSearch.TestOrderManageSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.6' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_addOrderSearch: 录单</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.6')" >
+        通过</a>
+
+    <div id='div_pt1.6' class="popup_window">
+        <pre>
+        pt1.6: 
+1 录单-结算主体查询
+
+A10
+返回的状态：200
+测试结果：成功！！！  200
+返回的数据：{"success":true,"data":{"id":"f59afde8-3e56-4607-8b4f-8fcbf04d1da1","code":"ZT80000000010","name":"临时商家","state":null,"updatetime":null,"updater":null,"founder":null,"foundtime":null},"time":1510129867924}
+
+2 录单字典-业务类型查询
+
+A10
+返回的状态：200
+测试结果：成功！！！  200
+返回的数据：{"success":true,"data":[{"code":"BSTE01","name":"灯具","serviceTypes":[{"code":"SETE02","name":"干+支"},{"code":"SETE01","name":"干+支+装"},{"code":"SETE04","name":"支+装"},{"code":"SETE03","name":"干"},{"code":"SETE10","name":"维修"},{"code":"SETE06","name":"装"},{"code":"SETE05","name":"支"}]},{"code":"BSTE02","name":"住宅家具（常规）","serviceTypes":[{"code":"SETE02","name":"干+支"},{"code":"SETE01","name":"干+支+装"},{"code":"SETE04","name":"支+装"},{"code":"SETE03","name":"干"},{"code":"SETE09","name":"支+搬楼"},{"code":"SETE06","name":"装"},{"code":"SETE05","name":"支"},{"code":"SETE08","name":"测量"},{"code":"SETE07","name":"干+支+装+搬楼"}]},{"code":"BSTE03","name":"地板","serviceTypes":[{"code":"SETE02","name":"干+支"},{"code":"SETE01","name":"干+支+装"},{"code":"SETE04","name":"支+装"},{"code":"SETE03","name":"干"},{"code":"SETE06","name":"装"},{"code":"SETE05","name":"支"}]}],"time":1510129867960}
+
+3 录单-固定费用项查询
+
+A10
+返回的状态：200
+测试结果：成功！！！  200
+返回的数据：{"success":true,"data":[{"servieTypeNo":"SETE01","costMap":[{"costName":"干线费","costNo":"FLTE01"},{"costName":"配送费","costNo":"FLTE02"},{"costName":"安装费","costNo":"FLTE03"},{"costName":"超区费","costNo":"FLTE04"},{"costName":"保价费","costNo":"FLTE05"}]},{"servieTypeNo":"SETE02","costMap":[{"costName":"配送费","costNo":"FLTE02"},{"costName":"干线费","costNo":"FLTE01"},{"costName":"超区费","costNo":"FLTE04"},{"costName":"保价费","costNo":"FLTE05"}]},{"servieTypeNo":"SETE03","costMap":[{"costName":"干线费","costNo":"FLTE01"},{"costName":"保价费","costNo":"FLTE05"}]},{"servieTypeNo":"SETE04","costMap":[{"costName":"配送费","costNo":"FLTE02"},{"costName":"安装费","costNo":"FLTE03"},{"costName":"超区费","costNo":"FLTE04"}]},{"servieTypeNo":"SETE05","costMap":[{"costName":"配送费","costNo":"FLTE02"},{"costName":"超区费","costNo":"FLTE04"}]},{"servieTypeNo":"SETE06","costMap":[{"costName":"安装费","costNo":"FLTE03"}]},{"servieTypeNo":"SETE07","costMap":[{"costName":"搬楼费","costNo":"FMFL03"},{"costName":"超区费","costNo":"FLTE04"},{"costName":"干线费","costNo":"FLTE01"},{"costName":"配送费","costNo":"FLTE02"},{"costName":"保价费","costNo":"FLTE05"},{"costName":"安装费","costNo":"FLTE03"}]},{"servieTypeNo":"SETE08","costMap":[{"costName":"测量费","costNo":"FMFL08"}]},{"servieTypeNo":"SETE09","costMap":[{"costName":"搬楼费","costNo":"FMFL03"},{"costName":"超区费","costNo":"FLTE04"},{"costName":"配送费","costNo":"FLTE02"}]},{"servieTypeNo":"SETE11","costMap":[{"costName":"搬楼费","costNo":"FMFL03"},{"costName":"超区费","costNo":"FLTE04"},{"costName":"干线费","costNo":"FLTE01"},{"costName":"配送费","costNo":"FLTE02"},{"costName":"保价费","costNo":"FLTE05"}]}],"time":1510129867998}
+
+4 录单-非固定费用项查询
+
+A10
+返回的状态：200
+测试结果：成功！！！  200
+返回的数据：{"success":true,"data":[{"servieTypeNo":"SETE01","costMap":[{"costName":"网点提货费","costNo":"FMFL01"},{"costName":"收货仓提货费","costNo":"FMFL07"},{"costName":"包装费","costNo":"FMFL11"},{"costName":"木架费","costNo":"FMFL04"},{"costName":"易碎品费","costNo":"FMFL15"},{"costName":"质保费","costNo":"FMFL06"}]},{"servieTypeNo":"SETE02","costMap":[{"costName":"网点提货费","costNo":"FMFL01"},{"costName":"质保费","costNo":"FMFL06"},{"costName":"收货仓提货费","costNo":"FMFL07"},{"costName":"包装费","costNo":"FMFL11"},{"costName":"木架费","costNo":"FMFL04"},{"costName":"易碎品费","costNo":"FMFL15"}]},{"servieTypeNo":"SETE03","costMap":[{"costName":"收货仓提货费","costNo":"FMFL07"},{"costName":"包装费","costNo":"FMFL11"},{"costName":"木架费","costNo":"FMFL04"},{"costName":"物流配送费","costNo":"FMFL24"},{"costName":"易碎品费","costNo":"FMFL15"},{"costName":"质保费","costNo":"FMFL06"}]},{"servieTypeNo":"SETE04","costMap":[{"costName":"网点提货费","costNo":"FMFL01"},{"costName":"质保费","costNo":"FMFL06"}]},{"servieTypeNo":"SETE05","costMap":[{"costName":"网点提货费","costNo":"FMFL01"},{"costName":"质保费","costNo":"FMFL06"}]},{"servieTypeNo":"SETE06","costMap":[{"costName":"上门服务费","costNo":"FMFL02"},{"costName":"质保费","costNo":"FMFL06"}]},{"servieTypeNo":"SETE07","costMap":[{"costName":"网点提货费","costNo":"FMFL01"},{"costName":"收货仓提货费","costNo":"FMFL07"},{"costName":"包装费","costNo":"FMFL11"},{"costName":"木架费","costNo":"FMFL04"},{"costName":"易碎品费","costNo":"FMFL15"}]},{"servieTypeNo":"SETE08","costMap":[{"costName":"上门服务费","costNo":"FMFL02"}]},{"servieTypeNo":"SETE09","costMap":[{"costName":"网点提货费","costNo":"FMFL01"}]},{"servieTypeNo":"SETE10","costMap":[{"costName":"上门服务费","costNo":"FMFL02"},{"costName":"维修费","costNo":"FLTE06"}]},{"servieTypeNo":"SETE11","costMap":[{"costName":"网点提货费","costNo":"FMFL01"},{"costName":"收货仓提货费","costNo":"FMFL07"},{"costName":"包装费","costNo":"FMFL11"},{"costName":"木架费","costNo":"FMFL04"},{"costName":"易碎品费","costNo":"FMFL15"}]},{"servieTypeNo":"SETE12","costMap":[{"costName":"网点提货费","costNo":"FMFL01"}]}],"time":1510129868025}
+
+SubTestCase Pass:
+test_addOrderSearch (testOrderManageSearch.TestOrderManageSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft1.7' class='none'>
+    <td class='failCase'><div class='testcase'>test_allOrderSearch: 订单查询</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.7')" >
+        失败</a>
+
+    <div id='div_ft1.7' class="popup_window">
+        <pre>
+        ft1.7: 
+1 订单查询
+
+A11
+返回的状态：200
+测试结果：失败！！！  200
+返回的数据：{"success":false,"error_message":"系统错误"}
+
+2 订单详情-基础信息
+
+A10
+返回的状态：200
+测试结果：成功！！！  200
+返回的数据：{"success":true,"data":{"orderData":{"id":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","orderNo":"TDS01441709194500517","pOrderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","province":"广西壮族自治区","provinceNo":"450000","city":"南宁市","cityNo":"450100","district":"西乡塘区","districtNo":"450107","street":"其它","streetNo":"4501070000","consigneeName":"农兴旺","consigneePhone":"18978101898","consigneeAddress":"西宁路龙光君悦华庭","floor":null,"isElevator":1,"merchant":"伊菲雅家具","merchantId":"8a1126c4-421b-11e7-b3cd-0050569f7b0c","clearingSubject":"伊菲雅家具有限公司","warehouse":"智慧物流园","warehouseId":"dda06256-4206-11e7-b3cd-0050569f7b0c","branchId":"2bc0429c-41e3-11e7-97d1-0242ac120021","branch":"南宁市网点DYSS","business":"住宅家具（常规）","service":"干+支+装","businessNo":"BSTE02","serviceNo":"SETE01","clearingTypeNo":"ZQ","clearingType":null,"deliveryContacts":null,"deliveryPhone":"0771 3120599","deliveryAddress":"广西壮族自治区南宁市青秀区","deliveryMemo":null,"totalWeight":0.0,"totalVolume":0.4,"totalBalse":4,"trunkId":"b96a0f39-420c-11e7-b3cd-0050569f7b0c","trunkName":"佛山市红运物流有限公司","trunkArrivePhone":null,"trunkOrderNo":"1","orderState":"750","abnormalState":null,"state":1,"orderType":"ORTE01","arriveSign":null,"orderSign":"","isVerify":1,"orderSource":"ORSE01","sendPiecesDistance":null,"memo":null,"inputType":null,"outOrderNo":"","sendDistance":9.0,"superAreaDistance":0.0,"superAreaMemo":null,"merchantDeliveryId":null,"branchMemo":"","cargoPrice":1.0,"founder":"06fd36f7-45f1-11e7-9e18-0242ac120013","foundtime":1505824885000,"updater":"02b6d92f-0969-491b-b50d-bad20a6e5449","updatetime":1506226584000,"isLightHeavy":1,"supportValue":1.0,"clearingCycle":"十天结","payType":null,"merchantOrder":"","clearingCycleNo":"ZQ02","payTypeNo":"","boolTurnOrder":null,"totalFee":200.0,"lineNo":"Gx20170627029984","handleServiceId":null,"clearingModeNo":"","clearingMode":null,"buttJointSource":null,"abnormalType":null,"abnormalSerialNo":null,"payLogistics":"","transportType":"YSFS02"},"doorName":null,"doorPhone":null,"doorAddress":null,"deliveryTime":1506153166000,"deliveryFounder":"林应辉","changeList":null,"pickUpContacts":null,"orderVerifiys":null,"merchantInfo":null,"tempMerchantBean":null,"isTemp":null,"orderGoodss":null,"orderCosts":null},"time":1510129868118}
+
+3 订单详情-核销信息
+
+A10
+返回的状态：200
+测试结果：成功！！！  200
+返回的数据：{"success":true,"data":[{"id":"215d4d2d-f33d-4f6a-8fb1-b6c0a8ff6da0","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","tradeCode":"56063218020075829","source":null,"operator":null,"verifyType":null,"state":1,"failureCause":null,"error":null,"founder":null,"foundTime":null,"serviceNo":"13","updater":null,"updatetime":null}],"time":1510129868140}
+
+4 订单详情-产品信息
+
+A10
+返回的状态：200
+测试结果：成功！！！  200
+返回的数据：{"success":true,"data":[{"id":"ee3d841e-092b-494b-88e2-967bf65abc0c","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","bigClassNo":"J01","middleClassNo":"J0109","smallClassNo":"J010901","goodsNo":"J010901","bigClass":"柜类","middleClass":"间厅柜","smallClass":"(宽度≤1.5m)","name":"间厅柜(宽度≤1.5m)","num":1,"balse":4,"volume":null,"memo":"","state":1,"founder":null,"foundtime":1505824885000,"updater":null,"updatetime":null,"installFee":140.0,"picture":null}],"time":1510129868164}
+
+5 订单详情-费用信息
+
+A10
+返回的状态：200
+测试结果：成功！！！  200
+返回的数据：{"success":true,"data":[{"id":"1d7239cb-9623-4420-9902-94975cd39769","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","costName":null,"money":10.0,"voucherNo":null,"memo":"","costNo":"FLTE05","clearingState":"2","state":null,"recountMoney":10.0,"founder":null,"foundtime":1505824885000,"updater":null,"updatetime":null},{"id":"2d443036-178d-4b57-bb4d-8ffaf2c5d0b8","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","costName":null,"money":140.0,"voucherNo":null,"memo":"","costNo":"FLTE03","clearingState":"1","state":null,"recountMoney":50.0,"founder":null,"foundtime":1505824885000,"updater":null,"updatetime":null},{"id":"5daba38b-f288-432b-a3b6-e8c1b4b794b1","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","costName":null,"money":50.0,"voucherNo":null,"memo":"","costNo":"FLTE02","clearingState":"1","state":null,"recountMoney":70.0,"founder":null,"foundtime":1505824885000,"updater":null,"updatetime":null},{"id":"8cad76d6-9711-49c7-a3fe-13c015e7792f","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","costName":null,"money":70.0,"voucherNo":null,"memo":"","costNo":"FLTE01","clearingState":"1","state":null,"recountMoney":70.0,"founder":null,"foundtime":1505824885000,"updater":null,"updatetime":null}],"time":1510129868409}
+
+6 订单详情-预约信息
+
+A10
+返回的状态：200
+测试结果：成功！！！  200
+返回的数据：{"success":true,"data":[{"id":"180f721b-25df-4b34-b9ec-47697b06887f","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","serviceMode":"CZSETE01","arrangedStartTime":1506229200000,"arrangedEndTime":1506243600000,"cause":null,"memo":"","remind":null,"founder":"于莎莎","foundtime":1506180583000,"state":1,"ifPieOrder":1}],"time":1510129868439}
+
+7 订单详情-节点信息
+
+A10
+返回的状态：200
+测试结果：成功！！！  200
+返回的数据：{"success":true,"data":[{"id":"02a68ddc-b440-416f-b2f2-419441389df5","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","status":"800","opTime":1506226658000,"forecastTime":null,"memo":"评价","position":"师傅","department":"末端服务商","founder":"02b6d92f-0969-491b-b50d-bad20a6e5449","foundtime":1506226658000,"opType":"评价","clientType":"app","founderName":"梁修武"},{"id":"41f715ce-c26f-481f-ae1c-138cdadaa48e","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","status":"750","opTime":1506226657000,"forecastTime":null,"memo":"货物已完成服务并签收，签收人：农兴旺，感谢您对居家通专业家居服务的信任，如对订单有任何疑问欢迎致电4000285980，居家通将竭诚为您服务","position":"师傅","department":"末端服务商","founder":"02b6d92f-0969-491b-b50d-bad20a6e5449","foundtime":1506226657000,"opType":"一体签收","clientType":"app","founderName":"梁修武"},{"id":"1e6b5024-04d1-464d-93a9-f810a7c1dafe","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","status":"700","opTime":1506214239000,"forecastTime":null,"memo":"南宁市网点DYSS:梁修武0771-2356198/18076639575已到达用户处，正在服务","position":"师傅","department":"末端服务商","founder":"02b6d92f-0969-491b-b50d-bad20a6e5449","foundtime":1506214239000,"opType":"一体上门","clientType":"app","founderName":"梁修武"},{"id":"10862ea6-9661-412b-bb0d-138d64da2e37","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","status":"600","opTime":1506214234000,"forecastTime":null,"memo":"货物已到达南宁市网点DYSS","position":"师傅","department":"末端服务商","founder":"02b6d92f-0969-491b-b50d-bad20a6e5449","foundtime":1506214234000,"opType":"提货","clientType":"app","founderName":"梁修武"},{"id":"911fb393-5692-44a3-a57c-8bad5af8ae2b","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","status":"570","opTime":1506180583000,"forecastTime":null,"memo":"南宁市网点DYSS:梁修武0771-2356198/18076639575已出发，即将上门服务","position":"师傅","department":"末端服务商","founder":"064cd258-451c-11e7-b3cd-0050569f7b0c","foundtime":1506180593000,"opType":"配装出发","clientType":"app","founderName":"于莎莎"},{"id":"a90756d7-7a59-48a4-bf01-64e2ac6c5709","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","status":"04","opTime":1506180583000,"forecastTime":null,"memo":"南宁市网点DYSS已派单，梁修武0771-2356198/18076639575即将上门服务","position":"师傅","department":"末端服务商","founder":"064cd258-451c-11e7-b3cd-0050569f7b0c","foundtime":1506180588000,"opType":"派单一体","clientType":"app","founderName":"于莎莎"},{"id":"2afc278a-4e52-4c08-b3e2-70e52e8a9524","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","status":"01","opTime":1506180583000,"forecastTime":null,"memo":"南宁市网点DYSS已联系用户预约，上门服务时间：2017-09-24下午13:00-17:00，咨询电话：0771-2356198/18076639575","position":"师傅","department":"末端服务商","founder":"064cd258-451c-11e7-b3cd-0050569f7b0c","foundtime":1506180583000,"opType":"预约","clientType":"app","founderName":"于莎莎"},{"id":"264459fc-e598-4197-84e2-ce1dc7a7ed67","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","status":"550","opTime":1506153166000,"forecastTime":null,"memo":"货物已到达南宁市西乡塘区，正在发往南宁市网点DYSS","position":null,"department":null,"founder":"07140d3e-45f1-11e7-9e18-0242ac120013","foundtime":1506153166000,"opType":"到件","clientType":"pc","founderName":"林应辉"},{"id":"ca00b18e-05bd-4a20-9367-2d631b9c5e75","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","status":"200","opTime":1505899107000,"forecastTime":null,"memo":"居家通智慧物流园已出库，正在发往广西壮族自治区南宁市西乡塘区","position":null,"department":null,"founder":"073267e5-45f1-11e7-9e18-0242ac120013","foundtime":1505899107000,"opType":"出库","clientType":"pc","founderName":"向文平"},{"id":"aaebe2fc-37a3-479f-89d9-01c2b9e0581f","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","status":"150","opTime":1505892795000,"forecastTime":null,"memo":"居家通智慧物流园已入库","position":null,"department":null,"founder":"073267e5-45f1-11e7-9e18-0242ac120013","foundtime":1505892795000,"opType":"入库","clientType":"pc","founderName":"向文平"},{"id":"dbce7edc-9967-4b1b-9d97-6d0ceda9f9fd","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","status":"100","opTime":1505824886000,"forecastTime":null,"memo":"居家通专业家居服务已揽收，等待验货入库","position":null,"department":null,"founder":"06fd36f7-45f1-11e7-9e18-0242ac120013","foundtime":1505824886000,"opType":"录单","clientType":"pc","founderName":"龚恩"}],"time":1510129868462}
+
+8 订单详情-签收信息
+
+A10
+返回的状态：200
+测试结果：成功！！！  200
+返回的数据：{"success":true,"data":[{"id":"47944237-7dd8-40ba-a80a-5d393fdfbc68","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","imgFinished":"59c731d97353b40007b15641,59c731da7353b40007b15644,","imgSign":"59c731e07353b40007b1564c,59c731e07353b40007b15649,","founder":"梁修武","foundtime":1506226657000,"serviceTypeCode":"CZSETE01","memo":""}],"time":1510129868489}
+
+SubTestCase Failed:
+test_allOrderSearch (testOrderManageSearch.TestOrderManageSearch) (data='fail')Traceback (most recent call last):
+  File "/Users/snolia/PycharmProjects/SCM3.0/AthenaTest/common/loadDatas.py", line 52, in loadDatas
+    self.assertEqual(result, "pass")
+AssertionError: 'fail' != 'pass'
+- fail
++ pass
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.8' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_allOrderSearch: 订单查询</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.8')" >
+        通过</a>
+
+    <div id='div_pt1.8' class="popup_window">
+        <pre>
+        pt1.8: 
+1 订单查询
+
+A11
+返回的状态：200
+测试结果：失败！！！  200
+返回的数据：{"success":false,"error_message":"系统错误"}
+
+2 订单详情-基础信息
+
+A10
+返回的状态：200
+测试结果：成功！！！  200
+返回的数据：{"success":true,"data":{"orderData":{"id":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","orderNo":"TDS01441709194500517","pOrderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","province":"广西壮族自治区","provinceNo":"450000","city":"南宁市","cityNo":"450100","district":"西乡塘区","districtNo":"450107","street":"其它","streetNo":"4501070000","consigneeName":"农兴旺","consigneePhone":"18978101898","consigneeAddress":"西宁路龙光君悦华庭","floor":null,"isElevator":1,"merchant":"伊菲雅家具","merchantId":"8a1126c4-421b-11e7-b3cd-0050569f7b0c","clearingSubject":"伊菲雅家具有限公司","warehouse":"智慧物流园","warehouseId":"dda06256-4206-11e7-b3cd-0050569f7b0c","branchId":"2bc0429c-41e3-11e7-97d1-0242ac120021","branch":"南宁市网点DYSS","business":"住宅家具（常规）","service":"干+支+装","businessNo":"BSTE02","serviceNo":"SETE01","clearingTypeNo":"ZQ","clearingType":null,"deliveryContacts":null,"deliveryPhone":"0771 3120599","deliveryAddress":"广西壮族自治区南宁市青秀区","deliveryMemo":null,"totalWeight":0.0,"totalVolume":0.4,"totalBalse":4,"trunkId":"b96a0f39-420c-11e7-b3cd-0050569f7b0c","trunkName":"佛山市红运物流有限公司","trunkArrivePhone":null,"trunkOrderNo":"1","orderState":"750","abnormalState":null,"state":1,"orderType":"ORTE01","arriveSign":null,"orderSign":"","isVerify":1,"orderSource":"ORSE01","sendPiecesDistance":null,"memo":null,"inputType":null,"outOrderNo":"","sendDistance":9.0,"superAreaDistance":0.0,"superAreaMemo":null,"merchantDeliveryId":null,"branchMemo":"","cargoPrice":1.0,"founder":"06fd36f7-45f1-11e7-9e18-0242ac120013","foundtime":1505824885000,"updater":"02b6d92f-0969-491b-b50d-bad20a6e5449","updatetime":1506226584000,"isLightHeavy":1,"supportValue":1.0,"clearingCycle":"十天结","payType":null,"merchantOrder":"","clearingCycleNo":"ZQ02","payTypeNo":"","boolTurnOrder":null,"totalFee":200.0,"lineNo":"Gx20170627029984","handleServiceId":null,"clearingModeNo":"","clearingMode":null,"buttJointSource":null,"abnormalType":null,"abnormalSerialNo":null,"payLogistics":"","transportType":"YSFS02"},"doorName":null,"doorPhone":null,"doorAddress":null,"deliveryTime":1506153166000,"deliveryFounder":"林应辉","changeList":null,"pickUpContacts":null,"orderVerifiys":null,"merchantInfo":null,"tempMerchantBean":null,"isTemp":null,"orderGoodss":null,"orderCosts":null},"time":1510129868118}
+
+3 订单详情-核销信息
+
+A10
+返回的状态：200
+测试结果：成功！！！  200
+返回的数据：{"success":true,"data":[{"id":"215d4d2d-f33d-4f6a-8fb1-b6c0a8ff6da0","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","tradeCode":"56063218020075829","source":null,"operator":null,"verifyType":null,"state":1,"failureCause":null,"error":null,"founder":null,"foundTime":null,"serviceNo":"13","updater":null,"updatetime":null}],"time":1510129868140}
+
+4 订单详情-产品信息
+
+A10
+返回的状态：200
+测试结果：成功！！！  200
+返回的数据：{"success":true,"data":[{"id":"ee3d841e-092b-494b-88e2-967bf65abc0c","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","bigClassNo":"J01","middleClassNo":"J0109","smallClassNo":"J010901","goodsNo":"J010901","bigClass":"柜类","middleClass":"间厅柜","smallClass":"(宽度≤1.5m)","name":"间厅柜(宽度≤1.5m)","num":1,"balse":4,"volume":null,"memo":"","state":1,"founder":null,"foundtime":1505824885000,"updater":null,"updatetime":null,"installFee":140.0,"picture":null}],"time":1510129868164}
+
+5 订单详情-费用信息
+
+A10
+返回的状态：200
+测试结果：成功！！！  200
+返回的数据：{"success":true,"data":[{"id":"1d7239cb-9623-4420-9902-94975cd39769","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","costName":null,"money":10.0,"voucherNo":null,"memo":"","costNo":"FLTE05","clearingState":"2","state":null,"recountMoney":10.0,"founder":null,"foundtime":1505824885000,"updater":null,"updatetime":null},{"id":"2d443036-178d-4b57-bb4d-8ffaf2c5d0b8","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","costName":null,"money":140.0,"voucherNo":null,"memo":"","costNo":"FLTE03","clearingState":"1","state":null,"recountMoney":50.0,"founder":null,"foundtime":1505824885000,"updater":null,"updatetime":null},{"id":"5daba38b-f288-432b-a3b6-e8c1b4b794b1","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","costName":null,"money":50.0,"voucherNo":null,"memo":"","costNo":"FLTE02","clearingState":"1","state":null,"recountMoney":70.0,"founder":null,"foundtime":1505824885000,"updater":null,"updatetime":null},{"id":"8cad76d6-9711-49c7-a3fe-13c015e7792f","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","costName":null,"money":70.0,"voucherNo":null,"memo":"","costNo":"FLTE01","clearingState":"1","state":null,"recountMoney":70.0,"founder":null,"foundtime":1505824885000,"updater":null,"updatetime":null}],"time":1510129868409}
+
+6 订单详情-预约信息
+
+A10
+返回的状态：200
+测试结果：成功！！！  200
+返回的数据：{"success":true,"data":[{"id":"180f721b-25df-4b34-b9ec-47697b06887f","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","serviceMode":"CZSETE01","arrangedStartTime":1506229200000,"arrangedEndTime":1506243600000,"cause":null,"memo":"","remind":null,"founder":"于莎莎","foundtime":1506180583000,"state":1,"ifPieOrder":1}],"time":1510129868439}
+
+7 订单详情-节点信息
+
+A10
+返回的状态：200
+测试结果：成功！！！  200
+返回的数据：{"success":true,"data":[{"id":"02a68ddc-b440-416f-b2f2-419441389df5","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","status":"800","opTime":1506226658000,"forecastTime":null,"memo":"评价","position":"师傅","department":"末端服务商","founder":"02b6d92f-0969-491b-b50d-bad20a6e5449","foundtime":1506226658000,"opType":"评价","clientType":"app","founderName":"梁修武"},{"id":"41f715ce-c26f-481f-ae1c-138cdadaa48e","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","status":"750","opTime":1506226657000,"forecastTime":null,"memo":"货物已完成服务并签收，签收人：农兴旺，感谢您对居家通专业家居服务的信任，如对订单有任何疑问欢迎致电4000285980，居家通将竭诚为您服务","position":"师傅","department":"末端服务商","founder":"02b6d92f-0969-491b-b50d-bad20a6e5449","foundtime":1506226657000,"opType":"一体签收","clientType":"app","founderName":"梁修武"},{"id":"1e6b5024-04d1-464d-93a9-f810a7c1dafe","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","status":"700","opTime":1506214239000,"forecastTime":null,"memo":"南宁市网点DYSS:梁修武0771-2356198/18076639575已到达用户处，正在服务","position":"师傅","department":"末端服务商","founder":"02b6d92f-0969-491b-b50d-bad20a6e5449","foundtime":1506214239000,"opType":"一体上门","clientType":"app","founderName":"梁修武"},{"id":"10862ea6-9661-412b-bb0d-138d64da2e37","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","status":"600","opTime":1506214234000,"forecastTime":null,"memo":"货物已到达南宁市网点DYSS","position":"师傅","department":"末端服务商","founder":"02b6d92f-0969-491b-b50d-bad20a6e5449","foundtime":1506214234000,"opType":"提货","clientType":"app","founderName":"梁修武"},{"id":"911fb393-5692-44a3-a57c-8bad5af8ae2b","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","status":"570","opTime":1506180583000,"forecastTime":null,"memo":"南宁市网点DYSS:梁修武0771-2356198/18076639575已出发，即将上门服务","position":"师傅","department":"末端服务商","founder":"064cd258-451c-11e7-b3cd-0050569f7b0c","foundtime":1506180593000,"opType":"配装出发","clientType":"app","founderName":"于莎莎"},{"id":"a90756d7-7a59-48a4-bf01-64e2ac6c5709","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","status":"04","opTime":1506180583000,"forecastTime":null,"memo":"南宁市网点DYSS已派单，梁修武0771-2356198/18076639575即将上门服务","position":"师傅","department":"末端服务商","founder":"064cd258-451c-11e7-b3cd-0050569f7b0c","foundtime":1506180588000,"opType":"派单一体","clientType":"app","founderName":"于莎莎"},{"id":"2afc278a-4e52-4c08-b3e2-70e52e8a9524","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","status":"01","opTime":1506180583000,"forecastTime":null,"memo":"南宁市网点DYSS已联系用户预约，上门服务时间：2017-09-24下午13:00-17:00，咨询电话：0771-2356198/18076639575","position":"师傅","department":"末端服务商","founder":"064cd258-451c-11e7-b3cd-0050569f7b0c","foundtime":1506180583000,"opType":"预约","clientType":"app","founderName":"于莎莎"},{"id":"264459fc-e598-4197-84e2-ce1dc7a7ed67","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","status":"550","opTime":1506153166000,"forecastTime":null,"memo":"货物已到达南宁市西乡塘区，正在发往南宁市网点DYSS","position":null,"department":null,"founder":"07140d3e-45f1-11e7-9e18-0242ac120013","foundtime":1506153166000,"opType":"到件","clientType":"pc","founderName":"林应辉"},{"id":"ca00b18e-05bd-4a20-9367-2d631b9c5e75","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","status":"200","opTime":1505899107000,"forecastTime":null,"memo":"居家通智慧物流园已出库，正在发往广西壮族自治区南宁市西乡塘区","position":null,"department":null,"founder":"073267e5-45f1-11e7-9e18-0242ac120013","foundtime":1505899107000,"opType":"出库","clientType":"pc","founderName":"向文平"},{"id":"aaebe2fc-37a3-479f-89d9-01c2b9e0581f","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","status":"150","opTime":1505892795000,"forecastTime":null,"memo":"居家通智慧物流园已入库","position":null,"department":null,"founder":"073267e5-45f1-11e7-9e18-0242ac120013","foundtime":1505892795000,"opType":"入库","clientType":"pc","founderName":"向文平"},{"id":"dbce7edc-9967-4b1b-9d97-6d0ceda9f9fd","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","status":"100","opTime":1505824886000,"forecastTime":null,"memo":"居家通专业家居服务已揽收，等待验货入库","position":null,"department":null,"founder":"06fd36f7-45f1-11e7-9e18-0242ac120013","foundtime":1505824886000,"opType":"录单","clientType":"pc","founderName":"龚恩"}],"time":1510129868462}
+
+8 订单详情-签收信息
+
+A10
+返回的状态：200
+测试结果：成功！！！  200
+返回的数据：{"success":true,"data":[{"id":"47944237-7dd8-40ba-a80a-5d393fdfbc68","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","imgFinished":"59c731d97353b40007b15641,59c731da7353b40007b15644,","imgSign":"59c731e07353b40007b1564c,59c731e07353b40007b15649,","founder":"梁修武","foundtime":1506226657000,"serviceTypeCode":"CZSETE01","memo":""}],"time":1510129868489}
+
+SubTestCase Pass:
+test_allOrderSearch (testOrderManageSearch.TestOrderManageSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.9' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_allOrderSearch: 订单查询</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.9')" >
+        通过</a>
+
+    <div id='div_pt1.9' class="popup_window">
+        <pre>
+        pt1.9: 
+1 订单查询
+
+A11
+返回的状态：200
+测试结果：失败！！！  200
+返回的数据：{"success":false,"error_message":"系统错误"}
+
+2 订单详情-基础信息
+
+A10
+返回的状态：200
+测试结果：成功！！！  200
+返回的数据：{"success":true,"data":{"orderData":{"id":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","orderNo":"TDS01441709194500517","pOrderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","province":"广西壮族自治区","provinceNo":"450000","city":"南宁市","cityNo":"450100","district":"西乡塘区","districtNo":"450107","street":"其它","streetNo":"4501070000","consigneeName":"农兴旺","consigneePhone":"18978101898","consigneeAddress":"西宁路龙光君悦华庭","floor":null,"isElevator":1,"merchant":"伊菲雅家具","merchantId":"8a1126c4-421b-11e7-b3cd-0050569f7b0c","clearingSubject":"伊菲雅家具有限公司","warehouse":"智慧物流园","warehouseId":"dda06256-4206-11e7-b3cd-0050569f7b0c","branchId":"2bc0429c-41e3-11e7-97d1-0242ac120021","branch":"南宁市网点DYSS","business":"住宅家具（常规）","service":"干+支+装","businessNo":"BSTE02","serviceNo":"SETE01","clearingTypeNo":"ZQ","clearingType":null,"deliveryContacts":null,"deliveryPhone":"0771 3120599","deliveryAddress":"广西壮族自治区南宁市青秀区","deliveryMemo":null,"totalWeight":0.0,"totalVolume":0.4,"totalBalse":4,"trunkId":"b96a0f39-420c-11e7-b3cd-0050569f7b0c","trunkName":"佛山市红运物流有限公司","trunkArrivePhone":null,"trunkOrderNo":"1","orderState":"750","abnormalState":null,"state":1,"orderType":"ORTE01","arriveSign":null,"orderSign":"","isVerify":1,"orderSource":"ORSE01","sendPiecesDistance":null,"memo":null,"inputType":null,"outOrderNo":"","sendDistance":9.0,"superAreaDistance":0.0,"superAreaMemo":null,"merchantDeliveryId":null,"branchMemo":"","cargoPrice":1.0,"founder":"06fd36f7-45f1-11e7-9e18-0242ac120013","foundtime":1505824885000,"updater":"02b6d92f-0969-491b-b50d-bad20a6e5449","updatetime":1506226584000,"isLightHeavy":1,"supportValue":1.0,"clearingCycle":"十天结","payType":null,"merchantOrder":"","clearingCycleNo":"ZQ02","payTypeNo":"","boolTurnOrder":null,"totalFee":200.0,"lineNo":"Gx20170627029984","handleServiceId":null,"clearingModeNo":"","clearingMode":null,"buttJointSource":null,"abnormalType":null,"abnormalSerialNo":null,"payLogistics":"","transportType":"YSFS02"},"doorName":null,"doorPhone":null,"doorAddress":null,"deliveryTime":1506153166000,"deliveryFounder":"林应辉","changeList":null,"pickUpContacts":null,"orderVerifiys":null,"merchantInfo":null,"tempMerchantBean":null,"isTemp":null,"orderGoodss":null,"orderCosts":null},"time":1510129868118}
+
+3 订单详情-核销信息
+
+A10
+返回的状态：200
+测试结果：成功！！！  200
+返回的数据：{"success":true,"data":[{"id":"215d4d2d-f33d-4f6a-8fb1-b6c0a8ff6da0","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","tradeCode":"56063218020075829","source":null,"operator":null,"verifyType":null,"state":1,"failureCause":null,"error":null,"founder":null,"foundTime":null,"serviceNo":"13","updater":null,"updatetime":null}],"time":1510129868140}
+
+4 订单详情-产品信息
+
+A10
+返回的状态：200
+测试结果：成功！！！  200
+返回的数据：{"success":true,"data":[{"id":"ee3d841e-092b-494b-88e2-967bf65abc0c","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","bigClassNo":"J01","middleClassNo":"J0109","smallClassNo":"J010901","goodsNo":"J010901","bigClass":"柜类","middleClass":"间厅柜","smallClass":"(宽度≤1.5m)","name":"间厅柜(宽度≤1.5m)","num":1,"balse":4,"volume":null,"memo":"","state":1,"founder":null,"foundtime":1505824885000,"updater":null,"updatetime":null,"installFee":140.0,"picture":null}],"time":1510129868164}
+
+5 订单详情-费用信息
+
+A10
+返回的状态：200
+测试结果：成功！！！  200
+返回的数据：{"success":true,"data":[{"id":"1d7239cb-9623-4420-9902-94975cd39769","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","costName":null,"money":10.0,"voucherNo":null,"memo":"","costNo":"FLTE05","clearingState":"2","state":null,"recountMoney":10.0,"founder":null,"foundtime":1505824885000,"updater":null,"updatetime":null},{"id":"2d443036-178d-4b57-bb4d-8ffaf2c5d0b8","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","costName":null,"money":140.0,"voucherNo":null,"memo":"","costNo":"FLTE03","clearingState":"1","state":null,"recountMoney":50.0,"founder":null,"foundtime":1505824885000,"updater":null,"updatetime":null},{"id":"5daba38b-f288-432b-a3b6-e8c1b4b794b1","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","costName":null,"money":50.0,"voucherNo":null,"memo":"","costNo":"FLTE02","clearingState":"1","state":null,"recountMoney":70.0,"founder":null,"foundtime":1505824885000,"updater":null,"updatetime":null},{"id":"8cad76d6-9711-49c7-a3fe-13c015e7792f","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","costName":null,"money":70.0,"voucherNo":null,"memo":"","costNo":"FLTE01","clearingState":"1","state":null,"recountMoney":70.0,"founder":null,"foundtime":1505824885000,"updater":null,"updatetime":null}],"time":1510129868409}
+
+6 订单详情-预约信息
+
+A10
+返回的状态：200
+测试结果：成功！！！  200
+返回的数据：{"success":true,"data":[{"id":"180f721b-25df-4b34-b9ec-47697b06887f","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","serviceMode":"CZSETE01","arrangedStartTime":1506229200000,"arrangedEndTime":1506243600000,"cause":null,"memo":"","remind":null,"founder":"于莎莎","foundtime":1506180583000,"state":1,"ifPieOrder":1}],"time":1510129868439}
+
+7 订单详情-节点信息
+
+A10
+返回的状态：200
+测试结果：成功！！！  200
+返回的数据：{"success":true,"data":[{"id":"02a68ddc-b440-416f-b2f2-419441389df5","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","status":"800","opTime":1506226658000,"forecastTime":null,"memo":"评价","position":"师傅","department":"末端服务商","founder":"02b6d92f-0969-491b-b50d-bad20a6e5449","foundtime":1506226658000,"opType":"评价","clientType":"app","founderName":"梁修武"},{"id":"41f715ce-c26f-481f-ae1c-138cdadaa48e","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","status":"750","opTime":1506226657000,"forecastTime":null,"memo":"货物已完成服务并签收，签收人：农兴旺，感谢您对居家通专业家居服务的信任，如对订单有任何疑问欢迎致电4000285980，居家通将竭诚为您服务","position":"师傅","department":"末端服务商","founder":"02b6d92f-0969-491b-b50d-bad20a6e5449","foundtime":1506226657000,"opType":"一体签收","clientType":"app","founderName":"梁修武"},{"id":"1e6b5024-04d1-464d-93a9-f810a7c1dafe","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","status":"700","opTime":1506214239000,"forecastTime":null,"memo":"南宁市网点DYSS:梁修武0771-2356198/18076639575已到达用户处，正在服务","position":"师傅","department":"末端服务商","founder":"02b6d92f-0969-491b-b50d-bad20a6e5449","foundtime":1506214239000,"opType":"一体上门","clientType":"app","founderName":"梁修武"},{"id":"10862ea6-9661-412b-bb0d-138d64da2e37","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","status":"600","opTime":1506214234000,"forecastTime":null,"memo":"货物已到达南宁市网点DYSS","position":"师傅","department":"末端服务商","founder":"02b6d92f-0969-491b-b50d-bad20a6e5449","foundtime":1506214234000,"opType":"提货","clientType":"app","founderName":"梁修武"},{"id":"911fb393-5692-44a3-a57c-8bad5af8ae2b","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","status":"570","opTime":1506180583000,"forecastTime":null,"memo":"南宁市网点DYSS:梁修武0771-2356198/18076639575已出发，即将上门服务","position":"师傅","department":"末端服务商","founder":"064cd258-451c-11e7-b3cd-0050569f7b0c","foundtime":1506180593000,"opType":"配装出发","clientType":"app","founderName":"于莎莎"},{"id":"a90756d7-7a59-48a4-bf01-64e2ac6c5709","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","status":"04","opTime":1506180583000,"forecastTime":null,"memo":"南宁市网点DYSS已派单，梁修武0771-2356198/18076639575即将上门服务","position":"师傅","department":"末端服务商","founder":"064cd258-451c-11e7-b3cd-0050569f7b0c","foundtime":1506180588000,"opType":"派单一体","clientType":"app","founderName":"于莎莎"},{"id":"2afc278a-4e52-4c08-b3e2-70e52e8a9524","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","status":"01","opTime":1506180583000,"forecastTime":null,"memo":"南宁市网点DYSS已联系用户预约，上门服务时间：2017-09-24下午13:00-17:00，咨询电话：0771-2356198/18076639575","position":"师傅","department":"末端服务商","founder":"064cd258-451c-11e7-b3cd-0050569f7b0c","foundtime":1506180583000,"opType":"预约","clientType":"app","founderName":"于莎莎"},{"id":"264459fc-e598-4197-84e2-ce1dc7a7ed67","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","status":"550","opTime":1506153166000,"forecastTime":null,"memo":"货物已到达南宁市西乡塘区，正在发往南宁市网点DYSS","position":null,"department":null,"founder":"07140d3e-45f1-11e7-9e18-0242ac120013","foundtime":1506153166000,"opType":"到件","clientType":"pc","founderName":"林应辉"},{"id":"ca00b18e-05bd-4a20-9367-2d631b9c5e75","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","status":"200","opTime":1505899107000,"forecastTime":null,"memo":"居家通智慧物流园已出库，正在发往广西壮族自治区南宁市西乡塘区","position":null,"department":null,"founder":"073267e5-45f1-11e7-9e18-0242ac120013","foundtime":1505899107000,"opType":"出库","clientType":"pc","founderName":"向文平"},{"id":"aaebe2fc-37a3-479f-89d9-01c2b9e0581f","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","status":"150","opTime":1505892795000,"forecastTime":null,"memo":"居家通智慧物流园已入库","position":null,"department":null,"founder":"073267e5-45f1-11e7-9e18-0242ac120013","foundtime":1505892795000,"opType":"入库","clientType":"pc","founderName":"向文平"},{"id":"dbce7edc-9967-4b1b-9d97-6d0ceda9f9fd","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","status":"100","opTime":1505824886000,"forecastTime":null,"memo":"居家通专业家居服务已揽收，等待验货入库","position":null,"department":null,"founder":"06fd36f7-45f1-11e7-9e18-0242ac120013","foundtime":1505824886000,"opType":"录单","clientType":"pc","founderName":"龚恩"}],"time":1510129868462}
+
+8 订单详情-签收信息
+
+A10
+返回的状态：200
+测试结果：成功！！！  200
+返回的数据：{"success":true,"data":[{"id":"47944237-7dd8-40ba-a80a-5d393fdfbc68","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","imgFinished":"59c731d97353b40007b15641,59c731da7353b40007b15644,","imgSign":"59c731e07353b40007b1564c,59c731e07353b40007b15649,","founder":"梁修武","foundtime":1506226657000,"serviceTypeCode":"CZSETE01","memo":""}],"time":1510129868489}
+
+SubTestCase Pass:
+test_allOrderSearch (testOrderManageSearch.TestOrderManageSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.10' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_allOrderSearch: 订单查询</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.10')" >
+        通过</a>
+
+    <div id='div_pt1.10' class="popup_window">
+        <pre>
+        pt1.10: 
+1 订单查询
+
+A11
+返回的状态：200
+测试结果：失败！！！  200
+返回的数据：{"success":false,"error_message":"系统错误"}
+
+2 订单详情-基础信息
+
+A10
+返回的状态：200
+测试结果：成功！！！  200
+返回的数据：{"success":true,"data":{"orderData":{"id":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","orderNo":"TDS01441709194500517","pOrderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","province":"广西壮族自治区","provinceNo":"450000","city":"南宁市","cityNo":"450100","district":"西乡塘区","districtNo":"450107","street":"其它","streetNo":"4501070000","consigneeName":"农兴旺","consigneePhone":"18978101898","consigneeAddress":"西宁路龙光君悦华庭","floor":null,"isElevator":1,"merchant":"伊菲雅家具","merchantId":"8a1126c4-421b-11e7-b3cd-0050569f7b0c","clearingSubject":"伊菲雅家具有限公司","warehouse":"智慧物流园","warehouseId":"dda06256-4206-11e7-b3cd-0050569f7b0c","branchId":"2bc0429c-41e3-11e7-97d1-0242ac120021","branch":"南宁市网点DYSS","business":"住宅家具（常规）","service":"干+支+装","businessNo":"BSTE02","serviceNo":"SETE01","clearingTypeNo":"ZQ","clearingType":null,"deliveryContacts":null,"deliveryPhone":"0771 3120599","deliveryAddress":"广西壮族自治区南宁市青秀区","deliveryMemo":null,"totalWeight":0.0,"totalVolume":0.4,"totalBalse":4,"trunkId":"b96a0f39-420c-11e7-b3cd-0050569f7b0c","trunkName":"佛山市红运物流有限公司","trunkArrivePhone":null,"trunkOrderNo":"1","orderState":"750","abnormalState":null,"state":1,"orderType":"ORTE01","arriveSign":null,"orderSign":"","isVerify":1,"orderSource":"ORSE01","sendPiecesDistance":null,"memo":null,"inputType":null,"outOrderNo":"","sendDistance":9.0,"superAreaDistance":0.0,"superAreaMemo":null,"merchantDeliveryId":null,"branchMemo":"","cargoPrice":1.0,"founder":"06fd36f7-45f1-11e7-9e18-0242ac120013","foundtime":1505824885000,"updater":"02b6d92f-0969-491b-b50d-bad20a6e5449","updatetime":1506226584000,"isLightHeavy":1,"supportValue":1.0,"clearingCycle":"十天结","payType":null,"merchantOrder":"","clearingCycleNo":"ZQ02","payTypeNo":"","boolTurnOrder":null,"totalFee":200.0,"lineNo":"Gx20170627029984","handleServiceId":null,"clearingModeNo":"","clearingMode":null,"buttJointSource":null,"abnormalType":null,"abnormalSerialNo":null,"payLogistics":"","transportType":"YSFS02"},"doorName":null,"doorPhone":null,"doorAddress":null,"deliveryTime":1506153166000,"deliveryFounder":"林应辉","changeList":null,"pickUpContacts":null,"orderVerifiys":null,"merchantInfo":null,"tempMerchantBean":null,"isTemp":null,"orderGoodss":null,"orderCosts":null},"time":1510129868118}
+
+3 订单详情-核销信息
+
+A10
+返回的状态：200
+测试结果：成功！！！  200
+返回的数据：{"success":true,"data":[{"id":"215d4d2d-f33d-4f6a-8fb1-b6c0a8ff6da0","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","tradeCode":"56063218020075829","source":null,"operator":null,"verifyType":null,"state":1,"failureCause":null,"error":null,"founder":null,"foundTime":null,"serviceNo":"13","updater":null,"updatetime":null}],"time":1510129868140}
+
+4 订单详情-产品信息
+
+A10
+返回的状态：200
+测试结果：成功！！！  200
+返回的数据：{"success":true,"data":[{"id":"ee3d841e-092b-494b-88e2-967bf65abc0c","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","bigClassNo":"J01","middleClassNo":"J0109","smallClassNo":"J010901","goodsNo":"J010901","bigClass":"柜类","middleClass":"间厅柜","smallClass":"(宽度≤1.5m)","name":"间厅柜(宽度≤1.5m)","num":1,"balse":4,"volume":null,"memo":"","state":1,"founder":null,"foundtime":1505824885000,"updater":null,"updatetime":null,"installFee":140.0,"picture":null}],"time":1510129868164}
+
+5 订单详情-费用信息
+
+A10
+返回的状态：200
+测试结果：成功！！！  200
+返回的数据：{"success":true,"data":[{"id":"1d7239cb-9623-4420-9902-94975cd39769","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","costName":null,"money":10.0,"voucherNo":null,"memo":"","costNo":"FLTE05","clearingState":"2","state":null,"recountMoney":10.0,"founder":null,"foundtime":1505824885000,"updater":null,"updatetime":null},{"id":"2d443036-178d-4b57-bb4d-8ffaf2c5d0b8","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","costName":null,"money":140.0,"voucherNo":null,"memo":"","costNo":"FLTE03","clearingState":"1","state":null,"recountMoney":50.0,"founder":null,"foundtime":1505824885000,"updater":null,"updatetime":null},{"id":"5daba38b-f288-432b-a3b6-e8c1b4b794b1","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","costName":null,"money":50.0,"voucherNo":null,"memo":"","costNo":"FLTE02","clearingState":"1","state":null,"recountMoney":70.0,"founder":null,"foundtime":1505824885000,"updater":null,"updatetime":null},{"id":"8cad76d6-9711-49c7-a3fe-13c015e7792f","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","costName":null,"money":70.0,"voucherNo":null,"memo":"","costNo":"FLTE01","clearingState":"1","state":null,"recountMoney":70.0,"founder":null,"foundtime":1505824885000,"updater":null,"updatetime":null}],"time":1510129868409}
+
+6 订单详情-预约信息
+
+A10
+返回的状态：200
+测试结果：成功！！！  200
+返回的数据：{"success":true,"data":[{"id":"180f721b-25df-4b34-b9ec-47697b06887f","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","serviceMode":"CZSETE01","arrangedStartTime":1506229200000,"arrangedEndTime":1506243600000,"cause":null,"memo":"","remind":null,"founder":"于莎莎","foundtime":1506180583000,"state":1,"ifPieOrder":1}],"time":1510129868439}
+
+7 订单详情-节点信息
+
+A10
+返回的状态：200
+测试结果：成功！！！  200
+返回的数据：{"success":true,"data":[{"id":"02a68ddc-b440-416f-b2f2-419441389df5","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","status":"800","opTime":1506226658000,"forecastTime":null,"memo":"评价","position":"师傅","department":"末端服务商","founder":"02b6d92f-0969-491b-b50d-bad20a6e5449","foundtime":1506226658000,"opType":"评价","clientType":"app","founderName":"梁修武"},{"id":"41f715ce-c26f-481f-ae1c-138cdadaa48e","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","status":"750","opTime":1506226657000,"forecastTime":null,"memo":"货物已完成服务并签收，签收人：农兴旺，感谢您对居家通专业家居服务的信任，如对订单有任何疑问欢迎致电4000285980，居家通将竭诚为您服务","position":"师傅","department":"末端服务商","founder":"02b6d92f-0969-491b-b50d-bad20a6e5449","foundtime":1506226657000,"opType":"一体签收","clientType":"app","founderName":"梁修武"},{"id":"1e6b5024-04d1-464d-93a9-f810a7c1dafe","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","status":"700","opTime":1506214239000,"forecastTime":null,"memo":"南宁市网点DYSS:梁修武0771-2356198/18076639575已到达用户处，正在服务","position":"师傅","department":"末端服务商","founder":"02b6d92f-0969-491b-b50d-bad20a6e5449","foundtime":1506214239000,"opType":"一体上门","clientType":"app","founderName":"梁修武"},{"id":"10862ea6-9661-412b-bb0d-138d64da2e37","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","status":"600","opTime":1506214234000,"forecastTime":null,"memo":"货物已到达南宁市网点DYSS","position":"师傅","department":"末端服务商","founder":"02b6d92f-0969-491b-b50d-bad20a6e5449","foundtime":1506214234000,"opType":"提货","clientType":"app","founderName":"梁修武"},{"id":"911fb393-5692-44a3-a57c-8bad5af8ae2b","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","status":"570","opTime":1506180583000,"forecastTime":null,"memo":"南宁市网点DYSS:梁修武0771-2356198/18076639575已出发，即将上门服务","position":"师傅","department":"末端服务商","founder":"064cd258-451c-11e7-b3cd-0050569f7b0c","foundtime":1506180593000,"opType":"配装出发","clientType":"app","founderName":"于莎莎"},{"id":"a90756d7-7a59-48a4-bf01-64e2ac6c5709","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","status":"04","opTime":1506180583000,"forecastTime":null,"memo":"南宁市网点DYSS已派单，梁修武0771-2356198/18076639575即将上门服务","position":"师傅","department":"末端服务商","founder":"064cd258-451c-11e7-b3cd-0050569f7b0c","foundtime":1506180588000,"opType":"派单一体","clientType":"app","founderName":"于莎莎"},{"id":"2afc278a-4e52-4c08-b3e2-70e52e8a9524","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","status":"01","opTime":1506180583000,"forecastTime":null,"memo":"南宁市网点DYSS已联系用户预约，上门服务时间：2017-09-24下午13:00-17:00，咨询电话：0771-2356198/18076639575","position":"师傅","department":"末端服务商","founder":"064cd258-451c-11e7-b3cd-0050569f7b0c","foundtime":1506180583000,"opType":"预约","clientType":"app","founderName":"于莎莎"},{"id":"264459fc-e598-4197-84e2-ce1dc7a7ed67","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","status":"550","opTime":1506153166000,"forecastTime":null,"memo":"货物已到达南宁市西乡塘区，正在发往南宁市网点DYSS","position":null,"department":null,"founder":"07140d3e-45f1-11e7-9e18-0242ac120013","foundtime":1506153166000,"opType":"到件","clientType":"pc","founderName":"林应辉"},{"id":"ca00b18e-05bd-4a20-9367-2d631b9c5e75","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","status":"200","opTime":1505899107000,"forecastTime":null,"memo":"居家通智慧物流园已出库，正在发往广西壮族自治区南宁市西乡塘区","position":null,"department":null,"founder":"073267e5-45f1-11e7-9e18-0242ac120013","foundtime":1505899107000,"opType":"出库","clientType":"pc","founderName":"向文平"},{"id":"aaebe2fc-37a3-479f-89d9-01c2b9e0581f","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","status":"150","opTime":1505892795000,"forecastTime":null,"memo":"居家通智慧物流园已入库","position":null,"department":null,"founder":"073267e5-45f1-11e7-9e18-0242ac120013","foundtime":1505892795000,"opType":"入库","clientType":"pc","founderName":"向文平"},{"id":"dbce7edc-9967-4b1b-9d97-6d0ceda9f9fd","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","status":"100","opTime":1505824886000,"forecastTime":null,"memo":"居家通专业家居服务已揽收，等待验货入库","position":null,"department":null,"founder":"06fd36f7-45f1-11e7-9e18-0242ac120013","foundtime":1505824886000,"opType":"录单","clientType":"pc","founderName":"龚恩"}],"time":1510129868462}
+
+8 订单详情-签收信息
+
+A10
+返回的状态：200
+测试结果：成功！！！  200
+返回的数据：{"success":true,"data":[{"id":"47944237-7dd8-40ba-a80a-5d393fdfbc68","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","imgFinished":"59c731d97353b40007b15641,59c731da7353b40007b15644,","imgSign":"59c731e07353b40007b1564c,59c731e07353b40007b15649,","founder":"梁修武","foundtime":1506226657000,"serviceTypeCode":"CZSETE01","memo":""}],"time":1510129868489}
+
+SubTestCase Pass:
+test_allOrderSearch (testOrderManageSearch.TestOrderManageSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.11' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_allOrderSearch: 订单查询</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.11')" >
+        通过</a>
+
+    <div id='div_pt1.11' class="popup_window">
+        <pre>
+        pt1.11: 
+1 订单查询
+
+A11
+返回的状态：200
+测试结果：失败！！！  200
+返回的数据：{"success":false,"error_message":"系统错误"}
+
+2 订单详情-基础信息
+
+A10
+返回的状态：200
+测试结果：成功！！！  200
+返回的数据：{"success":true,"data":{"orderData":{"id":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","orderNo":"TDS01441709194500517","pOrderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","province":"广西壮族自治区","provinceNo":"450000","city":"南宁市","cityNo":"450100","district":"西乡塘区","districtNo":"450107","street":"其它","streetNo":"4501070000","consigneeName":"农兴旺","consigneePhone":"18978101898","consigneeAddress":"西宁路龙光君悦华庭","floor":null,"isElevator":1,"merchant":"伊菲雅家具","merchantId":"8a1126c4-421b-11e7-b3cd-0050569f7b0c","clearingSubject":"伊菲雅家具有限公司","warehouse":"智慧物流园","warehouseId":"dda06256-4206-11e7-b3cd-0050569f7b0c","branchId":"2bc0429c-41e3-11e7-97d1-0242ac120021","branch":"南宁市网点DYSS","business":"住宅家具（常规）","service":"干+支+装","businessNo":"BSTE02","serviceNo":"SETE01","clearingTypeNo":"ZQ","clearingType":null,"deliveryContacts":null,"deliveryPhone":"0771 3120599","deliveryAddress":"广西壮族自治区南宁市青秀区","deliveryMemo":null,"totalWeight":0.0,"totalVolume":0.4,"totalBalse":4,"trunkId":"b96a0f39-420c-11e7-b3cd-0050569f7b0c","trunkName":"佛山市红运物流有限公司","trunkArrivePhone":null,"trunkOrderNo":"1","orderState":"750","abnormalState":null,"state":1,"orderType":"ORTE01","arriveSign":null,"orderSign":"","isVerify":1,"orderSource":"ORSE01","sendPiecesDistance":null,"memo":null,"inputType":null,"outOrderNo":"","sendDistance":9.0,"superAreaDistance":0.0,"superAreaMemo":null,"merchantDeliveryId":null,"branchMemo":"","cargoPrice":1.0,"founder":"06fd36f7-45f1-11e7-9e18-0242ac120013","foundtime":1505824885000,"updater":"02b6d92f-0969-491b-b50d-bad20a6e5449","updatetime":1506226584000,"isLightHeavy":1,"supportValue":1.0,"clearingCycle":"十天结","payType":null,"merchantOrder":"","clearingCycleNo":"ZQ02","payTypeNo":"","boolTurnOrder":null,"totalFee":200.0,"lineNo":"Gx20170627029984","handleServiceId":null,"clearingModeNo":"","clearingMode":null,"buttJointSource":null,"abnormalType":null,"abnormalSerialNo":null,"payLogistics":"","transportType":"YSFS02"},"doorName":null,"doorPhone":null,"doorAddress":null,"deliveryTime":1506153166000,"deliveryFounder":"林应辉","changeList":null,"pickUpContacts":null,"orderVerifiys":null,"merchantInfo":null,"tempMerchantBean":null,"isTemp":null,"orderGoodss":null,"orderCosts":null},"time":1510129868118}
+
+3 订单详情-核销信息
+
+A10
+返回的状态：200
+测试结果：成功！！！  200
+返回的数据：{"success":true,"data":[{"id":"215d4d2d-f33d-4f6a-8fb1-b6c0a8ff6da0","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","tradeCode":"56063218020075829","source":null,"operator":null,"verifyType":null,"state":1,"failureCause":null,"error":null,"founder":null,"foundTime":null,"serviceNo":"13","updater":null,"updatetime":null}],"time":1510129868140}
+
+4 订单详情-产品信息
+
+A10
+返回的状态：200
+测试结果：成功！！！  200
+返回的数据：{"success":true,"data":[{"id":"ee3d841e-092b-494b-88e2-967bf65abc0c","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","bigClassNo":"J01","middleClassNo":"J0109","smallClassNo":"J010901","goodsNo":"J010901","bigClass":"柜类","middleClass":"间厅柜","smallClass":"(宽度≤1.5m)","name":"间厅柜(宽度≤1.5m)","num":1,"balse":4,"volume":null,"memo":"","state":1,"founder":null,"foundtime":1505824885000,"updater":null,"updatetime":null,"installFee":140.0,"picture":null}],"time":1510129868164}
+
+5 订单详情-费用信息
+
+A10
+返回的状态：200
+测试结果：成功！！！  200
+返回的数据：{"success":true,"data":[{"id":"1d7239cb-9623-4420-9902-94975cd39769","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","costName":null,"money":10.0,"voucherNo":null,"memo":"","costNo":"FLTE05","clearingState":"2","state":null,"recountMoney":10.0,"founder":null,"foundtime":1505824885000,"updater":null,"updatetime":null},{"id":"2d443036-178d-4b57-bb4d-8ffaf2c5d0b8","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","costName":null,"money":140.0,"voucherNo":null,"memo":"","costNo":"FLTE03","clearingState":"1","state":null,"recountMoney":50.0,"founder":null,"foundtime":1505824885000,"updater":null,"updatetime":null},{"id":"5daba38b-f288-432b-a3b6-e8c1b4b794b1","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","costName":null,"money":50.0,"voucherNo":null,"memo":"","costNo":"FLTE02","clearingState":"1","state":null,"recountMoney":70.0,"founder":null,"foundtime":1505824885000,"updater":null,"updatetime":null},{"id":"8cad76d6-9711-49c7-a3fe-13c015e7792f","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","costName":null,"money":70.0,"voucherNo":null,"memo":"","costNo":"FLTE01","clearingState":"1","state":null,"recountMoney":70.0,"founder":null,"foundtime":1505824885000,"updater":null,"updatetime":null}],"time":1510129868409}
+
+6 订单详情-预约信息
+
+A10
+返回的状态：200
+测试结果：成功！！！  200
+返回的数据：{"success":true,"data":[{"id":"180f721b-25df-4b34-b9ec-47697b06887f","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","serviceMode":"CZSETE01","arrangedStartTime":1506229200000,"arrangedEndTime":1506243600000,"cause":null,"memo":"","remind":null,"founder":"于莎莎","foundtime":1506180583000,"state":1,"ifPieOrder":1}],"time":1510129868439}
+
+7 订单详情-节点信息
+
+A10
+返回的状态：200
+测试结果：成功！！！  200
+返回的数据：{"success":true,"data":[{"id":"02a68ddc-b440-416f-b2f2-419441389df5","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","status":"800","opTime":1506226658000,"forecastTime":null,"memo":"评价","position":"师傅","department":"末端服务商","founder":"02b6d92f-0969-491b-b50d-bad20a6e5449","foundtime":1506226658000,"opType":"评价","clientType":"app","founderName":"梁修武"},{"id":"41f715ce-c26f-481f-ae1c-138cdadaa48e","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","status":"750","opTime":1506226657000,"forecastTime":null,"memo":"货物已完成服务并签收，签收人：农兴旺，感谢您对居家通专业家居服务的信任，如对订单有任何疑问欢迎致电4000285980，居家通将竭诚为您服务","position":"师傅","department":"末端服务商","founder":"02b6d92f-0969-491b-b50d-bad20a6e5449","foundtime":1506226657000,"opType":"一体签收","clientType":"app","founderName":"梁修武"},{"id":"1e6b5024-04d1-464d-93a9-f810a7c1dafe","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","status":"700","opTime":1506214239000,"forecastTime":null,"memo":"南宁市网点DYSS:梁修武0771-2356198/18076639575已到达用户处，正在服务","position":"师傅","department":"末端服务商","founder":"02b6d92f-0969-491b-b50d-bad20a6e5449","foundtime":1506214239000,"opType":"一体上门","clientType":"app","founderName":"梁修武"},{"id":"10862ea6-9661-412b-bb0d-138d64da2e37","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","status":"600","opTime":1506214234000,"forecastTime":null,"memo":"货物已到达南宁市网点DYSS","position":"师傅","department":"末端服务商","founder":"02b6d92f-0969-491b-b50d-bad20a6e5449","foundtime":1506214234000,"opType":"提货","clientType":"app","founderName":"梁修武"},{"id":"911fb393-5692-44a3-a57c-8bad5af8ae2b","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","status":"570","opTime":1506180583000,"forecastTime":null,"memo":"南宁市网点DYSS:梁修武0771-2356198/18076639575已出发，即将上门服务","position":"师傅","department":"末端服务商","founder":"064cd258-451c-11e7-b3cd-0050569f7b0c","foundtime":1506180593000,"opType":"配装出发","clientType":"app","founderName":"于莎莎"},{"id":"a90756d7-7a59-48a4-bf01-64e2ac6c5709","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","status":"04","opTime":1506180583000,"forecastTime":null,"memo":"南宁市网点DYSS已派单，梁修武0771-2356198/18076639575即将上门服务","position":"师傅","department":"末端服务商","founder":"064cd258-451c-11e7-b3cd-0050569f7b0c","foundtime":1506180588000,"opType":"派单一体","clientType":"app","founderName":"于莎莎"},{"id":"2afc278a-4e52-4c08-b3e2-70e52e8a9524","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","status":"01","opTime":1506180583000,"forecastTime":null,"memo":"南宁市网点DYSS已联系用户预约，上门服务时间：2017-09-24下午13:00-17:00，咨询电话：0771-2356198/18076639575","position":"师傅","department":"末端服务商","founder":"064cd258-451c-11e7-b3cd-0050569f7b0c","foundtime":1506180583000,"opType":"预约","clientType":"app","founderName":"于莎莎"},{"id":"264459fc-e598-4197-84e2-ce1dc7a7ed67","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","status":"550","opTime":1506153166000,"forecastTime":null,"memo":"货物已到达南宁市西乡塘区，正在发往南宁市网点DYSS","position":null,"department":null,"founder":"07140d3e-45f1-11e7-9e18-0242ac120013","foundtime":1506153166000,"opType":"到件","clientType":"pc","founderName":"林应辉"},{"id":"ca00b18e-05bd-4a20-9367-2d631b9c5e75","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","status":"200","opTime":1505899107000,"forecastTime":null,"memo":"居家通智慧物流园已出库，正在发往广西壮族自治区南宁市西乡塘区","position":null,"department":null,"founder":"073267e5-45f1-11e7-9e18-0242ac120013","foundtime":1505899107000,"opType":"出库","clientType":"pc","founderName":"向文平"},{"id":"aaebe2fc-37a3-479f-89d9-01c2b9e0581f","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","status":"150","opTime":1505892795000,"forecastTime":null,"memo":"居家通智慧物流园已入库","position":null,"department":null,"founder":"073267e5-45f1-11e7-9e18-0242ac120013","foundtime":1505892795000,"opType":"入库","clientType":"pc","founderName":"向文平"},{"id":"dbce7edc-9967-4b1b-9d97-6d0ceda9f9fd","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","status":"100","opTime":1505824886000,"forecastTime":null,"memo":"居家通专业家居服务已揽收，等待验货入库","position":null,"department":null,"founder":"06fd36f7-45f1-11e7-9e18-0242ac120013","foundtime":1505824886000,"opType":"录单","clientType":"pc","founderName":"龚恩"}],"time":1510129868462}
+
+8 订单详情-签收信息
+
+A10
+返回的状态：200
+测试结果：成功！！！  200
+返回的数据：{"success":true,"data":[{"id":"47944237-7dd8-40ba-a80a-5d393fdfbc68","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","imgFinished":"59c731d97353b40007b15641,59c731da7353b40007b15644,","imgSign":"59c731e07353b40007b1564c,59c731e07353b40007b15649,","founder":"梁修武","foundtime":1506226657000,"serviceTypeCode":"CZSETE01","memo":""}],"time":1510129868489}
+
+SubTestCase Pass:
+test_allOrderSearch (testOrderManageSearch.TestOrderManageSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.12' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_allOrderSearch: 订单查询</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.12')" >
+        通过</a>
+
+    <div id='div_pt1.12' class="popup_window">
+        <pre>
+        pt1.12: 
+1 订单查询
+
+A11
+返回的状态：200
+测试结果：失败！！！  200
+返回的数据：{"success":false,"error_message":"系统错误"}
+
+2 订单详情-基础信息
+
+A10
+返回的状态：200
+测试结果：成功！！！  200
+返回的数据：{"success":true,"data":{"orderData":{"id":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","orderNo":"TDS01441709194500517","pOrderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","province":"广西壮族自治区","provinceNo":"450000","city":"南宁市","cityNo":"450100","district":"西乡塘区","districtNo":"450107","street":"其它","streetNo":"4501070000","consigneeName":"农兴旺","consigneePhone":"18978101898","consigneeAddress":"西宁路龙光君悦华庭","floor":null,"isElevator":1,"merchant":"伊菲雅家具","merchantId":"8a1126c4-421b-11e7-b3cd-0050569f7b0c","clearingSubject":"伊菲雅家具有限公司","warehouse":"智慧物流园","warehouseId":"dda06256-4206-11e7-b3cd-0050569f7b0c","branchId":"2bc0429c-41e3-11e7-97d1-0242ac120021","branch":"南宁市网点DYSS","business":"住宅家具（常规）","service":"干+支+装","businessNo":"BSTE02","serviceNo":"SETE01","clearingTypeNo":"ZQ","clearingType":null,"deliveryContacts":null,"deliveryPhone":"0771 3120599","deliveryAddress":"广西壮族自治区南宁市青秀区","deliveryMemo":null,"totalWeight":0.0,"totalVolume":0.4,"totalBalse":4,"trunkId":"b96a0f39-420c-11e7-b3cd-0050569f7b0c","trunkName":"佛山市红运物流有限公司","trunkArrivePhone":null,"trunkOrderNo":"1","orderState":"750","abnormalState":null,"state":1,"orderType":"ORTE01","arriveSign":null,"orderSign":"","isVerify":1,"orderSource":"ORSE01","sendPiecesDistance":null,"memo":null,"inputType":null,"outOrderNo":"","sendDistance":9.0,"superAreaDistance":0.0,"superAreaMemo":null,"merchantDeliveryId":null,"branchMemo":"","cargoPrice":1.0,"founder":"06fd36f7-45f1-11e7-9e18-0242ac120013","foundtime":1505824885000,"updater":"02b6d92f-0969-491b-b50d-bad20a6e5449","updatetime":1506226584000,"isLightHeavy":1,"supportValue":1.0,"clearingCycle":"十天结","payType":null,"merchantOrder":"","clearingCycleNo":"ZQ02","payTypeNo":"","boolTurnOrder":null,"totalFee":200.0,"lineNo":"Gx20170627029984","handleServiceId":null,"clearingModeNo":"","clearingMode":null,"buttJointSource":null,"abnormalType":null,"abnormalSerialNo":null,"payLogistics":"","transportType":"YSFS02"},"doorName":null,"doorPhone":null,"doorAddress":null,"deliveryTime":1506153166000,"deliveryFounder":"林应辉","changeList":null,"pickUpContacts":null,"orderVerifiys":null,"merchantInfo":null,"tempMerchantBean":null,"isTemp":null,"orderGoodss":null,"orderCosts":null},"time":1510129868118}
+
+3 订单详情-核销信息
+
+A10
+返回的状态：200
+测试结果：成功！！！  200
+返回的数据：{"success":true,"data":[{"id":"215d4d2d-f33d-4f6a-8fb1-b6c0a8ff6da0","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","tradeCode":"56063218020075829","source":null,"operator":null,"verifyType":null,"state":1,"failureCause":null,"error":null,"founder":null,"foundTime":null,"serviceNo":"13","updater":null,"updatetime":null}],"time":1510129868140}
+
+4 订单详情-产品信息
+
+A10
+返回的状态：200
+测试结果：成功！！！  200
+返回的数据：{"success":true,"data":[{"id":"ee3d841e-092b-494b-88e2-967bf65abc0c","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","bigClassNo":"J01","middleClassNo":"J0109","smallClassNo":"J010901","goodsNo":"J010901","bigClass":"柜类","middleClass":"间厅柜","smallClass":"(宽度≤1.5m)","name":"间厅柜(宽度≤1.5m)","num":1,"balse":4,"volume":null,"memo":"","state":1,"founder":null,"foundtime":1505824885000,"updater":null,"updatetime":null,"installFee":140.0,"picture":null}],"time":1510129868164}
+
+5 订单详情-费用信息
+
+A10
+返回的状态：200
+测试结果：成功！！！  200
+返回的数据：{"success":true,"data":[{"id":"1d7239cb-9623-4420-9902-94975cd39769","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","costName":null,"money":10.0,"voucherNo":null,"memo":"","costNo":"FLTE05","clearingState":"2","state":null,"recountMoney":10.0,"founder":null,"foundtime":1505824885000,"updater":null,"updatetime":null},{"id":"2d443036-178d-4b57-bb4d-8ffaf2c5d0b8","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","costName":null,"money":140.0,"voucherNo":null,"memo":"","costNo":"FLTE03","clearingState":"1","state":null,"recountMoney":50.0,"founder":null,"foundtime":1505824885000,"updater":null,"updatetime":null},{"id":"5daba38b-f288-432b-a3b6-e8c1b4b794b1","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","costName":null,"money":50.0,"voucherNo":null,"memo":"","costNo":"FLTE02","clearingState":"1","state":null,"recountMoney":70.0,"founder":null,"foundtime":1505824885000,"updater":null,"updatetime":null},{"id":"8cad76d6-9711-49c7-a3fe-13c015e7792f","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","costName":null,"money":70.0,"voucherNo":null,"memo":"","costNo":"FLTE01","clearingState":"1","state":null,"recountMoney":70.0,"founder":null,"foundtime":1505824885000,"updater":null,"updatetime":null}],"time":1510129868409}
+
+6 订单详情-预约信息
+
+A10
+返回的状态：200
+测试结果：成功！！！  200
+返回的数据：{"success":true,"data":[{"id":"180f721b-25df-4b34-b9ec-47697b06887f","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","serviceMode":"CZSETE01","arrangedStartTime":1506229200000,"arrangedEndTime":1506243600000,"cause":null,"memo":"","remind":null,"founder":"于莎莎","foundtime":1506180583000,"state":1,"ifPieOrder":1}],"time":1510129868439}
+
+7 订单详情-节点信息
+
+A10
+返回的状态：200
+测试结果：成功！！！  200
+返回的数据：{"success":true,"data":[{"id":"02a68ddc-b440-416f-b2f2-419441389df5","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","status":"800","opTime":1506226658000,"forecastTime":null,"memo":"评价","position":"师傅","department":"末端服务商","founder":"02b6d92f-0969-491b-b50d-bad20a6e5449","foundtime":1506226658000,"opType":"评价","clientType":"app","founderName":"梁修武"},{"id":"41f715ce-c26f-481f-ae1c-138cdadaa48e","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","status":"750","opTime":1506226657000,"forecastTime":null,"memo":"货物已完成服务并签收，签收人：农兴旺，感谢您对居家通专业家居服务的信任，如对订单有任何疑问欢迎致电4000285980，居家通将竭诚为您服务","position":"师傅","department":"末端服务商","founder":"02b6d92f-0969-491b-b50d-bad20a6e5449","foundtime":1506226657000,"opType":"一体签收","clientType":"app","founderName":"梁修武"},{"id":"1e6b5024-04d1-464d-93a9-f810a7c1dafe","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","status":"700","opTime":1506214239000,"forecastTime":null,"memo":"南宁市网点DYSS:梁修武0771-2356198/18076639575已到达用户处，正在服务","position":"师傅","department":"末端服务商","founder":"02b6d92f-0969-491b-b50d-bad20a6e5449","foundtime":1506214239000,"opType":"一体上门","clientType":"app","founderName":"梁修武"},{"id":"10862ea6-9661-412b-bb0d-138d64da2e37","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","status":"600","opTime":1506214234000,"forecastTime":null,"memo":"货物已到达南宁市网点DYSS","position":"师傅","department":"末端服务商","founder":"02b6d92f-0969-491b-b50d-bad20a6e5449","foundtime":1506214234000,"opType":"提货","clientType":"app","founderName":"梁修武"},{"id":"911fb393-5692-44a3-a57c-8bad5af8ae2b","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","status":"570","opTime":1506180583000,"forecastTime":null,"memo":"南宁市网点DYSS:梁修武0771-2356198/18076639575已出发，即将上门服务","position":"师傅","department":"末端服务商","founder":"064cd258-451c-11e7-b3cd-0050569f7b0c","foundtime":1506180593000,"opType":"配装出发","clientType":"app","founderName":"于莎莎"},{"id":"a90756d7-7a59-48a4-bf01-64e2ac6c5709","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","status":"04","opTime":1506180583000,"forecastTime":null,"memo":"南宁市网点DYSS已派单，梁修武0771-2356198/18076639575即将上门服务","position":"师傅","department":"末端服务商","founder":"064cd258-451c-11e7-b3cd-0050569f7b0c","foundtime":1506180588000,"opType":"派单一体","clientType":"app","founderName":"于莎莎"},{"id":"2afc278a-4e52-4c08-b3e2-70e52e8a9524","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","status":"01","opTime":1506180583000,"forecastTime":null,"memo":"南宁市网点DYSS已联系用户预约，上门服务时间：2017-09-24下午13:00-17:00，咨询电话：0771-2356198/18076639575","position":"师傅","department":"末端服务商","founder":"064cd258-451c-11e7-b3cd-0050569f7b0c","foundtime":1506180583000,"opType":"预约","clientType":"app","founderName":"于莎莎"},{"id":"264459fc-e598-4197-84e2-ce1dc7a7ed67","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","status":"550","opTime":1506153166000,"forecastTime":null,"memo":"货物已到达南宁市西乡塘区，正在发往南宁市网点DYSS","position":null,"department":null,"founder":"07140d3e-45f1-11e7-9e18-0242ac120013","foundtime":1506153166000,"opType":"到件","clientType":"pc","founderName":"林应辉"},{"id":"ca00b18e-05bd-4a20-9367-2d631b9c5e75","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","status":"200","opTime":1505899107000,"forecastTime":null,"memo":"居家通智慧物流园已出库，正在发往广西壮族自治区南宁市西乡塘区","position":null,"department":null,"founder":"073267e5-45f1-11e7-9e18-0242ac120013","foundtime":1505899107000,"opType":"出库","clientType":"pc","founderName":"向文平"},{"id":"aaebe2fc-37a3-479f-89d9-01c2b9e0581f","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","status":"150","opTime":1505892795000,"forecastTime":null,"memo":"居家通智慧物流园已入库","position":null,"department":null,"founder":"073267e5-45f1-11e7-9e18-0242ac120013","foundtime":1505892795000,"opType":"入库","clientType":"pc","founderName":"向文平"},{"id":"dbce7edc-9967-4b1b-9d97-6d0ceda9f9fd","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","status":"100","opTime":1505824886000,"forecastTime":null,"memo":"居家通专业家居服务已揽收，等待验货入库","position":null,"department":null,"founder":"06fd36f7-45f1-11e7-9e18-0242ac120013","foundtime":1505824886000,"opType":"录单","clientType":"pc","founderName":"龚恩"}],"time":1510129868462}
+
+8 订单详情-签收信息
+
+A10
+返回的状态：200
+测试结果：成功！！！  200
+返回的数据：{"success":true,"data":[{"id":"47944237-7dd8-40ba-a80a-5d393fdfbc68","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","imgFinished":"59c731d97353b40007b15641,59c731da7353b40007b15644,","imgSign":"59c731e07353b40007b1564c,59c731e07353b40007b15649,","founder":"梁修武","foundtime":1506226657000,"serviceTypeCode":"CZSETE01","memo":""}],"time":1510129868489}
+
+SubTestCase Pass:
+test_allOrderSearch (testOrderManageSearch.TestOrderManageSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.13' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_allOrderSearch: 订单查询</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.13')" >
+        通过</a>
+
+    <div id='div_pt1.13' class="popup_window">
+        <pre>
+        pt1.13: 
+1 订单查询
+
+A11
+返回的状态：200
+测试结果：失败！！！  200
+返回的数据：{"success":false,"error_message":"系统错误"}
+
+2 订单详情-基础信息
+
+A10
+返回的状态：200
+测试结果：成功！！！  200
+返回的数据：{"success":true,"data":{"orderData":{"id":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","orderNo":"TDS01441709194500517","pOrderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","province":"广西壮族自治区","provinceNo":"450000","city":"南宁市","cityNo":"450100","district":"西乡塘区","districtNo":"450107","street":"其它","streetNo":"4501070000","consigneeName":"农兴旺","consigneePhone":"18978101898","consigneeAddress":"西宁路龙光君悦华庭","floor":null,"isElevator":1,"merchant":"伊菲雅家具","merchantId":"8a1126c4-421b-11e7-b3cd-0050569f7b0c","clearingSubject":"伊菲雅家具有限公司","warehouse":"智慧物流园","warehouseId":"dda06256-4206-11e7-b3cd-0050569f7b0c","branchId":"2bc0429c-41e3-11e7-97d1-0242ac120021","branch":"南宁市网点DYSS","business":"住宅家具（常规）","service":"干+支+装","businessNo":"BSTE02","serviceNo":"SETE01","clearingTypeNo":"ZQ","clearingType":null,"deliveryContacts":null,"deliveryPhone":"0771 3120599","deliveryAddress":"广西壮族自治区南宁市青秀区","deliveryMemo":null,"totalWeight":0.0,"totalVolume":0.4,"totalBalse":4,"trunkId":"b96a0f39-420c-11e7-b3cd-0050569f7b0c","trunkName":"佛山市红运物流有限公司","trunkArrivePhone":null,"trunkOrderNo":"1","orderState":"750","abnormalState":null,"state":1,"orderType":"ORTE01","arriveSign":null,"orderSign":"","isVerify":1,"orderSource":"ORSE01","sendPiecesDistance":null,"memo":null,"inputType":null,"outOrderNo":"","sendDistance":9.0,"superAreaDistance":0.0,"superAreaMemo":null,"merchantDeliveryId":null,"branchMemo":"","cargoPrice":1.0,"founder":"06fd36f7-45f1-11e7-9e18-0242ac120013","foundtime":1505824885000,"updater":"02b6d92f-0969-491b-b50d-bad20a6e5449","updatetime":1506226584000,"isLightHeavy":1,"supportValue":1.0,"clearingCycle":"十天结","payType":null,"merchantOrder":"","clearingCycleNo":"ZQ02","payTypeNo":"","boolTurnOrder":null,"totalFee":200.0,"lineNo":"Gx20170627029984","handleServiceId":null,"clearingModeNo":"","clearingMode":null,"buttJointSource":null,"abnormalType":null,"abnormalSerialNo":null,"payLogistics":"","transportType":"YSFS02"},"doorName":null,"doorPhone":null,"doorAddress":null,"deliveryTime":1506153166000,"deliveryFounder":"林应辉","changeList":null,"pickUpContacts":null,"orderVerifiys":null,"merchantInfo":null,"tempMerchantBean":null,"isTemp":null,"orderGoodss":null,"orderCosts":null},"time":1510129868118}
+
+3 订单详情-核销信息
+
+A10
+返回的状态：200
+测试结果：成功！！！  200
+返回的数据：{"success":true,"data":[{"id":"215d4d2d-f33d-4f6a-8fb1-b6c0a8ff6da0","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","tradeCode":"56063218020075829","source":null,"operator":null,"verifyType":null,"state":1,"failureCause":null,"error":null,"founder":null,"foundTime":null,"serviceNo":"13","updater":null,"updatetime":null}],"time":1510129868140}
+
+4 订单详情-产品信息
+
+A10
+返回的状态：200
+测试结果：成功！！！  200
+返回的数据：{"success":true,"data":[{"id":"ee3d841e-092b-494b-88e2-967bf65abc0c","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","bigClassNo":"J01","middleClassNo":"J0109","smallClassNo":"J010901","goodsNo":"J010901","bigClass":"柜类","middleClass":"间厅柜","smallClass":"(宽度≤1.5m)","name":"间厅柜(宽度≤1.5m)","num":1,"balse":4,"volume":null,"memo":"","state":1,"founder":null,"foundtime":1505824885000,"updater":null,"updatetime":null,"installFee":140.0,"picture":null}],"time":1510129868164}
+
+5 订单详情-费用信息
+
+A10
+返回的状态：200
+测试结果：成功！！！  200
+返回的数据：{"success":true,"data":[{"id":"1d7239cb-9623-4420-9902-94975cd39769","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","costName":null,"money":10.0,"voucherNo":null,"memo":"","costNo":"FLTE05","clearingState":"2","state":null,"recountMoney":10.0,"founder":null,"foundtime":1505824885000,"updater":null,"updatetime":null},{"id":"2d443036-178d-4b57-bb4d-8ffaf2c5d0b8","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","costName":null,"money":140.0,"voucherNo":null,"memo":"","costNo":"FLTE03","clearingState":"1","state":null,"recountMoney":50.0,"founder":null,"foundtime":1505824885000,"updater":null,"updatetime":null},{"id":"5daba38b-f288-432b-a3b6-e8c1b4b794b1","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","costName":null,"money":50.0,"voucherNo":null,"memo":"","costNo":"FLTE02","clearingState":"1","state":null,"recountMoney":70.0,"founder":null,"foundtime":1505824885000,"updater":null,"updatetime":null},{"id":"8cad76d6-9711-49c7-a3fe-13c015e7792f","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","costName":null,"money":70.0,"voucherNo":null,"memo":"","costNo":"FLTE01","clearingState":"1","state":null,"recountMoney":70.0,"founder":null,"foundtime":1505824885000,"updater":null,"updatetime":null}],"time":1510129868409}
+
+6 订单详情-预约信息
+
+A10
+返回的状态：200
+测试结果：成功！！！  200
+返回的数据：{"success":true,"data":[{"id":"180f721b-25df-4b34-b9ec-47697b06887f","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","serviceMode":"CZSETE01","arrangedStartTime":1506229200000,"arrangedEndTime":1506243600000,"cause":null,"memo":"","remind":null,"founder":"于莎莎","foundtime":1506180583000,"state":1,"ifPieOrder":1}],"time":1510129868439}
+
+7 订单详情-节点信息
+
+A10
+返回的状态：200
+测试结果：成功！！！  200
+返回的数据：{"success":true,"data":[{"id":"02a68ddc-b440-416f-b2f2-419441389df5","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","status":"800","opTime":1506226658000,"forecastTime":null,"memo":"评价","position":"师傅","department":"末端服务商","founder":"02b6d92f-0969-491b-b50d-bad20a6e5449","foundtime":1506226658000,"opType":"评价","clientType":"app","founderName":"梁修武"},{"id":"41f715ce-c26f-481f-ae1c-138cdadaa48e","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","status":"750","opTime":1506226657000,"forecastTime":null,"memo":"货物已完成服务并签收，签收人：农兴旺，感谢您对居家通专业家居服务的信任，如对订单有任何疑问欢迎致电4000285980，居家通将竭诚为您服务","position":"师傅","department":"末端服务商","founder":"02b6d92f-0969-491b-b50d-bad20a6e5449","foundtime":1506226657000,"opType":"一体签收","clientType":"app","founderName":"梁修武"},{"id":"1e6b5024-04d1-464d-93a9-f810a7c1dafe","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","status":"700","opTime":1506214239000,"forecastTime":null,"memo":"南宁市网点DYSS:梁修武0771-2356198/18076639575已到达用户处，正在服务","position":"师傅","department":"末端服务商","founder":"02b6d92f-0969-491b-b50d-bad20a6e5449","foundtime":1506214239000,"opType":"一体上门","clientType":"app","founderName":"梁修武"},{"id":"10862ea6-9661-412b-bb0d-138d64da2e37","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","status":"600","opTime":1506214234000,"forecastTime":null,"memo":"货物已到达南宁市网点DYSS","position":"师傅","department":"末端服务商","founder":"02b6d92f-0969-491b-b50d-bad20a6e5449","foundtime":1506214234000,"opType":"提货","clientType":"app","founderName":"梁修武"},{"id":"911fb393-5692-44a3-a57c-8bad5af8ae2b","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","status":"570","opTime":1506180583000,"forecastTime":null,"memo":"南宁市网点DYSS:梁修武0771-2356198/18076639575已出发，即将上门服务","position":"师傅","department":"末端服务商","founder":"064cd258-451c-11e7-b3cd-0050569f7b0c","foundtime":1506180593000,"opType":"配装出发","clientType":"app","founderName":"于莎莎"},{"id":"a90756d7-7a59-48a4-bf01-64e2ac6c5709","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","status":"04","opTime":1506180583000,"forecastTime":null,"memo":"南宁市网点DYSS已派单，梁修武0771-2356198/18076639575即将上门服务","position":"师傅","department":"末端服务商","founder":"064cd258-451c-11e7-b3cd-0050569f7b0c","foundtime":1506180588000,"opType":"派单一体","clientType":"app","founderName":"于莎莎"},{"id":"2afc278a-4e52-4c08-b3e2-70e52e8a9524","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","status":"01","opTime":1506180583000,"forecastTime":null,"memo":"南宁市网点DYSS已联系用户预约，上门服务时间：2017-09-24下午13:00-17:00，咨询电话：0771-2356198/18076639575","position":"师傅","department":"末端服务商","founder":"064cd258-451c-11e7-b3cd-0050569f7b0c","foundtime":1506180583000,"opType":"预约","clientType":"app","founderName":"于莎莎"},{"id":"264459fc-e598-4197-84e2-ce1dc7a7ed67","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","status":"550","opTime":1506153166000,"forecastTime":null,"memo":"货物已到达南宁市西乡塘区，正在发往南宁市网点DYSS","position":null,"department":null,"founder":"07140d3e-45f1-11e7-9e18-0242ac120013","foundtime":1506153166000,"opType":"到件","clientType":"pc","founderName":"林应辉"},{"id":"ca00b18e-05bd-4a20-9367-2d631b9c5e75","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","status":"200","opTime":1505899107000,"forecastTime":null,"memo":"居家通智慧物流园已出库，正在发往广西壮族自治区南宁市西乡塘区","position":null,"department":null,"founder":"073267e5-45f1-11e7-9e18-0242ac120013","foundtime":1505899107000,"opType":"出库","clientType":"pc","founderName":"向文平"},{"id":"aaebe2fc-37a3-479f-89d9-01c2b9e0581f","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","status":"150","opTime":1505892795000,"forecastTime":null,"memo":"居家通智慧物流园已入库","position":null,"department":null,"founder":"073267e5-45f1-11e7-9e18-0242ac120013","foundtime":1505892795000,"opType":"入库","clientType":"pc","founderName":"向文平"},{"id":"dbce7edc-9967-4b1b-9d97-6d0ceda9f9fd","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","status":"100","opTime":1505824886000,"forecastTime":null,"memo":"居家通专业家居服务已揽收，等待验货入库","position":null,"department":null,"founder":"06fd36f7-45f1-11e7-9e18-0242ac120013","foundtime":1505824886000,"opType":"录单","clientType":"pc","founderName":"龚恩"}],"time":1510129868462}
+
+8 订单详情-签收信息
+
+A10
+返回的状态：200
+测试结果：成功！！！  200
+返回的数据：{"success":true,"data":[{"id":"47944237-7dd8-40ba-a80a-5d393fdfbc68","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","imgFinished":"59c731d97353b40007b15641,59c731da7353b40007b15644,","imgSign":"59c731e07353b40007b1564c,59c731e07353b40007b15649,","founder":"梁修武","foundtime":1506226657000,"serviceTypeCode":"CZSETE01","memo":""}],"time":1510129868489}
+
+SubTestCase Pass:
+test_allOrderSearch (testOrderManageSearch.TestOrderManageSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.14' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_allOrderSearch: 订单查询</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.14')" >
+        通过</a>
+
+    <div id='div_pt1.14' class="popup_window">
+        <pre>
+        pt1.14: 
+1 订单查询
+
+A11
+返回的状态：200
+测试结果：失败！！！  200
+返回的数据：{"success":false,"error_message":"系统错误"}
+
+2 订单详情-基础信息
+
+A10
+返回的状态：200
+测试结果：成功！！！  200
+返回的数据：{"success":true,"data":{"orderData":{"id":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","orderNo":"TDS01441709194500517","pOrderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","province":"广西壮族自治区","provinceNo":"450000","city":"南宁市","cityNo":"450100","district":"西乡塘区","districtNo":"450107","street":"其它","streetNo":"4501070000","consigneeName":"农兴旺","consigneePhone":"18978101898","consigneeAddress":"西宁路龙光君悦华庭","floor":null,"isElevator":1,"merchant":"伊菲雅家具","merchantId":"8a1126c4-421b-11e7-b3cd-0050569f7b0c","clearingSubject":"伊菲雅家具有限公司","warehouse":"智慧物流园","warehouseId":"dda06256-4206-11e7-b3cd-0050569f7b0c","branchId":"2bc0429c-41e3-11e7-97d1-0242ac120021","branch":"南宁市网点DYSS","business":"住宅家具（常规）","service":"干+支+装","businessNo":"BSTE02","serviceNo":"SETE01","clearingTypeNo":"ZQ","clearingType":null,"deliveryContacts":null,"deliveryPhone":"0771 3120599","deliveryAddress":"广西壮族自治区南宁市青秀区","deliveryMemo":null,"totalWeight":0.0,"totalVolume":0.4,"totalBalse":4,"trunkId":"b96a0f39-420c-11e7-b3cd-0050569f7b0c","trunkName":"佛山市红运物流有限公司","trunkArrivePhone":null,"trunkOrderNo":"1","orderState":"750","abnormalState":null,"state":1,"orderType":"ORTE01","arriveSign":null,"orderSign":"","isVerify":1,"orderSource":"ORSE01","sendPiecesDistance":null,"memo":null,"inputType":null,"outOrderNo":"","sendDistance":9.0,"superAreaDistance":0.0,"superAreaMemo":null,"merchantDeliveryId":null,"branchMemo":"","cargoPrice":1.0,"founder":"06fd36f7-45f1-11e7-9e18-0242ac120013","foundtime":1505824885000,"updater":"02b6d92f-0969-491b-b50d-bad20a6e5449","updatetime":1506226584000,"isLightHeavy":1,"supportValue":1.0,"clearingCycle":"十天结","payType":null,"merchantOrder":"","clearingCycleNo":"ZQ02","payTypeNo":"","boolTurnOrder":null,"totalFee":200.0,"lineNo":"Gx20170627029984","handleServiceId":null,"clearingModeNo":"","clearingMode":null,"buttJointSource":null,"abnormalType":null,"abnormalSerialNo":null,"payLogistics":"","transportType":"YSFS02"},"doorName":null,"doorPhone":null,"doorAddress":null,"deliveryTime":1506153166000,"deliveryFounder":"林应辉","changeList":null,"pickUpContacts":null,"orderVerifiys":null,"merchantInfo":null,"tempMerchantBean":null,"isTemp":null,"orderGoodss":null,"orderCosts":null},"time":1510129868118}
+
+3 订单详情-核销信息
+
+A10
+返回的状态：200
+测试结果：成功！！！  200
+返回的数据：{"success":true,"data":[{"id":"215d4d2d-f33d-4f6a-8fb1-b6c0a8ff6da0","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","tradeCode":"56063218020075829","source":null,"operator":null,"verifyType":null,"state":1,"failureCause":null,"error":null,"founder":null,"foundTime":null,"serviceNo":"13","updater":null,"updatetime":null}],"time":1510129868140}
+
+4 订单详情-产品信息
+
+A10
+返回的状态：200
+测试结果：成功！！！  200
+返回的数据：{"success":true,"data":[{"id":"ee3d841e-092b-494b-88e2-967bf65abc0c","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","bigClassNo":"J01","middleClassNo":"J0109","smallClassNo":"J010901","goodsNo":"J010901","bigClass":"柜类","middleClass":"间厅柜","smallClass":"(宽度≤1.5m)","name":"间厅柜(宽度≤1.5m)","num":1,"balse":4,"volume":null,"memo":"","state":1,"founder":null,"foundtime":1505824885000,"updater":null,"updatetime":null,"installFee":140.0,"picture":null}],"time":1510129868164}
+
+5 订单详情-费用信息
+
+A10
+返回的状态：200
+测试结果：成功！！！  200
+返回的数据：{"success":true,"data":[{"id":"1d7239cb-9623-4420-9902-94975cd39769","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","costName":null,"money":10.0,"voucherNo":null,"memo":"","costNo":"FLTE05","clearingState":"2","state":null,"recountMoney":10.0,"founder":null,"foundtime":1505824885000,"updater":null,"updatetime":null},{"id":"2d443036-178d-4b57-bb4d-8ffaf2c5d0b8","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","costName":null,"money":140.0,"voucherNo":null,"memo":"","costNo":"FLTE03","clearingState":"1","state":null,"recountMoney":50.0,"founder":null,"foundtime":1505824885000,"updater":null,"updatetime":null},{"id":"5daba38b-f288-432b-a3b6-e8c1b4b794b1","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","costName":null,"money":50.0,"voucherNo":null,"memo":"","costNo":"FLTE02","clearingState":"1","state":null,"recountMoney":70.0,"founder":null,"foundtime":1505824885000,"updater":null,"updatetime":null},{"id":"8cad76d6-9711-49c7-a3fe-13c015e7792f","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","costName":null,"money":70.0,"voucherNo":null,"memo":"","costNo":"FLTE01","clearingState":"1","state":null,"recountMoney":70.0,"founder":null,"foundtime":1505824885000,"updater":null,"updatetime":null}],"time":1510129868409}
+
+6 订单详情-预约信息
+
+A10
+返回的状态：200
+测试结果：成功！！！  200
+返回的数据：{"success":true,"data":[{"id":"180f721b-25df-4b34-b9ec-47697b06887f","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","serviceMode":"CZSETE01","arrangedStartTime":1506229200000,"arrangedEndTime":1506243600000,"cause":null,"memo":"","remind":null,"founder":"于莎莎","foundtime":1506180583000,"state":1,"ifPieOrder":1}],"time":1510129868439}
+
+7 订单详情-节点信息
+
+A10
+返回的状态：200
+测试结果：成功！！！  200
+返回的数据：{"success":true,"data":[{"id":"02a68ddc-b440-416f-b2f2-419441389df5","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","status":"800","opTime":1506226658000,"forecastTime":null,"memo":"评价","position":"师傅","department":"末端服务商","founder":"02b6d92f-0969-491b-b50d-bad20a6e5449","foundtime":1506226658000,"opType":"评价","clientType":"app","founderName":"梁修武"},{"id":"41f715ce-c26f-481f-ae1c-138cdadaa48e","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","status":"750","opTime":1506226657000,"forecastTime":null,"memo":"货物已完成服务并签收，签收人：农兴旺，感谢您对居家通专业家居服务的信任，如对订单有任何疑问欢迎致电4000285980，居家通将竭诚为您服务","position":"师傅","department":"末端服务商","founder":"02b6d92f-0969-491b-b50d-bad20a6e5449","foundtime":1506226657000,"opType":"一体签收","clientType":"app","founderName":"梁修武"},{"id":"1e6b5024-04d1-464d-93a9-f810a7c1dafe","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","status":"700","opTime":1506214239000,"forecastTime":null,"memo":"南宁市网点DYSS:梁修武0771-2356198/18076639575已到达用户处，正在服务","position":"师傅","department":"末端服务商","founder":"02b6d92f-0969-491b-b50d-bad20a6e5449","foundtime":1506214239000,"opType":"一体上门","clientType":"app","founderName":"梁修武"},{"id":"10862ea6-9661-412b-bb0d-138d64da2e37","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","status":"600","opTime":1506214234000,"forecastTime":null,"memo":"货物已到达南宁市网点DYSS","position":"师傅","department":"末端服务商","founder":"02b6d92f-0969-491b-b50d-bad20a6e5449","foundtime":1506214234000,"opType":"提货","clientType":"app","founderName":"梁修武"},{"id":"911fb393-5692-44a3-a57c-8bad5af8ae2b","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","status":"570","opTime":1506180583000,"forecastTime":null,"memo":"南宁市网点DYSS:梁修武0771-2356198/18076639575已出发，即将上门服务","position":"师傅","department":"末端服务商","founder":"064cd258-451c-11e7-b3cd-0050569f7b0c","foundtime":1506180593000,"opType":"配装出发","clientType":"app","founderName":"于莎莎"},{"id":"a90756d7-7a59-48a4-bf01-64e2ac6c5709","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","status":"04","opTime":1506180583000,"forecastTime":null,"memo":"南宁市网点DYSS已派单，梁修武0771-2356198/18076639575即将上门服务","position":"师傅","department":"末端服务商","founder":"064cd258-451c-11e7-b3cd-0050569f7b0c","foundtime":1506180588000,"opType":"派单一体","clientType":"app","founderName":"于莎莎"},{"id":"2afc278a-4e52-4c08-b3e2-70e52e8a9524","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","status":"01","opTime":1506180583000,"forecastTime":null,"memo":"南宁市网点DYSS已联系用户预约，上门服务时间：2017-09-24下午13:00-17:00，咨询电话：0771-2356198/18076639575","position":"师傅","department":"末端服务商","founder":"064cd258-451c-11e7-b3cd-0050569f7b0c","foundtime":1506180583000,"opType":"预约","clientType":"app","founderName":"于莎莎"},{"id":"264459fc-e598-4197-84e2-ce1dc7a7ed67","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","status":"550","opTime":1506153166000,"forecastTime":null,"memo":"货物已到达南宁市西乡塘区，正在发往南宁市网点DYSS","position":null,"department":null,"founder":"07140d3e-45f1-11e7-9e18-0242ac120013","foundtime":1506153166000,"opType":"到件","clientType":"pc","founderName":"林应辉"},{"id":"ca00b18e-05bd-4a20-9367-2d631b9c5e75","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","status":"200","opTime":1505899107000,"forecastTime":null,"memo":"居家通智慧物流园已出库，正在发往广西壮族自治区南宁市西乡塘区","position":null,"department":null,"founder":"073267e5-45f1-11e7-9e18-0242ac120013","foundtime":1505899107000,"opType":"出库","clientType":"pc","founderName":"向文平"},{"id":"aaebe2fc-37a3-479f-89d9-01c2b9e0581f","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","status":"150","opTime":1505892795000,"forecastTime":null,"memo":"居家通智慧物流园已入库","position":null,"department":null,"founder":"073267e5-45f1-11e7-9e18-0242ac120013","foundtime":1505892795000,"opType":"入库","clientType":"pc","founderName":"向文平"},{"id":"dbce7edc-9967-4b1b-9d97-6d0ceda9f9fd","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","status":"100","opTime":1505824886000,"forecastTime":null,"memo":"居家通专业家居服务已揽收，等待验货入库","position":null,"department":null,"founder":"06fd36f7-45f1-11e7-9e18-0242ac120013","foundtime":1505824886000,"opType":"录单","clientType":"pc","founderName":"龚恩"}],"time":1510129868462}
+
+8 订单详情-签收信息
+
+A10
+返回的状态：200
+测试结果：成功！！！  200
+返回的数据：{"success":true,"data":[{"id":"47944237-7dd8-40ba-a80a-5d393fdfbc68","orderId":"0013fa7d-01ca-41c9-a34e-33ed8173aa45","imgFinished":"59c731d97353b40007b15641,59c731da7353b40007b15644,","imgSign":"59c731e07353b40007b1564c,59c731e07353b40007b15649,","founder":"梁修武","foundtime":1506226657000,"serviceTypeCode":"CZSETE01","memo":""}],"time":1510129868489}
+
+SubTestCase Pass:
+test_allOrderSearch (testOrderManageSearch.TestOrderManageSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft1.15' class='none'>
+    <td class='failCase'><div class='testcase'>test_importDirectSearch: 直营导单</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.15')" >
+        失败</a>
+
+    <div id='div_ft1.15' class="popup_window">
+        <pre>
+        ft1.15: 
+1 直营导单列表
+
+A11
+返回的状态：200
+测试结果：失败！！！  200
+返回的数据：{"success":false,"error_message":"系统错误"}
+
+SubTestCase Failed:
+test_importDirectSearch (testOrderManageSearch.TestOrderManageSearch) (data='fail')Traceback (most recent call last):
+  File "/Users/snolia/PycharmProjects/SCM3.0/AthenaTest/common/loadDatas.py", line 52, in loadDatas
+    self.assertEqual(result, "pass")
+AssertionError: 'fail' != 'pass'
+- fail
++ pass
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft1.16' class='none'>
+    <td class='failCase'><div class='testcase'>test_importOrderSearch: 暂存单</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.16')" >
+        失败</a>
+
+    <div id='div_ft1.16' class="popup_window">
+        <pre>
+        ft1.16: 
+1 暂存单列表
+
+A11
+返回的状态：200
+测试结果：失败！！！  200
+返回的数据：{"success":false,"error_message":"系统错误"}
+
+SubTestCase Failed:
+test_importOrderSearch (testOrderManageSearch.TestOrderManageSearch) (data='fail')Traceback (most recent call last):
+  File "/Users/snolia/PycharmProjects/SCM3.0/AthenaTest/common/loadDatas.py", line 52, in loadDatas
+    self.assertEqual(result, "pass")
+AssertionError: 'fail' != 'pass'
+- fail
++ pass
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft1.17' class='none'>
+    <td class='failCase'><div class='testcase'>test_printOrderSearch: 打印订单</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.17')" >
+        失败</a>
+
+    <div id='div_ft1.17' class="popup_window">
+        <pre>
+        ft1.17: 
+1 打印字典-业务类型查询
+
+A10
+返回的状态：404
+测试结果：失败！！！  404
+返回的数据：{"timestamp":1510129868580,"status":404,"error":"Not Found","message":"No message available","path":"/dictionaryInfoIndependent/businessTyp"}
+
+2 打印字典-服务类型查询
+
+A10
+返回的状态：200
+测试结果：成功！！！  200
+返回的数据：{"success":true,"data":[{"text":"干+支+装","value":"SETE01"},{"text":"干+支","value":"SETE02"},{"text":"干","value":"SETE03"},{"text":"支+装","value":"SETE04"},{"text":"支","value":"SETE05"},{"text":"装","value":"SETE06"},{"text":"干+支+装+搬楼","value":"SETE07"},{"text":"测量","value":"SETE08"},{"text":"支+搬楼","value":"SETE09"},{"text":"维修","value":"SETE10"},{"text":"干+支+搬楼","value":"SETE11"},{"text":"支+装+搬楼","value":"SETE12"},{"text":"异常维修","value":"SETE13"},{"text":"仓库服务","value":"SETE14"}],"time":1510129868599}
+
+3 打印字典-订单状态查询
+
+A10
+返回的状态：200
+测试结果：成功！！！  200
+返回的数据：{"success":true,"data":[{"text":"录单","value":"100"},{"text":"暂存单保存","value":"50"},{"text":"入库","value":"150"},{"text":"出库","value":"200"},{"text":"到件","value":"550"},{"text":"提货","value":"600"},{"text":"出发","value":"570"},{"text":"上门","value":"700"},{"text":"签收","value":"750"},{"text":"评价","value":"800"},{"text":"终止前状态-服务终止","value":"-100"},{"text":"终止前状态-服务终止","value":"-150"},{"text":"终止前状态-服务终止","value":"-200"},{"text":"终止前状态-服务终止","value":"-550"},{"text":"终止前状态-服务终止","value":"-600"},{"text":"终止前状态-服务终止","value":"-570"},{"text":"终止前状态-服务终止","value":"-700"},{"text":"终止前状态-服务终止","value":"-750"},{"text":"终止前状态-服务终止","value":"-800"},{"text":"结算","value":"850"},{"text":"订单取消","value":"-99"}],"time":1510129868618}
+
+4 打印列表查询
+
+A10
+返回的状态：200
+测试结果：成功！！！  200
+返回的数据：{"success":true,"data":[],"time":1510129868643}
+
+SubTestCase Failed:
+test_printOrderSearch (testOrderManageSearch.TestOrderManageSearch) (data='fail')Traceback (most recent call last):
+  File "/Users/snolia/PycharmProjects/SCM3.0/AthenaTest/common/loadDatas.py", line 52, in loadDatas
+    self.assertEqual(result, "pass")
+AssertionError: 'fail' != 'pass'
+- fail
++ pass
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.18' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_printOrderSearch: 打印订单</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.18')" >
+        通过</a>
+
+    <div id='div_pt1.18' class="popup_window">
+        <pre>
+        pt1.18: 
+1 打印字典-业务类型查询
+
+A10
+返回的状态：404
+测试结果：失败！！！  404
+返回的数据：{"timestamp":1510129868580,"status":404,"error":"Not Found","message":"No message available","path":"/dictionaryInfoIndependent/businessTyp"}
+
+2 打印字典-服务类型查询
+
+A10
+返回的状态：200
+测试结果：成功！！！  200
+返回的数据：{"success":true,"data":[{"text":"干+支+装","value":"SETE01"},{"text":"干+支","value":"SETE02"},{"text":"干","value":"SETE03"},{"text":"支+装","value":"SETE04"},{"text":"支","value":"SETE05"},{"text":"装","value":"SETE06"},{"text":"干+支+装+搬楼","value":"SETE07"},{"text":"测量","value":"SETE08"},{"text":"支+搬楼","value":"SETE09"},{"text":"维修","value":"SETE10"},{"text":"干+支+搬楼","value":"SETE11"},{"text":"支+装+搬楼","value":"SETE12"},{"text":"异常维修","value":"SETE13"},{"text":"仓库服务","value":"SETE14"}],"time":1510129868599}
+
+3 打印字典-订单状态查询
+
+A10
+返回的状态：200
+测试结果：成功！！！  200
+返回的数据：{"success":true,"data":[{"text":"录单","value":"100"},{"text":"暂存单保存","value":"50"},{"text":"入库","value":"150"},{"text":"出库","value":"200"},{"text":"到件","value":"550"},{"text":"提货","value":"600"},{"text":"出发","value":"570"},{"text":"上门","value":"700"},{"text":"签收","value":"750"},{"text":"评价","value":"800"},{"text":"终止前状态-服务终止","value":"-100"},{"text":"终止前状态-服务终止","value":"-150"},{"text":"终止前状态-服务终止","value":"-200"},{"text":"终止前状态-服务终止","value":"-550"},{"text":"终止前状态-服务终止","value":"-600"},{"text":"终止前状态-服务终止","value":"-570"},{"text":"终止前状态-服务终止","value":"-700"},{"text":"终止前状态-服务终止","value":"-750"},{"text":"终止前状态-服务终止","value":"-800"},{"text":"结算","value":"850"},{"text":"订单取消","value":"-99"}],"time":1510129868618}
+
+4 打印列表查询
+
+A10
+返回的状态：200
+测试结果：成功！！！  200
+返回的数据：{"success":true,"data":[],"time":1510129868643}
+
+SubTestCase Pass:
+test_printOrderSearch (testOrderManageSearch.TestOrderManageSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.19' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_printOrderSearch: 打印订单</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.19')" >
+        通过</a>
+
+    <div id='div_pt1.19' class="popup_window">
+        <pre>
+        pt1.19: 
+1 打印字典-业务类型查询
+
+A10
+返回的状态：404
+测试结果：失败！！！  404
+返回的数据：{"timestamp":1510129868580,"status":404,"error":"Not Found","message":"No message available","path":"/dictionaryInfoIndependent/businessTyp"}
+
+2 打印字典-服务类型查询
+
+A10
+返回的状态：200
+测试结果：成功！！！  200
+返回的数据：{"success":true,"data":[{"text":"干+支+装","value":"SETE01"},{"text":"干+支","value":"SETE02"},{"text":"干","value":"SETE03"},{"text":"支+装","value":"SETE04"},{"text":"支","value":"SETE05"},{"text":"装","value":"SETE06"},{"text":"干+支+装+搬楼","value":"SETE07"},{"text":"测量","value":"SETE08"},{"text":"支+搬楼","value":"SETE09"},{"text":"维修","value":"SETE10"},{"text":"干+支+搬楼","value":"SETE11"},{"text":"支+装+搬楼","value":"SETE12"},{"text":"异常维修","value":"SETE13"},{"text":"仓库服务","value":"SETE14"}],"time":1510129868599}
+
+3 打印字典-订单状态查询
+
+A10
+返回的状态：200
+测试结果：成功！！！  200
+返回的数据：{"success":true,"data":[{"text":"录单","value":"100"},{"text":"暂存单保存","value":"50"},{"text":"入库","value":"150"},{"text":"出库","value":"200"},{"text":"到件","value":"550"},{"text":"提货","value":"600"},{"text":"出发","value":"570"},{"text":"上门","value":"700"},{"text":"签收","value":"750"},{"text":"评价","value":"800"},{"text":"终止前状态-服务终止","value":"-100"},{"text":"终止前状态-服务终止","value":"-150"},{"text":"终止前状态-服务终止","value":"-200"},{"text":"终止前状态-服务终止","value":"-550"},{"text":"终止前状态-服务终止","value":"-600"},{"text":"终止前状态-服务终止","value":"-570"},{"text":"终止前状态-服务终止","value":"-700"},{"text":"终止前状态-服务终止","value":"-750"},{"text":"终止前状态-服务终止","value":"-800"},{"text":"结算","value":"850"},{"text":"订单取消","value":"-99"}],"time":1510129868618}
+
+4 打印列表查询
+
+A10
+返回的状态：200
+测试结果：成功！！！  200
+返回的数据：{"success":true,"data":[],"time":1510129868643}
+
+SubTestCase Pass:
+test_printOrderSearch (testOrderManageSearch.TestOrderManageSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.20' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_printOrderSearch: 打印订单</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.20')" >
+        通过</a>
+
+    <div id='div_pt1.20' class="popup_window">
+        <pre>
+        pt1.20: 
+1 打印字典-业务类型查询
+
+A10
+返回的状态：404
+测试结果：失败！！！  404
+返回的数据：{"timestamp":1510129868580,"status":404,"error":"Not Found","message":"No message available","path":"/dictionaryInfoIndependent/businessTyp"}
+
+2 打印字典-服务类型查询
+
+A10
+返回的状态：200
+测试结果：成功！！！  200
+返回的数据：{"success":true,"data":[{"text":"干+支+装","value":"SETE01"},{"text":"干+支","value":"SETE02"},{"text":"干","value":"SETE03"},{"text":"支+装","value":"SETE04"},{"text":"支","value":"SETE05"},{"text":"装","value":"SETE06"},{"text":"干+支+装+搬楼","value":"SETE07"},{"text":"测量","value":"SETE08"},{"text":"支+搬楼","value":"SETE09"},{"text":"维修","value":"SETE10"},{"text":"干+支+搬楼","value":"SETE11"},{"text":"支+装+搬楼","value":"SETE12"},{"text":"异常维修","value":"SETE13"},{"text":"仓库服务","value":"SETE14"}],"time":1510129868599}
+
+3 打印字典-订单状态查询
+
+A10
+返回的状态：200
+测试结果：成功！！！  200
+返回的数据：{"success":true,"data":[{"text":"录单","value":"100"},{"text":"暂存单保存","value":"50"},{"text":"入库","value":"150"},{"text":"出库","value":"200"},{"text":"到件","value":"550"},{"text":"提货","value":"600"},{"text":"出发","value":"570"},{"text":"上门","value":"700"},{"text":"签收","value":"750"},{"text":"评价","value":"800"},{"text":"终止前状态-服务终止","value":"-100"},{"text":"终止前状态-服务终止","value":"-150"},{"text":"终止前状态-服务终止","value":"-200"},{"text":"终止前状态-服务终止","value":"-550"},{"text":"终止前状态-服务终止","value":"-600"},{"text":"终止前状态-服务终止","value":"-570"},{"text":"终止前状态-服务终止","value":"-700"},{"text":"终止前状态-服务终止","value":"-750"},{"text":"终止前状态-服务终止","value":"-800"},{"text":"结算","value":"850"},{"text":"订单取消","value":"-99"}],"time":1510129868618}
+
+4 打印列表查询
+
+A10
+返回的状态：200
+测试结果：成功！！！  200
+返回的数据：{"success":true,"data":[],"time":1510129868643}
+
+SubTestCase Pass:
+test_printOrderSearch (testOrderManageSearch.TestOrderManageSearch) (data='pass')
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+        <tr id='total_row'>
+            <td>总计</td>
+            <td>20</td>
+            <td>14</td>
+            <td>6</td>
+            <td>0</td>
+            <td>&nbsp;</td>
+        </tr>
+    </table>
+
+        <div id='ending'>&nbsp;</div>
+        
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('chart'));
+
+        // 指定图表的配置项和数据
+        var option = {
+            title : {
+                text: '测试执行情况',
+                x:'center'
+            },
+            tooltip : {
+                trigger: 'item',
+                formatter: "{a} <br/>{b} : {c} ({d}%)"
+            },
+            legend: {
+                orient: 'vertical',
+                left: 'left',
+                data: ['通过','失败','错误']
+            },
+            series : [
+                {
+                    name: '测试执行情况',
+                    type: 'pie',
+                    radius : '60%',
+                    center: ['50%', '60%'],
+                    data:[
+                        {value:14, name:'通过'},
+                        {value:6, name:'失败'},
+                        {value:0, name:'错误'}
+                    ],
+                    itemStyle: {
+                        emphasis: {
+                            shadowBlur: 10,
+                            shadowOffsetX: 0,
+                            shadowColor: 'rgba(0, 0, 0, 0.5)'
+                        }
+                    }
+                }
+            ]
+        };
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+    </script>
+    
+    </div>
+</body>
+</html>
